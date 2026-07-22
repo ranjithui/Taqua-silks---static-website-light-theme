@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Flowing royal violet silk with gold zari paisley and peacock motifs">
+  <defs>
+    <!-- ===== Fold gradient: alternating light/deep violet ridges ===== -->
+    <linearGradient id="foldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0.00" stop-color="#2c1440"/>
+      <stop offset="0.10" stop-color="#5E2B97"/>
+      <stop offset="0.18" stop-color="#3a1a52"/>
+      <stop offset="0.30" stop-color="#7d43bd"/>
+      <stop offset="0.40" stop-color="#43205C"/>
+      <stop offset="0.52" stop-color="#6a2f9c"/>
+      <stop offset="0.62" stop-color="#2c1440"/>
+      <stop offset="0.74" stop-color="#5E2B97"/>
+      <stop offset="0.84" stop-color="#3a1a52"/>
+      <stop offset="0.94" stop-color="#7d43bd"/>
+      <stop offset="1.00" stop-color="#2c1440"/>
+    </linearGradient>
+
+    <!-- Warm cinematic key light -->
+    <radialGradient id="keyLight" cx="0.28" cy="0.18" r="0.9">
+      <stop offset="0" stop-color="#f3d98b" stop-opacity="0.45"/>
+      <stop offset="0.35" stop-color="#7d43bd" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#1b0d2b" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Left darkening for text legibility + vignette -->
+    <linearGradient id="leftShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1b0d2b" stop-opacity="0.78"/>
+      <stop offset="0.42" stop-color="#1b0d2b" stop-opacity="0.22"/>
+      <stop offset="0.72" stop-color="#1b0d2b" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0d0417" stop-opacity="0.65"/>
+    </radialGradient>
+
+    <!-- Gold zari stroke + glow -->
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9822a"/>
+      <stop offset="0.5" stop-color="#f3d98b"/>
+      <stop offset="1" stop-color="#D4AF37"/>
+    </linearGradient>
+    <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- ===== Silk filter: turbulence displacement + specular sheen ===== -->
+    <filter id="silk" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.017" numOctaves="4" seed="11" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G" result="disp"/>
+      <feGaussianBlur in="disp" stdDeviation="1.4" result="soft"/>
+      <feSpecularLighting in="noise" surfaceScale="4" specularConstant="0.9" specularExponent="20" lighting-color="#f7ecc4" result="spec">
+        <feDistantLight azimuth="235" elevation="58"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="soft" operator="in" result="specClip"/>
+      <feBlend in="soft" in2="specClip" mode="screen"/>
+    </filter>
+
+    <!-- Fine woven zari grid -->
+    <pattern id="zariWeave" width="26" height="26" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="26" height="26" fill="none"/>
+      <path d="M0 6 H26 M0 20 H26" stroke="#D4AF37" stroke-opacity="0.06" stroke-width="1"/>
+      <path d="M6 0 V26 M20 0 V26" stroke="#f3d98b" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+
+    <!-- Temple border tile (arches + dots) -->
+    <pattern id="temple" width="46" height="34" patternUnits="userSpaceOnUse">
+      <path d="M2 32 L2 14 Q23 -8 44 14 L44 32" fill="none" stroke="url(#gold)" stroke-width="2"/>
+      <circle cx="23" cy="10" r="2.4" fill="#f3d98b"/>
+    </pattern>
+
+    <!-- ===== Paisley (buta) motif ===== -->
+    <g id="paisley">
+      <path d="M60 6 C118 26 118 122 60 140 C16 154 2 104 30 78 C50 60 82 70 74 96 C70 110 52 112 48 100"
+            fill="none" stroke="url(#gold)" stroke-width="2.4"/>
+      <path d="M58 26 C96 40 96 112 58 124 C30 132 22 100 40 82 C54 70 74 78 68 96"
+            fill="none" stroke="#D4AF37" stroke-opacity="0.7" stroke-width="1.3"/>
+      <circle cx="52" cy="104" r="6" fill="none" stroke="#f3d98b" stroke-width="1.3"/>
+      <g fill="#f3d98b">
+        <circle cx="60" cy="8" r="1.7"/><circle cx="86" cy="24" r="1.7"/><circle cx="104" cy="54" r="1.7"/>
+        <circle cx="106" cy="92" r="1.7"/><circle cx="88" cy="124" r="1.7"/><circle cx="58" cy="140" r="1.7"/>
+      </g>
+    </g>
+
+    <!-- ===== Peacock feather motif ===== -->
+    <g id="peacock">
+      <path d="M60 210 C60 150 60 96 60 70" stroke="url(#gold)" stroke-width="2" fill="none"/>
+      <g stroke="#D4AF37" stroke-opacity="0.55" stroke-width="1">
+        <path d="M60 78 C40 60 30 44 26 24" fill="none"/><path d="M60 78 C48 54 44 36 44 14" fill="none"/>
+        <path d="M60 78 C60 52 60 34 60 10" fill="none"/><path d="M60 78 C72 54 76 36 76 14" fill="none"/>
+        <path d="M60 78 C80 60 90 44 94 24" fill="none"/>
+      </g>
+      <ellipse cx="60" cy="86" rx="30" ry="40" fill="none" stroke="url(#gold)" stroke-width="2"/>
+      <ellipse cx="60" cy="90" rx="19" ry="26" fill="#43205C" fill-opacity="0.55" stroke="#f3d98b" stroke-width="1.2"/>
+      <ellipse cx="60" cy="92" rx="9" ry="13" fill="#5E2B97" stroke="#D4AF37" stroke-width="1.2"/>
+      <circle cx="60" cy="92" r="3.4" fill="#f3d98b"/>
+    </g>
+  </defs>
+
+  <!-- ===== Base ===== -->
+  <rect width="1600" height="1000" fill="#2c1440"/>
+
+  <!-- ===== Flowing silk folds (displaced + sheen) ===== -->
+  <g filter="url(#silk)">
+    <rect x="-60" y="-60" width="1720" height="1120" fill="url(#foldGrad)"/>
+    <!-- large sweeping fold highlights -->
+    <path d="M-100 720 C300 560 620 860 980 640 C1240 480 1420 700 1720 560 L1720 1080 L-100 1080 Z" fill="#7d43bd" opacity="0.5"/>
+    <path d="M-100 300 C260 180 520 400 900 240 C1220 100 1440 320 1720 200" fill="none" stroke="#8a54c9" stroke-opacity="0.4" stroke-width="70"/>
+  </g>
+
+  <!-- Woven zari micro-texture -->
+  <rect width="1600" height="1000" fill="url(#zariWeave)"/>
+
+  <!-- ===== Cinematic lighting ===== -->
+  <rect width="1600" height="1000" fill="url(#keyLight)"/>
+
+  <!-- ===== Gold zari ornament layer ===== -->
+  <g filter="url(#goldGlow)">
+    <!-- Temple borders top & bottom -->
+    <rect x="0" y="0" width="1600" height="34" fill="url(#temple)" opacity="0.5"/>
+    <g transform="translate(1600,1000) rotate(180)"><rect x="0" y="0" width="1600" height="34" fill="url(#temple)" opacity="0.5"/></g>
+
+    <!-- Scattered paisley motifs (subtle) -->
+    <use href="#paisley" transform="translate(1180,120) rotate(18) scale(1.15)" opacity="0.5"/>
+    <use href="#paisley" transform="translate(1360,470) rotate(-24) scale(0.85)" opacity="0.38"/>
+    <use href="#paisley" transform="translate(980,700) rotate(120) scale(1.0)" opacity="0.32"/>
+    <use href="#paisley" transform="translate(150,640) rotate(-8) scale(0.7)" opacity="0.22"/>
+    <use href="#paisley" transform="translate(560,180) rotate(200) scale(0.6)" opacity="0.2"/>
+
+    <!-- Peacock feathers -->
+    <use href="#peacock" transform="translate(1240,300) rotate(14) scale(1.1)" opacity="0.45"/>
+    <use href="#peacock" transform="translate(1440,640) rotate(-10) scale(0.8)" opacity="0.3"/>
+    <use href="#peacock" transform="translate(760,560) rotate(6) scale(0.7)" opacity="0.22"/>
+
+    <!-- Floating zari specks -->
+    <g fill="#f3d98b">
+      <circle cx="420" cy="300" r="2"/><circle cx="620" cy="440" r="1.6"/><circle cx="880" cy="200" r="2.2"/>
+      <circle cx="1080" cy="520" r="1.8"/><circle cx="300" cy="500" r="1.6"/><circle cx="720" cy="720" r="2"/>
+      <circle cx="1320" cy="200" r="1.8"/><circle cx="520" cy="620" r="1.5"/><circle cx="1180" cy="820" r="2"/>
+    </g>
+  </g>
+
+  <!-- ===== Legibility shade + vignette ===== -->
+  <rect width="1600" height="1000" fill="url(#leftShade)"/>
+  <rect width="1600" height="1000" fill="url(#vignette)"/>
+</svg>

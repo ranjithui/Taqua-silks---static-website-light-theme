@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Mughal jaali lattice — interlocking ogee arches, seamless 120px tile -->
+  <g fill="none" stroke="#D4AF37" stroke-width="1.1" opacity="0.5">
+    <circle cx="0"   cy="0"   r="60"/>
+    <circle cx="120" cy="0"   r="60"/>
+    <circle cx="0"   cy="120" r="60"/>
+    <circle cx="120" cy="120" r="60"/>
+    <circle cx="60"  cy="60"  r="60"/>
+    <circle cx="60"  cy="60"  r="18"/>
+    <circle cx="0"   cy="60"  r="18"/>
+    <circle cx="120" cy="60"  r="18"/>
+    <circle cx="60"  cy="0"   r="18"/>
+    <circle cx="60"  cy="120" r="18"/>
+  </g>
+  <g fill="#D4AF37" opacity="0.55">
+    <circle cx="60" cy="60" r="2.6"/>
+    <circle cx="0"  cy="0"  r="2.6"/>
+    <circle cx="120" cy="0" r="2.6"/>
+    <circle cx="0"  cy="120" r="2.6"/>
+    <circle cx="120" cy="120" r="2.6"/>
+  </g>
+</svg>

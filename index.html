@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taqua Silks — Luxury Handcrafted Silk Sarees | Royal Heritage Weaves</title>
+  <meta name="description" content="Taqua Silks — an ultra-premium house of handcrafted Kanchipuram, Banarasi & bridal silk sarees. Timeless elegance woven into every drape. Discover our ivory & zari-gold luxury collection." />
+  <meta name="theme-color" content="#FBF6EC" />
+  <meta property="og:title" content="Taqua Silks — Timeless Elegance Woven Into Every Saree" />
+  <meta property="og:description" content="Luxury handcrafted silk sarees celebrating India's silk heritage." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div id="preloader">
+    <div class="loader-mark">
+      <img class="preloader-logo" src="images/logo.png" alt="Taqua Silks" />
+      <div class="logo-lg langswap"><span class="lang en">Taqua<b>Silks</b></span><span class="lang ta" lang="ta">தக்வா <b>சில்க்ஸ்</b></span></div>
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===================== PARTICLES ===================== -->
+  <canvas id="particles"></canvas>
+
+  <!-- ===================== ATELIER RIBBON ===================== -->
+  <div class="announce" id="announce" role="region" aria-label="Atelier notes">
+    <div class="announce-track">
+      <span><i class="fa-solid fa-star"></i> Handcrafted Pure Silk · Woven by Master Artisans</span>
+      <span><i class="fa-solid fa-star"></i> Certified Silk Mark · Real Zari Weaves</span>
+      <span><i class="fa-solid fa-star"></i> Private Styling Appointments at Our Chennai Atelier</span>
+      <span><i class="fa-solid fa-star"></i> Handcrafted Pure Silk · Woven by Master Artisans</span>
+      <span><i class="fa-solid fa-star"></i> Certified Silk Mark · Real Zari Weaves</span>
+      <span><i class="fa-solid fa-star"></i> Private Styling Appointments at Our Chennai Atelier</span>
+    </div>
+    <button class="announce-close" id="announceClose" aria-label="Dismiss note"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Taqua Silks home">
+        <img class="brand-logo" src="images/logo.png" alt="Taqua Silks" />
+        <span class="brand-text">
+          <span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span>
+                  </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#collections">Collections</a>
+        <a href="#arrivals">Latest</a>
+        <a href="#bridal">Grand Wedding</a>
+        <a href="#traditions">Traditions</a>
+        <a href="#kids">Kids</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close" id="menuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <a href="#collections">Collections</a>
+    <a href="#arrivals">Latest</a>
+    <a href="#bridal">Grand Wedding</a>
+    <a href="#traditions">Traditions</a>
+    <a href="#kids">Kids</a>
+    <a href="#gallery">Gallery</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero silk-weave" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal">Luxury Silk Collection</span>
+        <h1 class="hero-title reveal d1">Timeless Elegance<br /><em>Woven</em> Into Every Saree</h1>
+        <p class="hero-sub reveal d2">Discover handcrafted silk sarees that celebrate tradition, beauty, and sophistication — draped in the quiet glow of ivory and zari gold.</p>
+        <div class="hero-cta reveal d3">
+          <a href="#collections" class="btn btn-primary">Explore Collection <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="btn btn-ghost">Book Store Visit</a>
+        </div>
+        <div class="hero-stats reveal d4">
+          <div class="stat"><b>25+</b><span>Years of Heritage</span></div>
+          <div class="stat"><b>500+</b><span>Handloom Weaves</span></div>
+          <div class="stat"><b>50k+</b><span>Happy Patrons</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal d2">
+        <div class="hero-frame" data-tilt>
+          <img src="images/photos/hero.webp" alt="Model draped in an orange checked silk saree with zari border" data-label="Signature Drape" loading="eager" />
+        </div>
+        <div class="hero-badge glass">
+          <span class="medal"><i class="fa-solid fa-award"></i></span>
+          <div><b>Pure Silk Mark</b><span>Certified Handloom</span></div>
+        </div>
+        <div class="hero-badge top glass">
+          <span class="medal"><i class="fa-solid fa-gem"></i></span>
+          <div><b>Zari Woven</b><span>24k Gold Thread</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue reveal d4">
+      <span class="mouse"></span>
+      Scroll
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== FEATURED COLLECTIONS ===================== -->
+  <section id="collections">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Signature Weaves</span>
+        <h2 class="section-title">Featured <span class="accent">Collections</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Six signature houses of craft — from regal <em>Bridal</em> weaves and heirloom <em>Kanchipuram</em> to featherlight <em>Soft Silks</em>, reimagined for the modern connoisseur.</p>
+      </div>
+
+      <div class="collections-grid">
+        <article class="collection-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-01.jpg" alt="Red bridal silk saree draped on a display mannequin" data-label="Bridal Sarees" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Muhurtham Couture</span><h3>Bridal Sarees</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-02.jpg" alt="Authentic Kanchipuram silk saree with gold zari border" data-label="Kanchipuram Silk" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Heirloom Weave</span><h3>Kanchipuram Silk</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-03.jpg" alt="Banarasi silk saree with brocade weave" data-label="Banarasi Silk" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Woven Brocade</span><h3>Banarasi Silk</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-04.jpg" alt="Soft silk saree draped on a display mannequin" data-label="Soft Silk" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Featherlight Drape</span><h3>Soft Silk</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-05.jpg" alt="Party wear saree draped on a display mannequin" data-label="Party Wear" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">The Celebration Edit</span><h3>Party Wear</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-06.jpg" alt="Designer saree draped on a display mannequin" data-label="Designer Sarees" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Atelier Signature</span><h3>Designer Sarees</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== WHY CHOOSE ===================== -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">The Taqua Promise</span>
+        <h2 class="section-title">Why Choose <span class="accent">Taqua Silks</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="feature-card glass reveal"><div class="fi"><i class="fa-solid fa-leaf"></i></div><h4>100% Pure Silk</h4><p>Every drape is woven from certified mulberry silk with the authentic Silk Mark assurance.</p></div>
+        <div class="feature-card glass reveal d1"><div class="fi"><i class="fa-solid fa-hand-sparkles"></i></div><h4>Handcrafted</h4><p>Master weavers pour weeks of artistry into a single saree — no two are ever alike.</p></div>
+        <div class="feature-card glass reveal d2"><div class="fi"><i class="fa-solid fa-gem"></i></div><h4>Premium Quality</h4><p>Rigorous quality curation ensures flawless zari, texture, and finish in every weave.</p></div>
+        <div class="feature-card glass reveal"><div class="fi"><i class="fa-solid fa-crown"></i></div><h4>Exclusive Designs</h4><p>Limited, signature motifs designed in-house for the discerning modern woman.</p></div>
+        <div class="feature-card glass reveal d1"><div class="fi"><i class="fa-solid fa-shield-heart"></i></div><h4>Trusted Since Years</h4><p>Two and a half decades of trust, heritage, and thousands of cherished patrons.</p></div>
+        <div class="feature-card glass reveal d2"><div class="fi"><i class="fa-solid fa-earth-asia"></i></div><h4>Worldwide Delivery</h4><p>Elegantly packaged and delivered to your doorstep — anywhere in the world.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== NEW ARRIVALS ===================== -->
+  <section id="arrivals">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Fresh Off The Loom</span>
+        <h2 class="section-title">Latest <span class="accent">Collection</span></h2>
+        <p class="section-sub" style="margin-inline:auto">The newest weaves from the Taqua atelier — each piece a celebration of colour, craft, and quiet opulence.</p>
+      </div>
+      <div class="products-grid" id="arrivalsGrid"><!-- injected by JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== SIGNATURE PIECES ===================== -->
+  <section id="bestsellers" class="why">
+    <div class="container">
+      <div class="section-head slider-head reveal">
+        <div>
+          <span class="eyebrow">Most Adored</span>
+          <h2 class="section-title">Signature <span class="accent">Picks</span></h2>
+        </div>
+        <div class="slider-nav">
+          <button id="prevBtn" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+          <button id="nextBtn" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="slider-wrap">
+        <div class="slider" id="bestSlider"><!-- injected by JS --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BRIDAL BANNER ===================== -->
+  <section id="bridal">
+    <div class="container">
+      <div class="bridal reveal">
+        <div class="bg"><img src="images/photos/hero4.png" alt="Grand wedding saree draped on a display mannequin" data-label="Grand Wedding" loading="lazy" /></div>
+        <div class="temple-border" style="position:absolute;top:0;left:0;z-index:3"></div>
+        <div class="bridal-inner">
+          <span class="eyebrow">The Muhurtham Edit</span>
+          <h2>Woven For Your <em>Forever</em> Moment</h2>
+          <p>An exquisite bridal trousseau in deep crimson and molten gold — heirloom weaves crafted to be treasured for generations. Reserve a private bridal styling appointment at our flagship showroom.</p>
+          <a href="#contact" class="btn btn-ghost">View Bridal Collection <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== KIDS COLLECTION ===================== -->
+  <section id="kids" class="kids">
+    <div class="petals" id="petals" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Taqua Little Royals</span>
+        <h2 class="section-title">Little Traditions, <span class="accent">Big Celebrations</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Beautiful ethnic wear for boys and girls, crafted with comfort, elegance, and festive charm.</p>
+      </div>
+
+      <div class="kids-grid">
+        <article class="kid-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-15.jpg" alt="Girls Pattu Pavadai draped on a child display mannequin" data-label="Girls Pattu Pavadai" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Girls</span>
+            <h3>Pattu Pavadai</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Pattu Pavadai"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-16.jpg" alt="Girls lehenga draped on a child display mannequin" data-label="Girls Lehenga" loading="lazy" style="object-position:top" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Girls</span>
+            <h3>Girls Lehenga</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Girls Lehenga"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-17.jpg" alt="Girls silk dress draped on a child display mannequin" data-label="Girls Silk Dresses" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Girls</span>
+            <h3>Silk Dresses</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Silk Dresses"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d3" data-tilt>
+          <div class="media"><img src="images/photos/drape-18.jpg" alt="Boys kurta set draped on a child display mannequin" data-label="Boys Kurta Sets" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Boys</span>
+            <h3>Kurta Sets</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Kurta Sets"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-19.jpg" alt="Boys dhoti set draped on a child display mannequin" data-label="Boys Dhoti Sets" loading="lazy" style="object-position:top" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Boys</span>
+            <h3>Dhoti Sets</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Dhoti Sets"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-20.jpg" alt="Boys sherwani draped on a child display mannequin" data-label="Boys Sherwani" loading="lazy" style="object-position:top" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Boys</span>
+            <h3>Sherwani</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Sherwani"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-27.jpg" alt="Kids festive wear kurta set with marigold styling" data-label="Festive Wear" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">Celebration</span>
+            <h3>Festive Wear</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Festive Wear"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d3" data-tilt>
+          <div class="media"><img src="images/photos/drape-28.jpg" alt="Kids wedding wear sherwani with turban and mojari" data-label="Wedding Wear" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">Celebration</span>
+            <h3>Wedding Wear</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Wedding Wear"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Featured banner -->
+      <div class="kids-banner reveal">
+        <div class="bg"><img src="images/photos/drape-18.jpg" alt="Kids ethnic wear draped on a child display mannequin" data-label="Celebrate Every Festival" loading="lazy" /></div>
+        <div class="temple-border" style="position:absolute;top:0;left:0;z-index:3"></div>
+        <div class="kids-banner-inner">
+          <span class="eyebrow">The Festive Edit</span>
+          <h2>Celebrate Every <em>Festival</em> in Style</h2>
+          <p>Vibrant silk ethnic wear for your little ones — spun in soft, skin-friendly weaves and finished with real zari, so every celebration sparkles a little brighter.</p>
+          <a href="#contact" class="btn btn-ghost">Explore Kids Collection <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== LATEST TRADITIONS ===================== -->
+  <section id="traditions">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">The Weave Library</span>
+        <h2 class="section-title">Latest <span class="accent">Traditions</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Every weave tells its own story — from breathable <em>Cotton</em> and crisp <em>Linen</em> to shimmering <em>Tissue</em>, airy <em>Organza</em> and the legendary silks of <em>Mysore</em>.</p>
+      </div>
+
+      <div class="collections-grid">
+        <article class="collection-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-21.jpg" alt="Cotton saree with woven border" data-label="Cotton Sarees" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Everyday Ease</span><h3>Cotton Sarees</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-22.jpg" alt="Linen saree with fine texture" data-label="Linen Sarees" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Crisp & Modern</span><h3>Linen Sarees</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-23.jpg" alt="Tissue silk saree with metallic sheen" data-label="Tissue Sarees" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Liquid Shimmer</span><h3>Tissue Sarees</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-24.jpg" alt="Organza saree with sheer drape" data-label="Organza Sarees" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Sheer Grace</span><h3>Organza Sarees</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-25.jpg" alt="Mysore silk saree in mustard with gold border" data-label="Mysore Silk" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Royal Mysore</span><h3>Mysore Silk</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+        <article class="collection-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-26.jpg" alt="Kora silk saree with crisp finish" data-label="Kora Silk" loading="lazy" /></div>
+          <span class="frame"></span>
+          <div class="info"><span class="kicker">Crisp Kora</span><h3>Kora Silk</h3><span class="link">Discover <i class="fa-solid fa-arrow-right"></i></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-media reveal">
+        <div class="main"><img src="images/photos/hero4.png" alt="Heirloom silk saree draped on a display mannequin" data-label="Our Heritage" loading="lazy" /></div>
+        <div class="about-media float-card glass">
+          <b>25+</b><span>Years of Weaving Trust</span>
+        </div>
+      </div>
+      <div class="about-copy reveal d1">
+        <span class="eyebrow">Our Heritage</span>
+        <h2>Preserving India's <em>Silk Legacy</em></h2>
+        <p>Taqua Silks was born from a single conviction — that the timeless art of Indian handloom deserves a stage as regal as the weaves themselves. For over two decades, we have worked hand-in-hand with master artisans across Kanchipuram, Varanasi, and Mysore.</p>
+        <p>Every saree that carries our name is a quiet rebellion against the ordinary — pure silk, real zari, and motifs passed down through generations of weaving families.</p>
+        <ul class="about-points">
+          <li><i class="fa-solid fa-check"></i> Direct-from-weaver sourcing</li>
+          <li><i class="fa-solid fa-check"></i> Authentic Silk Mark certified</li>
+          <li><i class="fa-solid fa-check"></i> Fair, ethical craftsmanship</li>
+          <li><i class="fa-solid fa-check"></i> Heirloom-grade quality</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Our Story <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sign">— The House of Taqua</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section id="reviews" class="why">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Words Of Our Patrons</span>
+        <h2 class="section-title">Loved By <span class="accent">Connoisseurs</span></h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card glass reveal">
+          <div class="quote">&#8220;</div>
+          <div class="stars">★★★★★</div>
+          <p>The Kanchipuram I ordered for my wedding left everyone speechless. The zari work is breathtaking — true heirloom quality.</p>
+          <div class="reviewer"><span class="avatar-mono" aria-hidden="true">AR</span><div><b>Ananya Reddy</b><span>Hyderabad, India</span></div></div>
+        </div>
+        <div class="review-card glass reveal d1">
+          <div class="quote">&#8220;</div>
+          <div class="stars">★★★★★</div>
+          <p>Shipped all the way to London and arrived beautifully packaged. The silk feels like liquid gold. Absolutely worth every rupee.</p>
+          <div class="reviewer"><span class="avatar-mono" aria-hidden="true">MK</span><div><b>Meera Kapoor</b><span>London, UK</span></div></div>
+        </div>
+        <div class="review-card glass reveal d2">
+          <div class="quote">&#8220;</div>
+          <div class="stars">★★★★★</div>
+          <p>Taqua's bridal styling team made me feel like royalty. The Banarasi drape was the highlight of my reception. Forever grateful.</p>
+          <div class="reviewer"><span class="avatar-mono" aria-hidden="true">PN</span><div><b>Priya Nair</b><span>Chennai, India</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== INSTAGRAM GALLERY ===================== -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">@taquasilks</span>
+        <h2 class="section-title">The <span class="accent">Silk Diaries</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Follow our world of woven wonders on Instagram.</p>
+      </div>
+      <div class="gallery-masonry" id="galleryGrid"><!-- injected by JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter-card glass reveal">
+        <span class="eyebrow center">Join The House</span>
+        <h2>The <span class="gold-text">Golden Thread</span> Newsletter</h2>
+        <p>Be the first to receive private previews, atelier stories, and invitations to our exclusive silk showcases.</p>
+        <form class="news-form" id="newsForm">
+          <input type="email" placeholder="Your email address" aria-label="Email" required />
+          <button type="submit" class="btn btn-primary">Subscribe <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="Taqua Silks" /><span class="brand-text"><span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span></span></a>
+          <p>An ultra-premium house of handcrafted silk sarees — where India's timeless weaving heritage meets modern luxury.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="#home">Home</a>
+          <a href="#collections">Collections</a>
+          <a href="#about">About Us</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Collections</h5>
+          <a href="#collections">Kanchipuram Silk</a>
+          <a href="#collections">Banarasi Silk</a>
+          <a href="#collections">Soft Silk</a>
+          <a href="#bridal">Bridal Edit</a>
+          <a href="#arrivals">New Arrivals</a>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Our Atelier</h5>
+          <div class="contact-line"><i class="fa-solid fa-location-dot"></i><span>Municipal Office Rd, Noyyal, Tiruppur, Tamil Nadu 641604</span></div>
+          <div class="contact-line"><i class="fa-solid fa-phone"></i><a href="tel:+918870844411">088708 44411</a></div>
+          <div class="contact-line"><i class="fa-solid fa-envelope"></i><span>care@taquasilks.com</span></div>
+          <div class="contact-line"><i class="fa-solid fa-clock"></i><span>Mon – Sun · 10:00 AM – 9:00 PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Taqua Silks. Woven with devotion in India.</span>
+        <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Shipping</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <div class="toast" id="toast"><i class="fa-solid fa-check"></i><span id="toastMsg">Added</span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
