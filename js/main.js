@@ -99,7 +99,7 @@
   const arrivals = [
     { name: "Wedding Collection", cat: "Wedding Silk", price: "₹64,000", was: "₹78,000", rating: 5, badge: "New", tag: "new", label: "Wedding Collection", img: 7 },
     { name: "Festive Collection", cat: "Festive Silk", price: "₹38,500", was: "", rating: 5, badge: "New", tag: "new", label: "Festive Collection", img: 8 },
-    { name: "Office Wear", cat: "Everyday Silk", price: "₹12,900", was: "₹16,000", rating: 5, badge: "-19%", tag: "off", label: "Office Wear", img: 9 },
+    { name: "Everyday Collection", cat: "Everyday Silk", price: "₹12,900", was: "₹16,000", rating: 5, badge: "-19%", tag: "off", label: "Everyday Collection", img: 9 },
     { name: "Traditional Wear", cat: "South Indian", price: "₹42,500", was: "₹52,000", rating: 5, badge: "-18%", tag: "off", label: "Traditional Wear", img: 10 },
   ];
   const bestsellers = [

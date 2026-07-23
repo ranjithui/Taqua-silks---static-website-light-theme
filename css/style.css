@@ -1435,3 +1435,23 @@ body.has-announce .hero { padding-top: 180px; }
   .preloader-logo { height: 150px; }
   .loader-mark .logo-lg { font-size: 2.8rem; }
 }
+
+/* ============================================================
+   BRIDAL BANNER  —  frame matches the photograph
+   ------------------------------------------------------------
+   hero4.png is 1616×973. The banner used to be sized by its text
+   block, so `object-fit: cover` cropped the top and bottom of the
+   shot. Locking the frame to the photo's own ratio makes cover
+   fill it edge to edge with nothing trimmed.
+
+   Below 900px the copy is taller than that ratio allows, so the
+   height goes back to being content-driven (and the photo crops
+   toward the bride on the right) rather than clipping the text.
+   ============================================================ */
+.bridal { aspect-ratio: 1616 / 973; }
+.bridal .bg img { object-position: center; }
+
+@media (max-width: 900px) {
+  .bridal { aspect-ratio: auto; }
+  .bridal .bg img { object-position: 70% center; }
+}
