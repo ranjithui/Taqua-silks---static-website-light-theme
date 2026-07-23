@@ -205,29 +205,12 @@
   document.getElementById("menuClose").addEventListener("click", () => mobileMenu.classList.remove("open"));
   mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
 
-  /* -------- Toast -------- */
-  const toast = document.getElementById("toast");
-  const toastMsg = document.getElementById("toastMsg");
-  let toastTimer;
-  function showToast(msg, icon = "fa-check") {
-    toastMsg.textContent = msg;
-    toast.querySelector("i").className = "fa-solid " + icon;
-    toast.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
-  }
-
-  /* -------- Generic toast affordances (e.g. Kids quick view) -------- */
-  document.addEventListener("click", (e) => {
-    const toastBtn = e.target.closest("[data-toast]");
-    if (toastBtn) showToast(toastBtn.getAttribute("data-toast"), "fa-sparkles");
-  });
-
   /* -------- Newsletter -------- */
+  // The toast popup was removed from the layout, so the form just clears
+  // itself on submit — nothing is announced back to the visitor.
   document.getElementById("newsForm").addEventListener("submit", (e) => {
     e.preventDefault();
     e.target.reset();
-    showToast("Welcome to the Golden Thread ✦", "fa-envelope-circle-check");
   });
 
   /* -------- Ripple on buttons -------- */
@@ -281,7 +264,11 @@
   if (window.gsap && window.ScrollTrigger && !prefersReduced) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(".hero-frame img", { yPercent: 12, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-    gsap.utils.toArray(".bridal .bg img, .about-media .main img").forEach((img) => {
+    // The bridal banner is deliberately left out: its frame is locked to the
+    // photo's own 1616:973 ratio so the whole shot fits, which leaves no
+    // overflow for a parallax to slide through. Drifting it ±8% just exposed
+    // the frame background as a bar along the top or bottom edge.
+    gsap.utils.toArray(".about-media .main img").forEach((img) => {
       gsap.fromTo(img, { yPercent: -8 }, { yPercent: 8, ease: "none", scrollTrigger: { trigger: img, start: "top bottom", end: "bottom top", scrub: true } });
     });
     gsap.to(".section-title .accent", { backgroundPosition: "200%", repeat: -1, duration: 5, ease: "none" });
