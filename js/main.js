@@ -112,11 +112,11 @@
   /* ============================================================
      PLUG-AND-PLAY MANNEQUIN IMAGES
      Drop your studio mannequin-drape photos into images/photos/ named
-     drape-01.jpg … drape-12.jpg. Each appears automatically. Until a file
+     drape-01.png … drape-12.png. Each appears automatically. Until a file
      exists, the matched premium stock photo (2nd column) shows instead —
      so nothing ever looks broken while you gather images.
      ============================================================ */
-  const drapePath = (n) => `images/photos/drape-${String(n).padStart(2, "0")}.jpg`;
+  const drapePath = (n) => `images/photos/drape-${String(n).padStart(2, "0")}.png`;
 
   // Gallery pool — the adult saree slots (drape-01 … drape-14). Until a file
   // exists, the woven-silk placeholder shows automatically via attachFallback().
