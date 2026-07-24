@@ -203,7 +203,20 @@
   const mobileMenu = document.getElementById("mobileMenu");
   document.getElementById("hamburger").addEventListener("click", () => mobileMenu.classList.add("open"));
   document.getElementById("menuClose").addEventListener("click", () => mobileMenu.classList.remove("open"));
-  mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
+  // Category titles (Men/Women/Kids) act as accordion toggles — tap to reveal the
+  // dropdown of sub-categories instead of navigating away or closing the menu.
+  mobileMenu.querySelectorAll(".mm-title").forEach((t) =>
+    t.addEventListener("click", (e) => {
+      e.preventDefault();
+      const group = t.closest(".mm-group");
+      const wasOpen = group.classList.contains("open");
+      // Close any other open group so only one dropdown shows at a time.
+      mobileMenu.querySelectorAll(".mm-group.open").forEach((g) => g.classList.remove("open"));
+      group.classList.toggle("open", !wasOpen);
+    })
+  );
+  // Any other link (including the sub-category links) closes the menu on navigation.
+  mobileMenu.querySelectorAll("a:not(.mm-title)").forEach((a) => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
 
   /* -------- Newsletter -------- */
   // The toast popup was removed from the layout, so the form just clears
