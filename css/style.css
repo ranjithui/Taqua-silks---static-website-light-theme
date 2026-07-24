@@ -946,6 +946,12 @@ body.has-announce .navbar { top: 42px; }
 }
 @media (max-width: 640px) {
   .collections-grid, .why-grid, .reviews-grid, .products-grid { grid-template-columns: 1fr; }
+  /* Listing pages: keep 2 compact cards per row on mobile instead of one huge card. */
+  .cat-section .products-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .cat-section .product-body { padding: 12px 12px 16px; }
+  .cat-section .product-body h4 { font-size: 1rem; }
+  .cat-section .product-body .cat { font-size: 0.58rem; letter-spacing: 1.5px; }
+  .cat-section .product-body .ph-desc { font-size: 0.76rem; line-height: 1.45; }
   .kids-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .gallery-masonry { columns: 2; }
   .footer-grid { grid-template-columns: 1fr; gap: 34px; }
