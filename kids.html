@@ -1,0 +1,488 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kids Collection — Taqua Silks | Little Royals Ethnic & Casual Wear</title>
+  <meta name="description" content="Taqua Little Royals — ethnic and casual wear for boys and girls: shirt & pant sets, shirt & dhoti, t-shirts & tracks, gowns, frocks, choli, chudidhars, pavadai sets and nightwear." />
+  <meta name="theme-color" content="#FBF6EC" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .page-hero {
+      position: relative;
+      padding: clamp(140px, 17vh, 210px) 0 clamp(40px, 6vw, 72px);
+      text-align: center; overflow: hidden;
+    }
+    .page-hero .crumbs { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 20px; }
+    .page-hero .crumbs a:hover { text-decoration: underline; }
+    .page-hero h1 { font-family: var(--font-head); font-weight: 600; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; color: var(--ink); margin: 8px 0 18px; }
+    .page-hero h1 em { font-style: italic; color: var(--gold-ink); }
+    .page-hero .lede { max-width: 720px; margin: 0 auto; color: var(--ink-body); font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.12rem); }
+    .cat-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+    .cat-chips a {
+      font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 9px 18px; border-radius: 40px; color: var(--ink-body);
+      border: 1px solid rgba(138,106,32,0.35); transition: all 0.3s var(--ease);
+    }
+    .cat-chips a:hover { background: var(--gold-ink); color: #fff; border-color: var(--gold-ink); transform: translateY(-2px); }
+
+    /* Boys / Girls divider band */
+    .gender-band { text-align: center; padding: clamp(20px, 4vw, 40px) 0 clamp(8px, 2vw, 20px); }
+    .gender-band h2 { font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.4rem); color: var(--ink); }
+    .gender-band h2 .accent { font-style: italic; }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html#home" class="brand" aria-label="Taqua Silks home">
+        <img class="brand-logo" src="images/logo.png" alt="Taqua Silks" />
+        <span class="brand-text">
+          <span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#collections">Collections</a>
+        <div class="nav-item">
+          <a href="men.html" class="nav-drop-toggle">Men <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="men.html#shirt"><i class="fa-solid fa-shirt"></i> Shirt</a>
+            <a href="men.html#tshirt"><i class="fa-solid fa-shirt"></i> T-Shirt</a>
+            <a href="men.html#trousers"><i class="fa-solid fa-tag"></i> Trousers</a>
+            <a href="men.html#jeans"><i class="fa-solid fa-tag"></i> Jeans</a>
+            <a href="men.html#formal-pants"><i class="fa-solid fa-user-tie"></i> Formal Pants</a>
+            <a href="men.html#track-pant"><i class="fa-solid fa-person-running"></i> Track Pant</a>
+            <a href="men.html#dhoti"><i class="fa-solid fa-place-of-worship"></i> Dhoti</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="women.html" class="nav-drop-toggle">Women <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="women.html#salwar"><i class="fa-solid fa-person-dress"></i> Salwar</a>
+            <a href="women.html#kurtis"><i class="fa-solid fa-person-dress"></i> Kurtis</a>
+            <a href="women.html#night-wear"><i class="fa-solid fa-moon"></i> Night Wear</a>
+            <a href="women.html#blouse-materials"><i class="fa-solid fa-scissors"></i> Blouse Materials</a>
+            <a href="women.html#half-saree"><i class="fa-solid fa-person-dress"></i> Half Saree</a>
+          </div>
+        </div>
+        <a href="index.html#bridal">Grand Wedding</a>
+        <div class="nav-item">
+          <a href="kids.html" class="nav-drop-toggle" aria-current="page">Kids <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <span class="drop-group">Boys</span>
+            <a href="kids.html#boys-shirts-pants"><i class="fa-solid fa-shirt"></i> Shirts &amp; Pants</a>
+            <a href="kids.html#boys-shirt-dhoti"><i class="fa-solid fa-place-of-worship"></i> Shirt &amp; Dhoti</a>
+            <a href="kids.html#boys-tshirts-tracks"><i class="fa-solid fa-person-running"></i> T-Shirts &amp; Tracks</a>
+            <a href="kids.html#boys-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+            <span class="drop-group">Girls</span>
+            <a href="kids.html#girls-gowns-frocks"><i class="fa-solid fa-person-dress"></i> Gowns &amp; Frocks</a>
+            <a href="kids.html#girls-choli-chudidhar"><i class="fa-solid fa-person-dress"></i> Choli &amp; Chudidhars</a>
+            <a href="kids.html#girls-pavadai-sets"><i class="fa-solid fa-person-dress"></i> Pavadai Sets</a>
+            <a href="kids.html#girls-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+          </div>
+        </div>
+        <a href="index.html#kids">Little Royals</a>
+        <a href="about.html">About</a>
+        <a href="index.html#gallery">Gallery</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close" id="menuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html#collections">Collections</a>
+    <div class="mm-group">
+      <a href="men.html" class="mm-title">Men</a>
+      <div class="mm-sub">
+        <a href="men.html#shirt">Shirt</a>
+        <a href="men.html#tshirt">T-Shirt</a>
+        <a href="men.html#trousers">Trousers</a>
+        <a href="men.html#jeans">Jeans</a>
+        <a href="men.html#formal-pants">Formal Pants</a>
+        <a href="men.html#track-pant">Track Pant</a>
+        <a href="men.html#dhoti">Dhoti</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <a href="women.html" class="mm-title">Women</a>
+      <div class="mm-sub">
+        <a href="women.html#salwar">Salwar</a>
+        <a href="women.html#kurtis">Kurtis</a>
+        <a href="women.html#night-wear">Night Wear</a>
+        <a href="women.html#blouse-materials">Blouse Materials</a>
+        <a href="women.html#half-saree">Half Saree</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <a href="kids.html" class="mm-title">Kids</a>
+      <div class="mm-sub">
+        <a href="kids.html#boys-shirts-pants">Boys - Shirts &amp; Pants</a>
+        <a href="kids.html#boys-shirt-dhoti">Boys - Shirt &amp; Dhoti</a>
+        <a href="kids.html#boys-tshirts-tracks">Boys - T-Shirts &amp; Tracks</a>
+        <a href="kids.html#boys-nightwear">Boys - Nightwear</a>
+        <a href="kids.html#girls-gowns-frocks">Girls - Gowns &amp; Frocks</a>
+        <a href="kids.html#girls-choli-chudidhar">Girls - Choli &amp; Chudidhars</a>
+        <a href="kids.html#girls-pavadai-sets">Girls - Pavadai Sets</a>
+        <a href="kids.html#girls-nightwear">Girls - Nightwear</a>
+      </div>
+    </div>
+    <a href="index.html#kids">Little Royals</a>
+    <a href="about.html">About</a>
+    <a href="index.html#gallery">Gallery</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero silk-weave">
+    <div class="container">
+      <p class="crumbs reveal"><a href="index.html#home">Home</a> &nbsp;/&nbsp; Little Royals</p>
+      <span class="eyebrow center reveal d1">Taqua Little Royals</span>
+      <h1 class="reveal d1">Kids <em>Collection</em></h1>
+      <p class="lede reveal d2">Little traditions, big celebrations — festive and everyday wear for boys and girls, crafted with comfort, elegance, and charm.</p>
+      <div class="cat-chips reveal d3">
+        <a href="#boys-shirts-pants">Shirts &amp; Pants</a>
+        <a href="#boys-shirt-dhoti">Shirt &amp; Dhoti</a>
+        <a href="#boys-tshirts-tracks">T-Shirts &amp; Tracks</a>
+        <a href="#boys-nightwear">Boys Nightwear</a>
+        <a href="#girls-gowns-frocks">Gowns &amp; Frocks</a>
+        <a href="#girls-choli-chudidhar">Choli &amp; Chudidhars</a>
+        <a href="#girls-pavadai-sets">Pavadai Sets</a>
+        <a href="#girls-nightwear">Girls Nightwear</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== BOYS BAND ===================== -->
+  <div class="container">
+    <div class="gender-band reveal">
+      <span class="eyebrow center">The Young Prince</span>
+      <h2>For <span class="accent">Boys</span></h2>
+    </div>
+  </div>
+
+  <!-- ===================== BOYS · SHIRTS & PANTS ===================== -->
+  <section class="cat-section" id="boys-shirts-pants">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Smart &amp; Sharp</span>
+        <h2 class="section-title">Shirts &amp; <span class="accent">Pants</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Coordinated shirt-and-pant sets for school, parties, and every little celebration.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-01.jpg" alt="Cotton Shirt and Pant Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Shirts &amp; Pants</span><h4>Cotton Shirt &amp; Pant Set</h4><p class="ph-desc">A crisp cotton shirt paired with comfy pants — smart, breathable, and easy to wear.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-02.jpg" alt="Party Wear Shirt and Trouser Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Shirts &amp; Pants</span><h4>Party Wear Shirt &amp; Trouser</h4><p class="ph-desc">A dressed-up set with a satin-finish shirt — perfect for birthdays and functions.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-03.jpg" alt="Checked Casual Shirt Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Shirts &amp; Pants</span><h4>Checked Casual Shirt Set</h4><p class="ph-desc">Playful checks with soft cotton pants — relaxed comfort for everyday adventures.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== BOYS · SHIRT & DHOTI ===================== -->
+  <section class="cat-section" id="boys-shirt-dhoti">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Little Traditions</span>
+        <h2 class="section-title">Shirt &amp; <span class="accent">Dhoti</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Traditional shirt-and-dhoti sets with zari borders — festive charm for the tiniest gentlemen.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-04.jpg" alt="Silk Shirt and Dhoti Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Shirt &amp; Dhoti</span><h4>Silk Shirt &amp; Dhoti Set</h4><p class="ph-desc">A lustrous silk shirt with a matching zari-bordered dhoti for weddings and pujas.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-05.jpg" alt="Festive Angavastram Dhoti Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Shirt &amp; Dhoti</span><h4>Festive Angavastram Set</h4><p class="ph-desc">Complete with a little shoulder cloth — traditional elegance in a comfy fit.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-06.jpg" alt="Traditional Cotton Dhoti Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Shirt &amp; Dhoti</span><h4>Traditional Cotton Dhoti Set</h4><p class="ph-desc">Soft cotton dhoti and shirt — light and breathable for long festive days.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== BOYS · T-SHIRTS & TRACKS ===================== -->
+  <section class="cat-section" id="boys-tshirts-tracks">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Play All Day</span>
+        <h2 class="section-title">T-Shirts &amp; <span class="accent">Tracks</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Soft, stretchy tees and track sets built for running, playing, and everyday fun.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-07.jpg" alt="Printed Tee and Track Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · T-Shirts &amp; Tracks</span><h4>Printed Tee &amp; Track Set</h4><p class="ph-desc">A fun printed t-shirt with matching track pants — comfy from playground to home.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-08.jpg" alt="Sporty Jogger Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · T-Shirts &amp; Tracks</span><h4>Sporty Jogger Set</h4><p class="ph-desc">Breathable jersey with ribbed cuffs — active-ready comfort for busy little feet.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-09.jpg" alt="Cotton T-Shirt and Track Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · T-Shirts &amp; Tracks</span><h4>Everyday Cotton Track Set</h4><p class="ph-desc">Soft round-neck tee and easy-fit tracks — the everyday casual essential.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== BOYS · NIGHTWEAR ===================== -->
+  <section class="cat-section" id="boys-nightwear">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Sweet Dreams</span>
+        <h2 class="section-title">Boys <span class="accent">Nightwear</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Cosy, skin-friendly night suits for restful, comfortable sleep.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-10.jpg" alt="Cartoon Print Night Suit" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Nightwear</span><h4>Cartoon Print Night Suit</h4><p class="ph-desc">Playful prints on soft cotton — comfy from bedtime stories to morning cuddles.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-11.jpg" alt="Cotton Pyjama Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Nightwear</span><h4>Cotton Pyjama Set</h4><p class="ph-desc">A breathable full-sleeve set for cool, restful nights all year round.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-12.jpg" alt="Fleece Winter Nightwear" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Boys · Nightwear</span><h4>Fleece Winter Night Suit</h4><p class="ph-desc">Warm brushed fleece to keep little ones snug through chilly nights.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== GIRLS BAND ===================== -->
+  <div class="container">
+    <div class="gender-band reveal">
+      <span class="eyebrow center">The Little Princess</span>
+      <h2>For <span class="accent">Girls</span></h2>
+    </div>
+  </div>
+
+  <!-- ===================== GIRLS · GOWNS & FROCKS ===================== -->
+  <section class="cat-section" id="girls-gowns-frocks">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Twirl in Style</span>
+        <h2 class="section-title">Gowns &amp; <span class="accent">Frocks</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Flowing gowns and pretty frocks for parties, festivals, and dress-up days.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-13.jpg" alt="Party Wear Gown" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Gowns &amp; Frocks</span><h4>Party Wear Gown</h4><p class="ph-desc">A full-length flared gown with a shimmer finish — made for little showstoppers.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-14.jpg" alt="Floral Cotton Frock" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Gowns &amp; Frocks</span><h4>Floral Cotton Frock</h4><p class="ph-desc">A breezy cotton frock in cheerful florals — light and comfy for everyday play.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-15.jpg" alt="Layered Net Gown" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Gowns &amp; Frocks</span><h4>Layered Net Gown</h4><p class="ph-desc">Soft tulle layers with a satin bodice — a fairytale look for special occasions.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== GIRLS · CHOLI & CHUDIDHARS ===================== -->
+  <section class="cat-section" id="girls-choli-chudidhar">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Ethnic Darlings</span>
+        <h2 class="section-title">Choli &amp; <span class="accent">Chudidhars</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Traditional choli sets and comfy chudidhars in soft fabrics and festive colours.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-16.jpg" alt="Embroidered Choli Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Choli &amp; Chudidhars</span><h4>Embroidered Choli Set</h4><p class="ph-desc">A lehenga-choli set with delicate thread-work — festive sparkle for little ones.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-17.jpg" alt="Cotton Chudidhar Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Choli &amp; Chudidhars</span><h4>Cotton Chudidhar Set</h4><p class="ph-desc">A soft cotton chudidhar with dupatta — easy, breathable everyday ethnic wear.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-18.jpg" alt="Festive Silk Chudidhar" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Choli &amp; Chudidhars</span><h4>Festive Silk Chudidhar</h4><p class="ph-desc">A rich silk chudidhar with a zari border — dressed up for celebrations.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== GIRLS · PAVADAI SETS ===================== -->
+  <section class="cat-section" id="girls-pavadai-sets">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Art Silk &amp; Cotton</span>
+        <h2 class="section-title">Pavadai <span class="accent">Sets</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Traditional pavadai sets in art silk and soft cotton — timeless grace for young girls.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-19.jpg" alt="Art Silk Pavadai Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Pavadai Sets</span><h4>Art Silk Pavadai Set</h4><p class="ph-desc">A lustrous art-silk pavadai with a contrast blouse — festive shine, gentle on skin.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-20.jpg" alt="Cotton Pavadai Davani" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Pavadai Sets</span><h4>Cotton Pavadai Davani</h4><p class="ph-desc">A breathable cotton pavadai with davani — comfortable traditional everyday wear.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-21.jpg" alt="Zari Border Pattu Pavadai" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Pavadai Sets</span><h4>Zari Border Pattu Pavadai</h4><p class="ph-desc">A silk pavadai with a gleaming zari border — the classic choice for functions.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== GIRLS · NIGHTWEAR ===================== -->
+  <section class="cat-section" id="girls-nightwear">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Sweet Dreams</span>
+        <h2 class="section-title">Girls <span class="accent">Nightwear</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Soft, cosy nightwear for peaceful, comfortable sleep.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/kids-22.jpg" alt="Printed Nighty Frock" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Nightwear</span><h4>Printed Nighty Frock</h4><p class="ph-desc">A flowing nighty frock in soft prints — light and airy for easy, restful nights.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/kids-23.jpg" alt="Cotton Night Suit" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Nightwear</span><h4>Cotton Night Suit</h4><p class="ph-desc">A comfy top-and-pyjama set in breathable cotton for a cosy bedtime.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/kids-24.jpg" alt="Soft Loungewear Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Girls · Nightwear</span><h4>Soft Loungewear Set</h4><p class="ph-desc">Snuggly loungewear for lazy evenings and sleepy weekend mornings.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="Taqua Silks" /><span class="brand-text"><span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span></span></a>
+          <p>An ultra-premium house of handcrafted silk sarees and fashionable apparel for the entire family.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Boys</h5>
+          <a href="kids.html#boys-shirts-pants">Shirts &amp; Pants</a>
+          <a href="kids.html#boys-shirt-dhoti">Shirt &amp; Dhoti</a>
+          <a href="kids.html#boys-tshirts-tracks">T-Shirts &amp; Tracks</a>
+          <a href="kids.html#boys-nightwear">Nightwear</a>
+        </div>
+        <div class="footer-col">
+          <h5>Girls</h5>
+          <a href="kids.html#girls-gowns-frocks">Gowns &amp; Frocks</a>
+          <a href="kids.html#girls-choli-chudidhar">Choli &amp; Chudidhars</a>
+          <a href="kids.html#girls-pavadai-sets">Pavadai Sets</a>
+          <a href="kids.html#girls-nightwear">Nightwear</a>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Our Atelier</h5>
+          <div class="contact-line"><i class="fa-solid fa-location-dot"></i><span>Municipal Office Rd, Noyyal, Tiruppur, Tamil Nadu 641604</span></div>
+          <div class="contact-line"><i class="fa-solid fa-phone"></i><a href="tel:+918870844411">088708 44411</a></div>
+          <div class="contact-line"><i class="fa-solid fa-envelope"></i><span>care@taquasilks.com</span></div>
+          <div class="contact-line"><i class="fa-solid fa-clock"></i><span>Mon – Sun · 10:00 AM – 9:00 PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Taqua Silks. Woven with devotion in India.</span>
+        <span><a href="about.html">About</a> · <a href="#">Terms</a> · <a href="#">Shipping</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    (function () {
+      "use strict";
+      var probe = new Image();
+      probe.onload = function () { document.documentElement.classList.add("logo-ready"); };
+      probe.src = "images/logo.png";
+
+      var navbar = document.getElementById("navbar");
+      var toTop = document.getElementById("toTop");
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        if (navbar) navbar.classList.toggle("scrolled", y > 40);
+        if (toTop) toTop.classList.toggle("show", y > 600);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+      var mobileMenu = document.getElementById("mobileMenu");
+      var hamburger = document.getElementById("hamburger");
+      var menuClose = document.getElementById("menuClose");
+      if (hamburger && mobileMenu) hamburger.addEventListener("click", function () { mobileMenu.classList.add("open"); });
+      if (menuClose && mobileMenu) menuClose.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      if (mobileMenu) mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      });
+
+      var reveals = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Women's Collection — Taqua Silks | Salwar, Kurtis, Blouse & Half Saree</title>
+  <meta name="description" content="Discover Taqua Silks' women's wear — salwar suits, kurtis, night wear, blouse materials and traditional half sarees, crafted with elegance and comfort." />
+  <meta name="theme-color" content="#FBF6EC" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .page-hero {
+      position: relative;
+      padding: clamp(140px, 17vh, 210px) 0 clamp(40px, 6vw, 72px);
+      text-align: center; overflow: hidden;
+    }
+    .page-hero .crumbs { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 20px; }
+    .page-hero .crumbs a:hover { text-decoration: underline; }
+    .page-hero h1 { font-family: var(--font-head); font-weight: 600; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; color: var(--ink); margin: 8px 0 18px; }
+    .page-hero h1 em { font-style: italic; color: var(--gold-ink); }
+    .page-hero .lede { max-width: 720px; margin: 0 auto; color: var(--ink-body); font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.12rem); }
+    .cat-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+    .cat-chips a {
+      font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 9px 18px; border-radius: 40px; color: var(--ink-body);
+      border: 1px solid rgba(138,106,32,0.35); transition: all 0.3s var(--ease);
+    }
+    .cat-chips a:hover { background: var(--gold-ink); color: #fff; border-color: var(--gold-ink); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html#home" class="brand" aria-label="Taqua Silks home">
+        <img class="brand-logo" src="images/logo.png" alt="Taqua Silks" />
+        <span class="brand-text">
+          <span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#collections">Collections</a>
+        <div class="nav-item">
+          <a href="men.html" class="nav-drop-toggle">Men <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="men.html#shirt"><i class="fa-solid fa-shirt"></i> Shirt</a>
+            <a href="men.html#tshirt"><i class="fa-solid fa-shirt"></i> T-Shirt</a>
+            <a href="men.html#trousers"><i class="fa-solid fa-tag"></i> Trousers</a>
+            <a href="men.html#jeans"><i class="fa-solid fa-tag"></i> Jeans</a>
+            <a href="men.html#formal-pants"><i class="fa-solid fa-user-tie"></i> Formal Pants</a>
+            <a href="men.html#track-pant"><i class="fa-solid fa-person-running"></i> Track Pant</a>
+            <a href="men.html#dhoti"><i class="fa-solid fa-place-of-worship"></i> Dhoti</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="women.html" class="nav-drop-toggle" aria-current="page">Women <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="women.html#salwar"><i class="fa-solid fa-person-dress"></i> Salwar</a>
+            <a href="women.html#kurtis"><i class="fa-solid fa-person-dress"></i> Kurtis</a>
+            <a href="women.html#night-wear"><i class="fa-solid fa-moon"></i> Night Wear</a>
+            <a href="women.html#blouse-materials"><i class="fa-solid fa-scissors"></i> Blouse Materials</a>
+            <a href="women.html#half-saree"><i class="fa-solid fa-person-dress"></i> Half Saree</a>
+          </div>
+        </div>
+        <a href="index.html#bridal">Grand Wedding</a>
+        <div class="nav-item">
+          <a href="kids.html" class="nav-drop-toggle">Kids <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <span class="drop-group">Boys</span>
+            <a href="kids.html#boys-shirts-pants"><i class="fa-solid fa-shirt"></i> Shirts &amp; Pants</a>
+            <a href="kids.html#boys-shirt-dhoti"><i class="fa-solid fa-place-of-worship"></i> Shirt &amp; Dhoti</a>
+            <a href="kids.html#boys-tshirts-tracks"><i class="fa-solid fa-person-running"></i> T-Shirts &amp; Tracks</a>
+            <a href="kids.html#boys-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+            <span class="drop-group">Girls</span>
+            <a href="kids.html#girls-gowns-frocks"><i class="fa-solid fa-person-dress"></i> Gowns &amp; Frocks</a>
+            <a href="kids.html#girls-choli-chudidhar"><i class="fa-solid fa-person-dress"></i> Choli &amp; Chudidhars</a>
+            <a href="kids.html#girls-pavadai-sets"><i class="fa-solid fa-person-dress"></i> Pavadai Sets</a>
+            <a href="kids.html#girls-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+          </div>
+        </div>
+        <a href="index.html#kids">Little Royals</a>
+        <a href="about.html">About</a>
+        <a href="index.html#gallery">Gallery</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close" id="menuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html#collections">Collections</a>
+    <div class="mm-group">
+      <a href="men.html" class="mm-title">Men</a>
+      <div class="mm-sub">
+        <a href="men.html#shirt">Shirt</a>
+        <a href="men.html#tshirt">T-Shirt</a>
+        <a href="men.html#trousers">Trousers</a>
+        <a href="men.html#jeans">Jeans</a>
+        <a href="men.html#formal-pants">Formal Pants</a>
+        <a href="men.html#track-pant">Track Pant</a>
+        <a href="men.html#dhoti">Dhoti</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <a href="women.html" class="mm-title">Women</a>
+      <div class="mm-sub">
+        <a href="women.html#salwar">Salwar</a>
+        <a href="women.html#kurtis">Kurtis</a>
+        <a href="women.html#night-wear">Night Wear</a>
+        <a href="women.html#blouse-materials">Blouse Materials</a>
+        <a href="women.html#half-saree">Half Saree</a>
+      </div>
+    </div>
+    <a href="index.html#bridal">Grand Wedding</a>
+    <div class="mm-group">
+      <a href="kids.html" class="mm-title">Kids</a>
+      <div class="mm-sub">
+        <a href="kids.html#boys-shirts-pants">Boys - Shirts &amp; Pants</a>
+        <a href="kids.html#boys-shirt-dhoti">Boys - Shirt &amp; Dhoti</a>
+        <a href="kids.html#boys-tshirts-tracks">Boys - T-Shirts &amp; Tracks</a>
+        <a href="kids.html#boys-nightwear">Boys - Nightwear</a>
+        <a href="kids.html#girls-gowns-frocks">Girls - Gowns &amp; Frocks</a>
+        <a href="kids.html#girls-choli-chudidhar">Girls - Choli &amp; Chudidhars</a>
+        <a href="kids.html#girls-pavadai-sets">Girls - Pavadai Sets</a>
+        <a href="kids.html#girls-nightwear">Girls - Nightwear</a>
+      </div>
+    </div>
+    <a href="index.html#kids">Little Royals</a>
+    <a href="about.html">About</a>
+    <a href="index.html#gallery">Gallery</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero silk-weave">
+    <div class="container">
+      <p class="crumbs reveal"><a href="index.html#home">Home</a> &nbsp;/&nbsp; Women</p>
+      <span class="eyebrow center reveal d1">The Grace Edit</span>
+      <h1 class="reveal d1">Women's <em>Collection</em></h1>
+      <p class="lede reveal d2">From graceful salwar suits and everyday kurtis to elegant blouse materials and traditional half sarees — beautifully crafted for every occasion.</p>
+      <div class="cat-chips reveal d3">
+        <a href="#salwar">Salwar</a>
+        <a href="#kurtis">Kurtis</a>
+        <a href="#night-wear">Night Wear</a>
+        <a href="#blouse-materials">Blouse Materials</a>
+        <a href="#half-saree">Half Saree</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== SALWAR ===================== -->
+  <section class="cat-section" id="salwar">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Graceful Ensembles</span>
+        <h2 class="section-title">Elegant <span class="accent">Salwar Suits</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Flowing salwar sets in soft fabrics and rich prints — effortless grace for daily wear and festive days alike.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/women-01.jpg" alt="Cotton Printed Salwar Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Salwar</span><h4>Cotton Printed Salwar Set</h4><p class="ph-desc">Breezy cotton with delicate block prints — comfortable, colourful, everyday elegance.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/women-02.jpg" alt="Anarkali Salwar Suit" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Salwar</span><h4>Anarkali Salwar Suit</h4><p class="ph-desc">A flowing anarkali silhouette with subtle embroidery for festive celebrations.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/women-03.jpg" alt="Silk Palazzo Salwar Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Salwar</span><h4>Silk Palazzo Salwar Set</h4><p class="ph-desc">Lustrous silk paired with wide palazzo pants — modern grace with traditional charm.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== KURTIS ===================== -->
+  <section class="cat-section" id="kurtis">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Everyday Chic</span>
+        <h2 class="section-title">Designer <span class="accent">Kurtis</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Versatile kurtis in fresh prints and cuts — pair them with jeans, leggings, or palazzos.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/women-04.jpg" alt="Straight-Cut Cotton Kurti" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Kurtis</span><h4>Straight-Cut Cotton Kurti</h4><p class="ph-desc">A clean straight cut in breathable cotton — office-ready and effortlessly comfortable.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/women-05.jpg" alt="A-Line Printed Kurti" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Kurtis</span><h4>A-Line Printed Kurti</h4><p class="ph-desc">A flattering A-line flare with vibrant prints — perfect for casual outings.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/women-06.jpg" alt="Embroidered Festive Kurti" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Kurtis</span><h4>Embroidered Festive Kurti</h4><p class="ph-desc">Delicate thread-work on rich fabric — a dressed-up kurti for special occasions.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== NIGHT WEAR ===================== -->
+  <section class="cat-section" id="night-wear">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Rest &amp; Relax</span>
+        <h2 class="section-title">Cosy <span class="accent">Night Wear</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Soft, breathable loungewear and nightsuits designed for restful, comfortable nights.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/women-07.jpg" alt="Cotton Night Suit Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Night Wear</span><h4>Cotton Night Suit Set</h4><p class="ph-desc">A soft cotton top-and-pyjama set with a relaxed fit for easy, breathable comfort.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/women-08.jpg" alt="Printed Nighty Gown" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Night Wear</span><h4>Printed Nighty Gown</h4><p class="ph-desc">A flowing full-length nighty in soft prints — light, airy, and easy to move in.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/women-09.jpg" alt="Satin Loungewear Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Night Wear</span><h4>Satin Loungewear Set</h4><p class="ph-desc">A smooth satin lounge set with a touch of luxury for relaxed evenings in.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== BLOUSE MATERIALS ===================== -->
+  <section class="cat-section" id="blouse-materials">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">The Perfect Match</span>
+        <h2 class="section-title">Designer <span class="accent">Blouse Materials</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Rich fabrics and ready pieces to pair with your saree — from plain silks to zari-woven brocades.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/women-10.jpg" alt="Plain Silk Blouse Piece" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Plain Silk Blouse Piece</h4><p class="ph-desc">A lustrous solid-colour silk piece to complement any saree with understated elegance.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/women-11.jpg" alt="Zari Brocade Blouse Material" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Zari Brocade Blouse Material</h4><p class="ph-desc">Gold zari woven into rich brocade — a statement blouse for festive drapes.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/women-12.jpg" alt="Embroidered Blouse Fabric" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Embroidered Blouse Fabric</h4><p class="ph-desc">Fine thread embroidery on soft fabric — ready to tailor into a designer blouse.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== HALF SAREE ===================== -->
+  <section class="cat-section" id="half-saree">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Traditional Grace</span>
+        <h2 class="section-title">Classic <span class="accent">Half Sarees</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Timeless half saree sets in silk and zari — the graceful choice for functions, festivals, and coming-of-age celebrations.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/women-13.jpg" alt="Silk Half Saree Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Half Saree</span><h4>Silk Half Saree Set</h4><p class="ph-desc">A complete langa-voni set in rich silk with a contrast zari border — grace in every fold.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/women-14.jpg" alt="Festive Zari Half Saree" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Half Saree</span><h4>Festive Zari Half Saree</h4><p class="ph-desc">Gleaming zari work on a jewel-tone drape — made to shine at every celebration.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/women-15.jpg" alt="Bridal Half Saree" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Half Saree</span><h4>Bridal Half Saree</h4><p class="ph-desc">An opulent embroidered half saree in crimson and gold — for the grandest occasions.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="Taqua Silks" /><span class="brand-text"><span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span></span></a>
+          <p>An ultra-premium house of handcrafted silk sarees and fashionable apparel for the entire family.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Men</h5>
+          <a href="men.html#shirt">Shirts</a>
+          <a href="men.html#tshirt">T-Shirts</a>
+          <a href="men.html#trousers">Trousers</a>
+          <a href="men.html#jeans">Jeans</a>
+          <a href="men.html#dhoti">Dhoti</a>
+        </div>
+        <div class="footer-col">
+          <h5>Women</h5>
+          <a href="women.html#salwar">Salwar</a>
+          <a href="women.html#kurtis">Kurtis</a>
+          <a href="women.html#night-wear">Night Wear</a>
+          <a href="women.html#blouse-materials">Blouse Materials</a>
+          <a href="women.html#half-saree">Half Saree</a>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Our Atelier</h5>
+          <div class="contact-line"><i class="fa-solid fa-location-dot"></i><span>Municipal Office Rd, Noyyal, Tiruppur, Tamil Nadu 641604</span></div>
+          <div class="contact-line"><i class="fa-solid fa-phone"></i><a href="tel:+918870844411">088708 44411</a></div>
+          <div class="contact-line"><i class="fa-solid fa-envelope"></i><span>care@taquasilks.com</span></div>
+          <div class="contact-line"><i class="fa-solid fa-clock"></i><span>Mon – Sun · 10:00 AM – 9:00 PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Taqua Silks. Woven with devotion in India.</span>
+        <span><a href="about.html">About</a> · <a href="#">Terms</a> · <a href="#">Shipping</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    (function () {
+      "use strict";
+      var probe = new Image();
+      probe.onload = function () { document.documentElement.classList.add("logo-ready"); };
+      probe.src = "images/logo.png";
+
+      var navbar = document.getElementById("navbar");
+      var toTop = document.getElementById("toTop");
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        if (navbar) navbar.classList.toggle("scrolled", y > 40);
+        if (toTop) toTop.classList.toggle("show", y > 600);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+      var mobileMenu = document.getElementById("mobileMenu");
+      var hamburger = document.getElementById("hamburger");
+      var menuClose = document.getElementById("menuClose");
+      if (hamburger && mobileMenu) hamburger.addEventListener("click", function () { mobileMenu.classList.add("open"); });
+      if (menuClose && mobileMenu) menuClose.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      if (mobileMenu) mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      });
+
+      var reveals = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+    })();
+  </script>
+</body>
+</html>

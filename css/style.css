@@ -951,6 +951,84 @@ body.has-announce .navbar { top: 42px; }
 }
 
 /* ============================================================
+   NAVBAR DROPDOWNS  (Men / Women mega-menus)
+   ============================================================ */
+.nav-item { position: relative; display: inline-flex; align-items: center; }
+.nav-item > .nav-drop-toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.nav-item > .nav-drop-toggle .caret { font-size: 0.55rem; transition: transform 0.3s var(--ease); }
+.nav-item:hover > .nav-drop-toggle .caret,
+.nav-item:focus-within > .nav-drop-toggle .caret { transform: rotate(180deg); }
+
+.dropdown {
+  position: absolute; top: 100%; left: 50%;
+  transform: translate(-50%, 12px);
+  min-width: 220px; padding: 12px;
+  background: var(--paper-3, #fff);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  display: flex; flex-direction: column; gap: 2px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+  z-index: 1300;
+}
+/* invisible bridge so the pointer can travel from label to panel */
+.dropdown::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+.nav-item:hover > .dropdown,
+.nav-item:focus-within > .dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.dropdown a {
+  text-transform: none; letter-spacing: 0.3px; font-size: 0.86rem; font-weight: 400;
+  padding: 10px 14px; border-radius: 10px;
+  color: var(--ink) !important; white-space: nowrap;
+  display: flex; align-items: center; gap: 12px;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.dropdown a::after { display: none; }
+.dropdown a i { width: 18px; text-align: center; color: var(--gold-ink); font-size: 0.9rem; }
+.dropdown a:hover { background: rgba(212,175,55,0.14); color: var(--gold-ink) !important; padding-left: 18px; }
+/* group headings inside a split dropdown (e.g. Boys / Girls) */
+.dropdown .drop-group {
+  font-size: 0.64rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold-ink); font-weight: 600; padding: 8px 14px 4px;
+}
+.dropdown .drop-group + a { margin-top: 0; }
+.dropdown .drop-group:not(:first-child) { margin-top: 6px; border-top: 1px solid rgba(212,175,55,0.22); padding-top: 12px; }
+
+/* Mobile menu — grouped sub-links for Men / Women */
+.mm-group { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.mm-group > .mm-title { font-family: var(--font-head); font-size: 1.6rem; color: var(--gold-ink); letter-spacing: 2px; }
+.mm-sub { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; max-width: 320px; }
+.mm-sub a { font-family: var(--font-body) !important; font-size: 0.86rem !important; letter-spacing: 0.4px !important; text-transform: uppercase; color: var(--ink-body) !important; }
+
+/* ============================================================
+   CATEGORY PAGES  (Men / Women) — placeholder swatch cards
+   ============================================================ */
+.cat-section { scroll-margin-top: 120px; }
+.cat-section + .cat-section { margin-top: clamp(56px, 8vw, 96px); }
+
+.ph-swatch {
+  position: absolute; inset: 0;
+  display: grid; place-items: center; gap: 10px;
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgba(212,175,55,0.20), transparent 60%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.5) 0 2px, transparent 2px 6px),
+    linear-gradient(150deg, #F6ECD9 0%, #E3CFAE 55%, #D3B98F 100%);
+  color: var(--gold-ink);
+  transition: transform 0.9s var(--ease);
+}
+.ph-swatch::after {
+  content: ""; position: absolute; inset: 16px;
+  border: 1px solid rgba(160,124,34,0.45); border-radius: 12px; pointer-events: none;
+}
+.product-card:hover .ph-swatch { transform: scale(1.06); }
+.ph-swatch i { font-size: 2.6rem; }
+.ph-swatch .ph-tag { font-family: var(--font-head); font-style: italic; font-size: 1.1rem; letter-spacing: 1px; color: #8a6a20; }
+.ph-desc { color: var(--ink-body); font-size: 0.86rem; font-weight: 300; margin: 0; line-height: 1.55; }
+
+/* ============================================================
    WARM ESPRESSO BACKGROUND
    Images average hue 23 deg (terracotta/gold); the old violet sat
    ~111 deg away and fought them. This moves every surface into the

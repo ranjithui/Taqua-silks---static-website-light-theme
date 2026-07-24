@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="875" viewBox="0 0 700 875" role="img" aria-label="Taqua Silks — image coming soon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F6ECD9"/>
+      <stop offset="0.55" stop-color="#E3CFAE"/>
+      <stop offset="1" stop-color="#D3B98F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.25" r="0.9">
+      <stop offset="0" stop-color="rgba(212,175,55,0.28)"/>
+      <stop offset="1" stop-color="transparent"/>
+    </radialGradient>
+    <pattern id="weave" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="transparent"/>
+      <rect width="8" height="2" fill="rgba(255,255,255,0.45)"/>
+      <rect y="4" width="8" height="2" fill="rgba(120,92,45,0.10)"/>
+    </pattern>
+  </defs>
+
+  <rect width="700" height="875" fill="url(#g)"/>
+  <rect width="700" height="875" fill="url(#weave)"/>
+  <rect width="700" height="875" fill="url(#glow)"/>
+
+  <!-- zari border -->
+  <rect x="22" y="22" width="656" height="831" fill="none" stroke="#A07C22" stroke-opacity="0.55" stroke-width="1.5" rx="14"/>
+
+  <!-- simple paisley motif -->
+  <g fill="none" stroke="#A07C22" stroke-opacity="0.55" stroke-width="2">
+    <path d="M350 300 c-70 -60 -150 10 -80 80 c40 40 80 40 80 90 c0 -50 40 -50 80 -90 c70 -70 -10 -140 -80 -80z"/>
+    <circle cx="350" cy="360" r="16"/>
+  </g>
+
+  <text x="350" y="700" text-anchor="middle" fill="#6b5215" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-style="italic">Taqua Silks</text>
+  <text x="350" y="742" text-anchor="middle" fill="#8a6a20" font-family="Poppins, Arial, sans-serif" font-size="15" letter-spacing="6">IMAGE COMING SOON</text>
+</svg>

@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Men's Collection — Taqua Silks | Shirts, Trousers, Jeans & Ethnic Wear</title>
+  <meta name="description" content="Explore Taqua Silks' menswear — shirts, t-shirts, trousers, jeans, formal pants, track pants and traditional dhotis, crafted for comfort and everyday elegance." />
+  <meta name="theme-color" content="#FBF6EC" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .page-hero {
+      position: relative;
+      padding: clamp(140px, 17vh, 210px) 0 clamp(40px, 6vw, 72px);
+      text-align: center; overflow: hidden;
+    }
+    .page-hero .crumbs { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 20px; }
+    .page-hero .crumbs a:hover { text-decoration: underline; }
+    .page-hero h1 { font-family: var(--font-head); font-weight: 600; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; color: var(--ink); margin: 8px 0 18px; }
+    .page-hero h1 em { font-style: italic; color: var(--gold-ink); }
+    .page-hero .lede { max-width: 720px; margin: 0 auto; color: var(--ink-body); font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.12rem); }
+    /* quick category jump-chips under the hero */
+    .cat-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+    .cat-chips a {
+      font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 9px 18px; border-radius: 40px; color: var(--ink-body);
+      border: 1px solid rgba(138,106,32,0.35); transition: all 0.3s var(--ease);
+    }
+    .cat-chips a:hover { background: var(--gold-ink); color: #fff; border-color: var(--gold-ink); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html#home" class="brand" aria-label="Taqua Silks home">
+        <img class="brand-logo" src="images/logo.png" alt="Taqua Silks" />
+        <span class="brand-text">
+          <span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#collections">Collections</a>
+        <div class="nav-item">
+          <a href="men.html" class="nav-drop-toggle" aria-current="page">Men <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="men.html#shirt"><i class="fa-solid fa-shirt"></i> Shirt</a>
+            <a href="men.html#tshirt"><i class="fa-solid fa-shirt"></i> T-Shirt</a>
+            <a href="men.html#trousers"><i class="fa-solid fa-tag"></i> Trousers</a>
+            <a href="men.html#jeans"><i class="fa-solid fa-tag"></i> Jeans</a>
+            <a href="men.html#formal-pants"><i class="fa-solid fa-user-tie"></i> Formal Pants</a>
+            <a href="men.html#track-pant"><i class="fa-solid fa-person-running"></i> Track Pant</a>
+            <a href="men.html#dhoti"><i class="fa-solid fa-place-of-worship"></i> Dhoti</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="women.html" class="nav-drop-toggle">Women <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="women.html#salwar"><i class="fa-solid fa-person-dress"></i> Salwar</a>
+            <a href="women.html#kurtis"><i class="fa-solid fa-person-dress"></i> Kurtis</a>
+            <a href="women.html#night-wear"><i class="fa-solid fa-moon"></i> Night Wear</a>
+            <a href="women.html#blouse-materials"><i class="fa-solid fa-scissors"></i> Blouse Materials</a>
+            <a href="women.html#half-saree"><i class="fa-solid fa-person-dress"></i> Half Saree</a>
+          </div>
+        </div>
+        <a href="index.html#bridal">Grand Wedding</a>
+        <div class="nav-item">
+          <a href="kids.html" class="nav-drop-toggle">Kids <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <span class="drop-group">Boys</span>
+            <a href="kids.html#boys-shirts-pants"><i class="fa-solid fa-shirt"></i> Shirts &amp; Pants</a>
+            <a href="kids.html#boys-shirt-dhoti"><i class="fa-solid fa-place-of-worship"></i> Shirt &amp; Dhoti</a>
+            <a href="kids.html#boys-tshirts-tracks"><i class="fa-solid fa-person-running"></i> T-Shirts &amp; Tracks</a>
+            <a href="kids.html#boys-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+            <span class="drop-group">Girls</span>
+            <a href="kids.html#girls-gowns-frocks"><i class="fa-solid fa-person-dress"></i> Gowns &amp; Frocks</a>
+            <a href="kids.html#girls-choli-chudidhar"><i class="fa-solid fa-person-dress"></i> Choli &amp; Chudidhars</a>
+            <a href="kids.html#girls-pavadai-sets"><i class="fa-solid fa-person-dress"></i> Pavadai Sets</a>
+            <a href="kids.html#girls-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+          </div>
+        </div>
+        <a href="index.html#kids">Little Royals</a>
+        <a href="about.html">About</a>
+        <a href="index.html#gallery">Gallery</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close" id="menuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html#collections">Collections</a>
+    <div class="mm-group">
+      <a href="men.html" class="mm-title">Men</a>
+      <div class="mm-sub">
+        <a href="men.html#shirt">Shirt</a>
+        <a href="men.html#tshirt">T-Shirt</a>
+        <a href="men.html#trousers">Trousers</a>
+        <a href="men.html#jeans">Jeans</a>
+        <a href="men.html#formal-pants">Formal Pants</a>
+        <a href="men.html#track-pant">Track Pant</a>
+        <a href="men.html#dhoti">Dhoti</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <a href="women.html" class="mm-title">Women</a>
+      <div class="mm-sub">
+        <a href="women.html#salwar">Salwar</a>
+        <a href="women.html#kurtis">Kurtis</a>
+        <a href="women.html#night-wear">Night Wear</a>
+        <a href="women.html#blouse-materials">Blouse Materials</a>
+        <a href="women.html#half-saree">Half Saree</a>
+      </div>
+    </div>
+    <a href="index.html#bridal">Grand Wedding</a>
+    <div class="mm-group">
+      <a href="kids.html" class="mm-title">Kids</a>
+      <div class="mm-sub">
+        <a href="kids.html#boys-shirts-pants">Boys - Shirts &amp; Pants</a>
+        <a href="kids.html#boys-shirt-dhoti">Boys - Shirt &amp; Dhoti</a>
+        <a href="kids.html#boys-tshirts-tracks">Boys - T-Shirts &amp; Tracks</a>
+        <a href="kids.html#boys-nightwear">Boys - Nightwear</a>
+        <a href="kids.html#girls-gowns-frocks">Girls - Gowns &amp; Frocks</a>
+        <a href="kids.html#girls-choli-chudidhar">Girls - Choli &amp; Chudidhars</a>
+        <a href="kids.html#girls-pavadai-sets">Girls - Pavadai Sets</a>
+        <a href="kids.html#girls-nightwear">Girls - Nightwear</a>
+      </div>
+    </div>
+    <a href="index.html#kids">Little Royals</a>
+    <a href="about.html">About</a>
+    <a href="index.html#gallery">Gallery</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero silk-weave">
+    <div class="container">
+      <p class="crumbs reveal"><a href="index.html#home">Home</a> &nbsp;/&nbsp; Men</p>
+      <span class="eyebrow center reveal d1">The Gentlemen's Edit</span>
+      <h1 class="reveal d1">Men's <em>Collection</em></h1>
+      <p class="lede reveal d2">From crisp formal shirts to relaxed everyday essentials and timeless traditional dhotis — tailored comfort, refined for the modern man.</p>
+      <div class="cat-chips reveal d3">
+        <a href="#shirt">Shirt</a>
+        <a href="#tshirt">T-Shirt</a>
+        <a href="#trousers">Trousers</a>
+        <a href="#jeans">Jeans</a>
+        <a href="#formal-pants">Formal Pants</a>
+        <a href="#track-pant">Track Pant</a>
+        <a href="#dhoti">Dhoti</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== SHIRT ===================== -->
+  <section class="cat-section" id="shirt">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Men's Wardrobe</span>
+        <h2 class="section-title">Formal &amp; Casual <span class="accent">Shirts</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Pure-cotton and blended shirts tailored for the office, the weekend, and every occasion in between.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/men-01.jpg" alt="Classic Oxford Shirt" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Shirts</span><h4>Classic Oxford Shirt</h4><p class="ph-desc">Crisp pure-cotton weave with a tailored fit for effortless everyday sophistication.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/men-02.jpg" alt="Linen Casual Shirt" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Shirts</span><h4>Linen Casual Shirt</h4><p class="ph-desc">Breathable linen in soft neutral tones — light, airy, and made for warm days.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/men-03.jpg" alt="Checked Semi-Formal Shirt" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Shirts</span><h4>Checked Semi-Formal Shirt</h4><p class="ph-desc">Subtle checks with a smart collar — versatile from desk to dinner.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== T-SHIRT ===================== -->
+  <section class="cat-section" id="tshirt">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Everyday Comfort</span>
+        <h2 class="section-title">Casual <span class="accent">T-Shirts</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Soft, skin-friendly knits from Tiruppur's finest cotton — for laid-back, effortless days.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/men-04.jpg" alt="Round-Neck Cotton Tee" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · T-Shirts</span><h4>Round-Neck Cotton Tee</h4><p class="ph-desc">Premium combed cotton with a relaxed fit that keeps its shape wash after wash.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/men-05.jpg" alt="Polo Collar T-Shirt" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · T-Shirts</span><h4>Polo Collar T-Shirt</h4><p class="ph-desc">A smart-casual polo in rich pique knit — dressed-up comfort for any outing.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/men-06.jpg" alt="Henley Full-Sleeve Tee" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · T-Shirts</span><h4>Henley Full-Sleeve Tee</h4><p class="ph-desc">A buttoned Henley neckline in soft jersey — understated everyday style.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== TROUSERS ===================== -->
+  <section class="cat-section" id="trousers">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Tailored Bottoms</span>
+        <h2 class="section-title">Everyday <span class="accent">Trousers</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Well-cut trousers that pair perfectly with shirts and tees for a polished, comfortable look.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/men-07.jpg" alt="Cotton Chino Trousers" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Trousers</span><h4>Cotton Chino Trousers</h4><p class="ph-desc">A slim-straight chino in versatile earth tones — smart, breathable, all-day comfort.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/men-08.jpg" alt="Stretch Comfort Trousers" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Trousers</span><h4>Stretch Comfort Trousers</h4><p class="ph-desc">A touch of stretch for freedom of movement — desk-to-dinner versatility.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/men-09.jpg" alt="Pleated Formal Trousers" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Trousers</span><h4>Pleated Formal Trousers</h4><p class="ph-desc">A refined pleated cut with a crisp finish for sharp, professional occasions.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== JEANS ===================== -->
+  <section class="cat-section" id="jeans">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Denim Edit</span>
+        <h2 class="section-title">Rugged <span class="accent">Jeans</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Premium denim built to last — modern fits, honest washes, and everyday durability.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/men-10.jpg" alt="Slim-Fit Blue Jeans" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Jeans</span><h4>Slim-Fit Blue Jeans</h4><p class="ph-desc">A classic mid-blue wash with a tapered leg — the everyday denim staple.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/men-11.jpg" alt="Black Stretch Denim" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Jeans</span><h4>Black Stretch Denim</h4><p class="ph-desc">Deep black denim with added stretch for comfort and a sharp silhouette.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/men-12.jpg" alt="Rugged Distressed Jeans" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Jeans</span><h4>Rugged Distressed Jeans</h4><p class="ph-desc">Lightly distressed indigo for a relaxed, lived-in weekend look.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== FORMAL PANTS ===================== -->
+  <section class="cat-section" id="formal-pants">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Office &amp; Occasion</span>
+        <h2 class="section-title">Sharp <span class="accent">Formal Pants</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Impeccably tailored formal trousers with a clean drape — dressed for business and beyond.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/men-13.jpg" alt="Wool-Blend Formal Pants" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Formal Pants</span><h4>Wool-Blend Formal Pants</h4><p class="ph-desc">A structured wool blend with a crease that holds — timeless boardroom polish.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/men-14.jpg" alt="Slim Formal Trousers" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Formal Pants</span><h4>Slim Formal Trousers</h4><p class="ph-desc">A modern slim cut in charcoal and navy — sharp lines for the contemporary professional.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/men-15.jpg" alt="Textured Suit Trousers" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Formal Pants</span><h4>Textured Suit Trousers</h4><p class="ph-desc">Fine-textured weave with a refined finish for weddings and formal evenings.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== TRACK PANT ===================== -->
+  <section class="cat-section" id="track-pant">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Active &amp; Relaxed</span>
+        <h2 class="section-title">Comfort <span class="accent">Track Pants</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Soft, flexible track pants for the gym, the game, or a lazy Sunday at home.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/men-16.jpg" alt="Jersey Jogger Track Pant" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Track Pants</span><h4>Jersey Jogger Track Pant</h4><p class="ph-desc">Tapered joggers in soft jersey with ribbed cuffs — sporty comfort, all day.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/men-17.jpg" alt="Dri-Fit Sports Pant" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Track Pants</span><h4>Dri-Fit Sports Pant</h4><p class="ph-desc">Moisture-wicking fabric that keeps you cool through every workout.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/men-18.jpg" alt="Fleece Lounge Track Pant" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Track Pants</span><h4>Fleece Lounge Track Pant</h4><p class="ph-desc">Cosy brushed fleece for relaxed evenings and easy weekends in.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== DHOTI ===================== -->
+  <section class="cat-section" id="dhoti">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Traditional Heritage</span>
+        <h2 class="section-title">Classic <span class="accent">Dhotis</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Handwoven dhotis with pure zari borders — the timeless choice for festivals, temples, and ceremonies.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/men-19.jpg" alt="Pure Cotton Zari Dhoti" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Dhoti</span><h4>Pure Cotton Zari Dhoti</h4><p class="ph-desc">Crisp ivory cotton finished with a gleaming gold zari border for auspicious occasions.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/men-20.jpg" alt="Silk Panchakacham Dhoti" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Dhoti</span><h4>Silk Panchakacham Dhoti</h4><p class="ph-desc">Lustrous silk with a broad zari selvedge — the ceremonial classic for weddings.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/men-21.jpg" alt="Dhoti and Angavastram Set" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Men · Dhoti</span><h4>Dhoti &amp; Angavastram Set</h4><p class="ph-desc">A matched dhoti with shoulder cloth — complete traditional elegance in one set.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="Taqua Silks" /><span class="brand-text"><span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span></span></a>
+          <p>An ultra-premium house of handcrafted silk sarees and fashionable apparel for the entire family.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Men</h5>
+          <a href="men.html#shirt">Shirts</a>
+          <a href="men.html#tshirt">T-Shirts</a>
+          <a href="men.html#trousers">Trousers</a>
+          <a href="men.html#jeans">Jeans</a>
+          <a href="men.html#dhoti">Dhoti</a>
+        </div>
+        <div class="footer-col">
+          <h5>Women</h5>
+          <a href="women.html#salwar">Salwar</a>
+          <a href="women.html#kurtis">Kurtis</a>
+          <a href="women.html#night-wear">Night Wear</a>
+          <a href="women.html#blouse-materials">Blouse Materials</a>
+          <a href="women.html#half-saree">Half Saree</a>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Our Atelier</h5>
+          <div class="contact-line"><i class="fa-solid fa-location-dot"></i><span>Municipal Office Rd, Noyyal, Tiruppur, Tamil Nadu 641604</span></div>
+          <div class="contact-line"><i class="fa-solid fa-phone"></i><a href="tel:+918870844411">088708 44411</a></div>
+          <div class="contact-line"><i class="fa-solid fa-envelope"></i><span>care@taquasilks.com</span></div>
+          <div class="contact-line"><i class="fa-solid fa-clock"></i><span>Mon – Sun · 10:00 AM – 9:00 PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Taqua Silks. Woven with devotion in India.</span>
+        <span><a href="about.html">About</a> · <a href="#">Terms</a> · <a href="#">Shipping</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    (function () {
+      "use strict";
+      var probe = new Image();
+      probe.onload = function () { document.documentElement.classList.add("logo-ready"); };
+      probe.src = "images/logo.png";
+
+      var navbar = document.getElementById("navbar");
+      var toTop = document.getElementById("toTop");
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        if (navbar) navbar.classList.toggle("scrolled", y > 40);
+        if (toTop) toTop.classList.toggle("show", y > 600);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+      var mobileMenu = document.getElementById("mobileMenu");
+      var hamburger = document.getElementById("hamburger");
+      var menuClose = document.getElementById("menuClose");
+      if (hamburger && mobileMenu) hamburger.addEventListener("click", function () { mobileMenu.classList.add("open"); });
+      if (menuClose && mobileMenu) menuClose.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      if (mobileMenu) mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      });
+
+      var reveals = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+    })();
+  </script>
+</body>
+</html>

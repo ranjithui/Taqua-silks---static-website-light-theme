@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Taqua Silks | Three Decades of Textile Excellence</title>
+  <meta name="description" content="The story of Taqua Silks — a trusted Tiruppur destination for premium silk sarees and ethnic wear, backed by the manufacturing legacy of ESSA Garments Private Limited since 1994." />
+  <meta name="theme-color" content="#FBF6EC" />
+  <meta property="og:title" content="About Taqua Silks — Where Tradition Meets Contemporary Fashion" />
+  <meta property="og:description" content="Over three decades of textile excellence, backed by the manufacturing strength of ESSA Garments Private Limited." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Page-scoped elegance for the About story (uses the shared design tokens) -->
+  <style>
+    .page-hero {
+      position: relative;
+      padding: clamp(140px, 18vh, 220px) 0 clamp(48px, 7vw, 90px);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero .crumbs {
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-ink);
+      margin-bottom: 22px;
+    }
+    .page-hero .crumbs a { opacity: 0.85; }
+    .page-hero .crumbs a:hover { color: var(--gold-ink); text-decoration: underline; }
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1.04;
+      color: var(--ink);
+      margin: 10px 0 20px;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--gold-ink); }
+    .page-hero .lede {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--ink-body);
+      font-weight: 300;
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+    }
+
+    /* Long-form story column */
+    .story { max-width: 860px; margin-inline: auto; }
+    .story p {
+      color: var(--ink-body);
+      font-weight: 300;
+      margin-bottom: 22px;
+      font-size: clamp(1rem, 1.5vw, 1.08rem);
+    }
+    .story p.first::first-letter {
+      font-family: var(--font-head);
+      font-size: 3.6em;
+      line-height: 0.8;
+      float: left;
+      padding: 8px 14px 0 0;
+      color: var(--gold-ink);
+      font-weight: 600;
+    }
+    .story strong { color: var(--ink); font-weight: 500; }
+
+    /* Milestone / legacy stat strip */
+    .legacy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+    .legacy-card {
+      text-align: center;
+      padding: 34px 20px;
+      border-radius: var(--radius);
+    }
+    .legacy-card b {
+      display: block;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      color: var(--gold-ink);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .legacy-card span {
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+      color: var(--ink-body);
+    }
+
+    /* Awards */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+    .award-card {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 30px 32px;
+      border-radius: var(--radius);
+    }
+    .award-card .medal {
+      flex: none;
+      width: 64px; height: 64px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      color: var(--gold-ink);
+      border: 1px solid rgba(212,175,55,0.5);
+      background: rgba(212,175,55,0.08);
+    }
+    .award-card h4 { font-family: var(--font-head); font-size: 1.5rem; color: var(--ink); margin-bottom: 4px; }
+    .award-card p { color: var(--ink-body); font-size: 0.9rem; font-weight: 300; margin: 0; }
+
+    /* Closing CTA */
+    .about-cta {
+      text-align: center;
+      max-width: 780px;
+      margin-inline: auto;
+      padding: clamp(40px, 6vw, 72px) clamp(24px, 5vw, 60px);
+      border-radius: var(--radius-lg);
+    }
+    .about-cta h2 { font-family: var(--font-head); font-size: clamp(1.9rem, 4vw, 3rem); color: var(--ink); margin-bottom: 14px; }
+    .about-cta h2 em { font-style: italic; color: var(--gold-ink); }
+    .about-cta p { color: var(--ink-body); font-weight: 300; margin-bottom: 28px; }
+    .about-cta .hero-cta { justify-content: center; }
+
+    @media (max-width: 900px) {
+      .legacy-grid { grid-template-columns: 1fr 1fr; }
+      .awards-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .legacy-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== PARTICLES ===================== -->
+  <canvas id="particles"></canvas>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html#home" class="brand" aria-label="Taqua Silks home">
+        <img class="brand-logo" src="images/logo.png" alt="Taqua Silks" />
+        <span class="brand-text">
+          <span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#collections">Collections</a>
+        <div class="nav-item">
+          <a href="men.html" class="nav-drop-toggle">Men <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="men.html#shirt"><i class="fa-solid fa-shirt"></i> Shirt</a>
+            <a href="men.html#tshirt"><i class="fa-solid fa-shirt"></i> T-Shirt</a>
+            <a href="men.html#trousers"><i class="fa-solid fa-tag"></i> Trousers</a>
+            <a href="men.html#jeans"><i class="fa-solid fa-tag"></i> Jeans</a>
+            <a href="men.html#formal-pants"><i class="fa-solid fa-user-tie"></i> Formal Pants</a>
+            <a href="men.html#track-pant"><i class="fa-solid fa-person-running"></i> Track Pant</a>
+            <a href="men.html#dhoti"><i class="fa-solid fa-place-of-worship"></i> Dhoti</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="women.html" class="nav-drop-toggle">Women <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <a href="women.html#salwar"><i class="fa-solid fa-person-dress"></i> Salwar</a>
+            <a href="women.html#kurtis"><i class="fa-solid fa-person-dress"></i> Kurtis</a>
+            <a href="women.html#night-wear"><i class="fa-solid fa-moon"></i> Night Wear</a>
+            <a href="women.html#blouse-materials"><i class="fa-solid fa-scissors"></i> Blouse Materials</a>
+            <a href="women.html#half-saree"><i class="fa-solid fa-person-dress"></i> Half Saree</a>
+          </div>
+        </div>
+        <a href="index.html#bridal">Grand Wedding</a>
+        <div class="nav-item">
+          <a href="kids.html" class="nav-drop-toggle">Kids <i class="fa-solid fa-chevron-down caret"></i></a>
+          <div class="dropdown">
+            <span class="drop-group">Boys</span>
+            <a href="kids.html#boys-shirts-pants"><i class="fa-solid fa-shirt"></i> Shirts &amp; Pants</a>
+            <a href="kids.html#boys-shirt-dhoti"><i class="fa-solid fa-place-of-worship"></i> Shirt &amp; Dhoti</a>
+            <a href="kids.html#boys-tshirts-tracks"><i class="fa-solid fa-person-running"></i> T-Shirts &amp; Tracks</a>
+            <a href="kids.html#boys-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+            <span class="drop-group">Girls</span>
+            <a href="kids.html#girls-gowns-frocks"><i class="fa-solid fa-person-dress"></i> Gowns &amp; Frocks</a>
+            <a href="kids.html#girls-choli-chudidhar"><i class="fa-solid fa-person-dress"></i> Choli &amp; Chudidhars</a>
+            <a href="kids.html#girls-pavadai-sets"><i class="fa-solid fa-person-dress"></i> Pavadai Sets</a>
+            <a href="kids.html#girls-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+          </div>
+        </div>
+        <a href="index.html#kids">Little Royals</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="index.html#gallery">Gallery</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close" id="menuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html#collections">Collections</a>
+    <div class="mm-group">
+      <a href="men.html" class="mm-title">Men</a>
+      <div class="mm-sub">
+        <a href="men.html#shirt">Shirt</a>
+        <a href="men.html#tshirt">T-Shirt</a>
+        <a href="men.html#trousers">Trousers</a>
+        <a href="men.html#jeans">Jeans</a>
+        <a href="men.html#formal-pants">Formal Pants</a>
+        <a href="men.html#track-pant">Track Pant</a>
+        <a href="men.html#dhoti">Dhoti</a>
+      </div>
+    </div>
+    <div class="mm-group">
+      <a href="women.html" class="mm-title">Women</a>
+      <div class="mm-sub">
+        <a href="women.html#salwar">Salwar</a>
+        <a href="women.html#kurtis">Kurtis</a>
+        <a href="women.html#night-wear">Night Wear</a>
+        <a href="women.html#blouse-materials">Blouse Materials</a>
+        <a href="women.html#half-saree">Half Saree</a>
+      </div>
+    </div>
+    <a href="index.html#bridal">Grand Wedding</a>
+    <div class="mm-group">
+      <a href="kids.html" class="mm-title">Kids</a>
+      <div class="mm-sub">
+        <a href="kids.html#boys-shirts-pants">Boys - Shirts &amp; Pants</a>
+        <a href="kids.html#boys-shirt-dhoti">Boys - Shirt &amp; Dhoti</a>
+        <a href="kids.html#boys-tshirts-tracks">Boys - T-Shirts &amp; Tracks</a>
+        <a href="kids.html#boys-nightwear">Boys - Nightwear</a>
+        <a href="kids.html#girls-gowns-frocks">Girls - Gowns &amp; Frocks</a>
+        <a href="kids.html#girls-choli-chudidhar">Girls - Choli &amp; Chudidhars</a>
+        <a href="kids.html#girls-pavadai-sets">Girls - Pavadai Sets</a>
+        <a href="kids.html#girls-nightwear">Girls - Nightwear</a>
+      </div>
+    </div>
+    <a href="index.html#kids">Little Royals</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero silk-weave">
+    <div class="container">
+      <p class="crumbs reveal"><a href="index.html#home">Home</a> &nbsp;/&nbsp; About Us</p>
+      <span class="eyebrow center reveal d1">Our Heritage</span>
+      <h1 class="reveal d1">About <em>Taqua Silks</em></h1>
+      <p class="lede reveal d2">Where timeless tradition meets contemporary fashion — a legacy woven over three decades, in the heart of Tiruppur.</p>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== STORY — INTRO ===================== -->
+  <section id="story">
+    <div class="container about-grid">
+      <div class="about-media reveal">
+        <div class="main"><img src="images/photos/hero4.png" alt="Signature Taqua Silks bridal saree draped on a display mannequin" data-label="Our Heritage" loading="lazy" /></div>
+        <div class="about-media float-card glass">
+          <b>30+</b><span>Years of Textile Excellence</span>
+        </div>
+      </div>
+      <div class="about-copy reveal d1">
+        <span class="eyebrow">The House of Taqua</span>
+        <h2>Timeless Elegance for <em>Every Celebration</em></h2>
+        <p>At Taqua Silks, we believe that every celebration deserves timeless elegance. For over three decades, we have been a trusted destination for families seeking premium silk sarees, ethnic wear, festive collections, and fashionable apparel for men, women, and children.</p>
+        <p>Conveniently located in the heart of Tiruppur on Municipal Office Road, our showroom has earned the trust of generations through quality, affordability, and exceptional customer service.</p>
+        <a href="index.html#collections" class="btn btn-primary">Explore Collections <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sign">— The House of Taqua</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== STORY — LEGACY NARRATIVE ===================== -->
+  <section id="legacy" class="why">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">A Legacy of Craft</span>
+        <h2 class="section-title">Backed by <span class="accent">ESSA Garments</span></h2>
+      </div>
+
+      <div class="story">
+        <p class="first reveal">Taqua Silks is proudly backed by <strong>ESSA Garments Private Limited</strong>, one of Tiruppur's leading integrated textile and apparel manufacturers. Founded in 1994 by <strong>Mr. S. Syed Sadiq Ali</strong>, ESSA Garments began as a knitwear manufacturing enterprise with a vision to deliver world-class quality while making fashionable clothing accessible to every family. Through decades of innovation and dedication, the company has grown into a vertically integrated textile organization serving customers across India and international markets.</p>
+
+        <p class="reveal">Building on this strong foundation, the <strong>TAQUA</strong> brand was introduced in 2006 to strengthen the company's retail presence and bring premium-quality apparel directly to consumers. Today, Taqua Silks carries forward this legacy by offering an extensive collection of bridal silk sarees, traditional wear, designer ethnic collections, contemporary fashion, men's apparel, kids' wear, and everyday essentials — all under one roof.</p>
+
+        <p class="reveal">Supported by ESSA Garments' advanced manufacturing ecosystem, every product reflects the company's commitment to superior craftsmanship, stringent quality standards, and continuous innovation. With modern production facilities capable of manufacturing over 100,000 garments per day, an extensive nationwide distribution network, and ISO 9001-certified quality processes, ESSA has established itself as a trusted name in the Indian textile industry.</p>
+      </div>
+
+      <div class="legacy-grid" style="margin-top:48px">
+        <div class="legacy-card glass reveal"><b>1994</b><span>ESSA Garments Founded</span></div>
+        <div class="legacy-card glass reveal d1"><b>2006</b><span>The TAQUA Brand Born</span></div>
+        <div class="legacy-card glass reveal d2"><b>100k+</b><span>Garments Made Per Day</span></div>
+        <div class="legacy-card glass reveal d3"><b>ISO 9001</b><span>Certified Quality Processes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== AWARDS ===================== -->
+  <section id="awards">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Honoured for Excellence</span>
+        <h2 class="section-title">An <span class="accent">Award-Winning</span> Legacy</h2>
+        <p class="section-sub" style="margin-inline:auto">Our parent company has been recognised for excellence in manufacturing, entrepreneurship, and its contribution to the Indian textile industry.</p>
+      </div>
+
+      <div class="awards-grid">
+        <div class="award-card glass reveal">
+          <span class="medal"><i class="fa-solid fa-award"></i></span>
+          <div>
+            <h4>Priyadarshini Award</h4>
+            <p>Recognising outstanding achievement and entrepreneurship in manufacturing.</p>
+          </div>
+        </div>
+        <div class="award-card glass reveal d1">
+          <span class="medal"><i class="fa-solid fa-trophy"></i></span>
+          <div>
+            <h4>Bhartiya Udyog Ratan Award</h4>
+            <p>Honouring excellence and contribution to the Indian textile industry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== OUR PROMISE ===================== -->
+  <section id="promise" class="why">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Our Promise</span>
+        <h2 class="section-title">Values That <span class="accent">Guide Us</span></h2>
+        <p class="section-sub" style="margin-inline:auto">A memorable shopping experience where tradition meets contemporary fashion — for every member of the family.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="feature-card glass reveal"><div class="fi"><i class="fa-solid fa-clock-rotate-left"></i></div><h4>30+ Years of Excellence</h4><p>Over three decades of trusted textile craftsmanship serving generations of families.</p></div>
+        <div class="feature-card glass reveal d1"><div class="fi"><i class="fa-solid fa-lightbulb"></i></div><h4>A Founding Vision</h4><p>Built on the vision of Mr. S. Syed Sadiq Ali — quality fashion made accessible to all.</p></div>
+        <div class="feature-card glass reveal d2"><div class="fi"><i class="fa-solid fa-industry"></i></div><h4>Manufacturing Strength</h4><p>Backed by the advanced production ecosystem of ESSA Garments Private Limited.</p></div>
+        <div class="feature-card glass reveal"><div class="fi"><i class="fa-solid fa-trophy"></i></div><h4>Award-Winning Legacy</h4><p>A recognised name honoured for quality, innovation, and industry contribution.</p></div>
+        <div class="feature-card glass reveal d1"><div class="fi"><i class="fa-solid fa-people-roof"></i></div><h4>For the Whole Family</h4><p>Premium collections for men, women, and children — beautifully crafted under one roof.</p></div>
+        <div class="feature-card glass reveal d2"><div class="fi"><i class="fa-solid fa-gem"></i></div><h4>Trusted Service</h4><p>Superior craftsmanship and exceptional value in every drape and every detail.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== CLOSING CTA ===================== -->
+  <section id="visit">
+    <div class="container">
+      <div class="about-cta glass reveal">
+        <span class="eyebrow center">Visit Us</span>
+        <h2>Where Tradition Meets <em>Contemporary Fashion</em></h2>
+        <p>Whether you're shopping for a wedding, a festive occasion, or everyday elegance, our mission is to provide beautifully crafted apparel that combines style, comfort, and exceptional value for every member of the family.</p>
+        <div class="hero-cta">
+          <a href="index.html#collections" class="btn btn-primary">View Collections <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="index.html#contact" class="btn btn-ghost">Visit Our Showroom</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html#home" class="brand"><img class="brand-logo" src="images/logo.png" alt="Taqua Silks" /><span class="brand-text"><span class="name langswap"><span class="lang en" aria-hidden="true">Taqua<b>Silks</b></span><span class="lang ta" lang="ta" aria-hidden="true">தக்வா <b>சில்க்ஸ்</b></span></span></span></a>
+          <p>An ultra-premium house of handcrafted silk sarees — where India's timeless weaving heritage meets modern luxury.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <a href="index.html#home">Home</a>
+          <a href="index.html#collections">Collections</a>
+          <a href="about.html">About Us</a>
+          <a href="index.html#gallery">Gallery</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Collections</h5>
+          <a href="index.html#collections">Kanchipuram Silk</a>
+          <a href="index.html#collections">Banarasi Silk</a>
+          <a href="index.html#collections">Soft Silk</a>
+          <a href="index.html#bridal">Bridal Edit</a>
+          <a href="index.html#arrivals">New Arrivals</a>
+        </div>
+        <div class="footer-col">
+          <h5>Visit Our Atelier</h5>
+          <div class="contact-line"><i class="fa-solid fa-location-dot"></i><span>Municipal Office Rd, Noyyal, Tiruppur, Tamil Nadu 641604</span></div>
+          <div class="contact-line"><i class="fa-solid fa-phone"></i><a href="tel:+918870844411">088708 44411</a></div>
+          <div class="contact-line"><i class="fa-solid fa-envelope"></i><span>care@taquasilks.com</span></div>
+          <div class="contact-line"><i class="fa-solid fa-clock"></i><span>Mon – Sun · 10:00 AM – 9:00 PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Taqua Silks. Woven with devotion in India.</span>
+        <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Shipping</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Self-contained interactions (no dependency on the homepage-only main.js) -->
+  <script>
+    (function () {
+      "use strict";
+
+      // Use the real logo image if present (mirrors main.js behaviour)
+      var probe = new Image();
+      probe.onload = function () { document.documentElement.classList.add("logo-ready"); };
+      probe.src = "images/logo.png";
+
+      // Navbar shrink-on-scroll + back-to-top visibility
+      var navbar = document.getElementById("navbar");
+      var toTop = document.getElementById("toTop");
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        if (navbar) navbar.classList.toggle("scrolled", y > 40);
+        if (toTop) toTop.classList.toggle("show", y > 600);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+      // Mobile menu
+      var mobileMenu = document.getElementById("mobileMenu");
+      var hamburger = document.getElementById("hamburger");
+      var menuClose = document.getElementById("menuClose");
+      if (hamburger && mobileMenu) hamburger.addEventListener("click", function () { mobileMenu.classList.add("open"); });
+      if (menuClose && mobileMenu) menuClose.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      if (mobileMenu) mobileMenu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
+      });
+
+      // Reveal-on-scroll
+      var reveals = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+    })();
+  </script>
+</body>
+</html>

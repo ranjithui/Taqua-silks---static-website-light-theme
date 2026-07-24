@@ -1,0 +1,158 @@
+====================================================================
+ TAQUA SILKS  —  PRODUCT IMAGE GUIDE  (Men & Women pages)
+====================================================================
+
+WHERE THE IMAGES GO
+-------------------
+Drop all product photos into this folder:
+    images/products/
+
+HOW IT WORKS
+------------
+- Each card on men.html and women.html already has an <img> that points
+  to one of the file names listed below.
+- Until you add a file, the card shows the "Image Coming Soon" placeholder
+  (images/products/placeholder.svg) automatically — nothing looks broken.
+- As soon as you add a correctly-named file, that card shows your photo.
+  No code changes needed.
+
+FILE NAMING RULES  (IMPORTANT)
+------------------------------
+- Names must match EXACTLY, including the number and the .jpg extension.
+      e.g.  men-01.jpg   women-13.jpg
+- Numbers are two digits: 01, 02, ... not 1, 2.
+- If your photo is .png or .webp instead of .jpg, either:
+      (a) rename the file to .jpg, OR
+      (b) open the page and change the src extension in that card.
+- Best shape: portrait, 4:5 ratio (e.g. 800 x 1000 px). Photos are
+  auto-cropped to fit, so a portrait image looks best.
+
+
+====================================================================
+ MEN  (men.html)   ->   men-01.jpg  ...  men-21.jpg
+====================================================================
+
+SHIRT
+  men-01.jpg  ->  Classic Oxford Shirt
+  men-02.jpg  ->  Linen Casual Shirt
+  men-03.jpg  ->  Checked Semi-Formal Shirt
+
+T-SHIRT
+  men-04.jpg  ->  Round-Neck Cotton Tee
+  men-05.jpg  ->  Polo Collar T-Shirt
+  men-06.jpg  ->  Henley Full-Sleeve Tee
+
+TROUSERS
+  men-07.jpg  ->  Cotton Chino Trousers
+  men-08.jpg  ->  Stretch Comfort Trousers
+  men-09.jpg  ->  Pleated Formal Trousers
+
+JEANS
+  men-10.jpg  ->  Slim-Fit Blue Jeans
+  men-11.jpg  ->  Black Stretch Denim
+  men-12.jpg  ->  Rugged Distressed Jeans
+
+FORMAL PANTS
+  men-13.jpg  ->  Wool-Blend Formal Pants
+  men-14.jpg  ->  Slim Formal Trousers
+  men-15.jpg  ->  Textured Suit Trousers
+
+TRACK PANT
+  men-16.jpg  ->  Jersey Jogger Track Pant
+  men-17.jpg  ->  Dri-Fit Sports Pant
+  men-18.jpg  ->  Fleece Lounge Track Pant
+
+DHOTI
+  men-19.jpg  ->  Pure Cotton Zari Dhoti
+  men-20.jpg  ->  Silk Panchakacham Dhoti
+  men-21.jpg  ->  Dhoti & Angavastram Set
+
+
+====================================================================
+ WOMEN  (women.html)   ->   women-01.jpg  ...  women-15.jpg
+====================================================================
+
+SALWAR
+  women-01.jpg  ->  Cotton Printed Salwar Set
+  women-02.jpg  ->  Anarkali Salwar Suit
+  women-03.jpg  ->  Silk Palazzo Salwar Set
+
+KURTIS
+  women-04.jpg  ->  Straight-Cut Cotton Kurti
+  women-05.jpg  ->  A-Line Printed Kurti
+  women-06.jpg  ->  Embroidered Festive Kurti
+
+NIGHT WEAR
+  women-07.jpg  ->  Cotton Night Suit Set
+  women-08.jpg  ->  Printed Nighty Gown
+  women-09.jpg  ->  Satin Loungewear Set
+
+BLOUSE MATERIALS
+  women-10.jpg  ->  Plain Silk Blouse Piece
+  women-11.jpg  ->  Zari Brocade Blouse Material
+  women-12.jpg  ->  Embroidered Blouse Fabric
+
+HALF SAREE
+  women-13.jpg  ->  Silk Half Saree Set
+  women-14.jpg  ->  Festive Zari Half Saree
+  women-15.jpg  ->  Bridal Half Saree
+
+
+====================================================================
+ KIDS  (kids.html)   ->   kids-01.jpg  ...  kids-24.jpg
+====================================================================
+
+--- BOYS ---
+
+SHIRTS & PANTS
+  kids-01.jpg  ->  Cotton Shirt & Pant Set
+  kids-02.jpg  ->  Party Wear Shirt & Trouser
+  kids-03.jpg  ->  Checked Casual Shirt Set
+
+SHIRT & DHOTI
+  kids-04.jpg  ->  Silk Shirt & Dhoti Set
+  kids-05.jpg  ->  Festive Angavastram Set
+  kids-06.jpg  ->  Traditional Cotton Dhoti Set
+
+T-SHIRTS & TRACKS
+  kids-07.jpg  ->  Printed Tee & Track Set
+  kids-08.jpg  ->  Sporty Jogger Set
+  kids-09.jpg  ->  Everyday Cotton Track Set
+
+BOYS NIGHTWEAR
+  kids-10.jpg  ->  Cartoon Print Night Suit
+  kids-11.jpg  ->  Cotton Pyjama Set
+  kids-12.jpg  ->  Fleece Winter Night Suit
+
+--- GIRLS ---
+
+GOWNS & FROCKS
+  kids-13.jpg  ->  Party Wear Gown
+  kids-14.jpg  ->  Floral Cotton Frock
+  kids-15.jpg  ->  Layered Net Gown
+
+CHOLI & CHUDIDHARS
+  kids-16.jpg  ->  Embroidered Choli Set
+  kids-17.jpg  ->  Cotton Chudidhar Set
+  kids-18.jpg  ->  Festive Silk Chudidhar
+
+PAVADAI SETS (Art Silk & Cotton)
+  kids-19.jpg  ->  Art Silk Pavadai Set
+  kids-20.jpg  ->  Cotton Pavadai Davani
+  kids-21.jpg  ->  Zari Border Pattu Pavadai
+
+GIRLS NIGHTWEAR
+  kids-22.jpg  ->  Printed Nighty Frock
+  kids-23.jpg  ->  Cotton Night Suit
+  kids-24.jpg  ->  Soft Loungewear Set
+
+
+====================================================================
+ QUICK CHECKLIST
+====================================================================
+  [ ] Photos saved in  images/products/
+  [ ] Named exactly (men-01..21, women-01..15, kids-01..24 — all .jpg)
+  [ ] Two-digit numbers (01 not 1)
+  [ ] Portrait 4:5 shape for best fit
+  [ ] Keep placeholder.svg in this folder (do not delete)
+====================================================================
