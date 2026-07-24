@@ -518,6 +518,9 @@ section { position: relative; padding: clamp(70px, 9vw, 130px) 0; }
 /* Listing pages (men/women/kids) use full-figure 2:3 portrait renders — match the
    frame to the image ratio so the whole figure shows without cropping head/feet. */
 .cat-section .product-media { aspect-ratio: 2/3; }
+/* Each listing section holds exactly 3 cards — use 3 columns so they span the
+   centered container evenly with equal space on the left and right. */
+.cat-section .products-grid { grid-template-columns: repeat(3, 1fr); }
 .product-card:hover .product-media img { transform: scale(1.1); }
 .badge {
   position: absolute; top: 14px; left: 14px; z-index: 3;
