@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Women's Collection — Taqua Silks | Sarees, Lehengas, Salwar, Kurtis & Half Saree</title>
-  <meta name="description" content="Discover Taqua Silks' women's wear — synthetic, stonework and crepe sarees, bridal lehengas, salwar suits, kurtis, night wear, blouse materials and traditional half sarees, crafted with elegance and comfort." />
+  <meta name="description" content="Discover Taqua Silks' women's wear — synthetic, stonework and crepe sarees, bridal lehengas, salwar suits, kurtis, night wear, traditional half sarees, chudithar materials and blouse materials, crafted with elegance and comfort." />
   <meta name="theme-color" content="#FBF6EC" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,6 +31,19 @@
       border: 1px solid rgba(138,106,32,0.35); transition: all 0.3s var(--ease);
     }
     .cat-chips a:hover { background: var(--gold-ink); color: #fff; border-color: var(--gold-ink); transform: translateY(-2px); }
+
+    /* The two materials sections use landscape 3:2 flat-lays, not the full-figure
+       2:3 portraits the listing frame assumes — match the frame to the photo so the
+       whole spread shows instead of being cropped to the middle third. */
+    #chudithar-materials .product-media,
+    #blouse-materials .product-media { aspect-ratio: 3/2; }
+    #chudithar-materials .product-media img,
+    #blouse-materials .product-media img { object-position: center; }
+    /* Two landscape cards per row get too small on phones — give them the full width. */
+    @media (max-width: 640px) {
+      #chudithar-materials .products-grid,
+      #blouse-materials .products-grid { grid-template-columns: 1fr; gap: 18px; }
+    }
   </style>
 </head>
 <body>
@@ -68,9 +81,10 @@
             <a href="women.html#salwar"><i class="fa-solid fa-person-dress"></i> Salwar</a>
             <a href="women.html#kurtis"><i class="fa-solid fa-person-dress"></i> Kurtis</a>
             <a href="women.html#night-wear"><i class="fa-solid fa-moon"></i> Night Wear</a>
-            <a href="women.html#blouse-materials"><i class="fa-solid fa-scissors"></i> Blouse Materials</a>
             <a href="women.html#half-saree"><i class="fa-solid fa-person-dress"></i> Half Saree</a>
             <a href="women.html#lehenga"><i class="fa-solid fa-gem"></i> Lehenga</a>
+            <a href="women.html#chudithar-materials"><i class="fa-solid fa-scissors"></i> Chudithar Materials</a>
+            <a href="women.html#blouse-materials"><i class="fa-solid fa-scissors"></i> Blouse Materials</a>
           </div>
         </div>
         <a href="index.html#bridal">Grand Wedding</a>
@@ -124,9 +138,10 @@
         <a href="women.html#salwar">Salwar</a>
         <a href="women.html#kurtis">Kurtis</a>
         <a href="women.html#night-wear">Night Wear</a>
-        <a href="women.html#blouse-materials">Blouse Materials</a>
         <a href="women.html#half-saree">Half Saree</a>
         <a href="women.html#lehenga">Lehenga</a>
+        <a href="women.html#chudithar-materials">Chudithar Materials</a>
+        <a href="women.html#blouse-materials">Blouse Materials</a>
       </div>
     </div>
     <a href="index.html#bridal">Grand Wedding</a>
@@ -155,15 +170,16 @@
       <p class="crumbs reveal"><a href="index.html#home">Home</a> &nbsp;/&nbsp; Women</p>
       <span class="eyebrow center reveal d1">The Grace Edit</span>
       <h1 class="reveal d1">Women's <em>Collection</em></h1>
-      <p class="lede reveal d2">From graceful salwar suits and everyday kurtis to elegant blouse materials, traditional half sarees, signature drapes and regal lehengas — beautifully crafted for every occasion.</p>
+      <p class="lede reveal d2">From signature drapes and graceful salwar suits to everyday kurtis, traditional half sarees, regal lehengas, and chudithar and blouse materials waiting to be tailored — beautifully crafted for every occasion.</p>
       <div class="cat-chips reveal d3">
         <a href="#sarees">Sarees</a>
         <a href="#salwar">Salwar</a>
         <a href="#kurtis">Kurtis</a>
         <a href="#night-wear">Night Wear</a>
-        <a href="#blouse-materials">Blouse Materials</a>
         <a href="#half-saree">Half Saree</a>
         <a href="#lehenga">Lehenga</a>
+        <a href="#chudithar-materials">Chudithar Materials</a>
+        <a href="#blouse-materials">Blouse Materials</a>
       </div>
     </div>
   </section>
@@ -278,33 +294,6 @@
 
   <hr class="silk-divider" />
 
-  <!-- ===================== BLOUSE MATERIALS ===================== -->
-  <section class="cat-section" id="blouse-materials">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow center">The Perfect Match</span>
-        <h2 class="section-title">Designer <span class="accent">Blouse Materials</span></h2>
-        <p class="section-sub" style="margin-inline:auto">Rich fabrics and ready pieces to pair with your saree — from plain silks to zari-woven brocades.</p>
-      </div>
-      <div class="products-grid">
-        <article class="product-card reveal">
-          <div class="product-media"><img src="images/products/women-10.png" alt="Plain Silk Blouse Piece" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
-          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Plain Silk Blouse Piece</h4><p class="ph-desc">A lustrous solid-colour silk piece to complement any saree with understated elegance.</p></div>
-        </article>
-        <article class="product-card reveal d1">
-          <div class="product-media"><img src="images/products/women-11.png" alt="Zari Brocade Blouse Material" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
-          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Zari Brocade Blouse Material</h4><p class="ph-desc">Gold zari woven into rich brocade — a statement blouse for festive drapes.</p></div>
-        </article>
-        <article class="product-card reveal d2">
-          <div class="product-media"><img src="images/products/women-12.png" alt="Embroidered Blouse Fabric" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
-          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Embroidered Blouse Fabric</h4><p class="ph-desc">Fine thread embroidery on soft fabric — ready to tailor into a designer blouse.</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <hr class="silk-divider" />
-
   <!-- ===================== HALF SAREE ===================== -->
   <section class="cat-section" id="half-saree">
     <div class="container">
@@ -357,6 +346,60 @@
     </div>
   </section>
 
+  <hr class="silk-divider" />
+
+  <!-- ===================== CHUDITHAR MATERIALS ===================== -->
+  <section class="cat-section" id="chudithar-materials">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Stitch Your Own</span>
+        <h2 class="section-title">Chudithar <span class="accent">Materials</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Unstitched top, bottom, and dupatta sets in our finest fabrics — tailored exactly to your fit.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/women-22.png" alt="Cotton Chudithar Material" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Chudithar Materials</span><h4>Cotton</h4><p class="ph-desc">Soft, breathable cotton sets in fresh prints — the easy everyday choice for warm days.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/women-23.png" alt="Silk Chudithar Material" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Chudithar Materials</span><h4>Silk</h4><p class="ph-desc">Lustrous silk with rich borders — a festive set worth tailoring for special occasions.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/women-24.png" alt="Georgette and Chiffon Chudithar Material" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Chudithar Materials</span><h4>Georgette &amp; Chiffon</h4><p class="ph-desc">Featherlight georgette and flowing chiffon — graceful drape with an elegant finish.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== BLOUSE MATERIALS ===================== -->
+  <section class="cat-section" id="blouse-materials">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">The Perfect Match</span>
+        <h2 class="section-title">Designer <span class="accent">Blouse Materials</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Rich fabrics and ready pieces to pair with your saree — from plain silks to zari-woven brocades.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-media"><img src="images/products/women-10.png" alt="Plain Silk Blouse Piece" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Plain Silk Blouse Piece</h4><p class="ph-desc">A lustrous solid-colour silk piece to complement any saree with understated elegance.</p></div>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-media"><img src="images/products/women-11.png" alt="Zari Brocade Blouse Material" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Zari Brocade Blouse Material</h4><p class="ph-desc">Gold zari woven into rich brocade — a statement blouse for festive drapes.</p></div>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-media"><img src="images/products/women-12.png" alt="Embroidered Blouse Fabric" loading="lazy" onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <div class="product-body"><span class="cat">Women · Blouse Materials</span><h4>Embroidered Blouse Fabric</h4><p class="ph-desc">Fine thread embroidery on soft fabric — ready to tailor into a designer blouse.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container">
@@ -385,9 +428,10 @@
           <a href="women.html#salwar">Salwar</a>
           <a href="women.html#kurtis">Kurtis</a>
           <a href="women.html#night-wear">Night Wear</a>
-          <a href="women.html#blouse-materials">Blouse Materials</a>
           <a href="women.html#half-saree">Half Saree</a>
           <a href="women.html#lehenga">Lehenga</a>
+          <a href="women.html#chudithar-materials">Chudithar Materials</a>
+          <a href="women.html#blouse-materials">Blouse Materials</a>
         </div>
         <div class="footer-col">
           <h5>Visit Our Atelier</h5>
