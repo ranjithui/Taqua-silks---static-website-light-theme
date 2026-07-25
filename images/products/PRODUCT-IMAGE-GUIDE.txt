@@ -69,7 +69,7 @@ DHOTI
 
 
 ====================================================================
- WOMEN  (women.html)   ->   women-01.jpg  ...  women-15.jpg
+ WOMEN  (women.html)   ->   women-01.jpg  ...  women-21.jpg
 ====================================================================
 
 SALWAR
@@ -97,9 +97,19 @@ HALF SAREE
   women-14.jpg  ->  Festive Zari Half Saree
   women-15.jpg  ->  Bridal Half Saree
 
+SAREES
+  women-16.jpg  ->  Synthetic Sarees
+  women-17.jpg  ->  Stonework Sarees
+  women-18.jpg  ->  Crepe Sarees
+
+LEHENGA
+  women-19.jpg  ->  Bridal Zari Lehenga
+  women-20.jpg  ->  Embroidered Net Lehenga
+  women-21.jpg  ->  Silk Lehenga Choli Set
+
 
 ====================================================================
- KIDS  (kids.html)   ->   kids-01.jpg  ...  kids-24.jpg
+ KIDS  (kids.html)   ->   kids-01.jpg  ...  kids-27.jpg
 ====================================================================
 
 --- BOYS ---
@@ -108,6 +118,11 @@ SHIRTS & PANTS
   kids-01.jpg  ->  Cotton Shirt & Pant Set
   kids-02.jpg  ->  Party Wear Shirt & Trouser
   kids-03.jpg  ->  Checked Casual Shirt Set
+
+SUITS
+  kids-25.jpg  ->  Suits (three-piece)
+  kids-26.jpg  ->  Half Suits
+  kids-27.jpg  ->  Blazers
 
 SHIRT & DHOTI
   kids-04.jpg  ->  Silk Shirt & Dhoti Set
@@ -151,7 +166,7 @@ GIRLS NIGHTWEAR
  QUICK CHECKLIST
 ====================================================================
   [ ] Photos saved in  images/products/
-  [ ] Named exactly (men-01..21, women-01..15, kids-01..24 — all .jpg)
+  [ ] Named exactly (men-01..21, women-01..21, kids-01..27 — all .jpg)
   [ ] Two-digit numbers (01 not 1)
   [ ] Portrait 4:5 shape for best fit
   [ ] Keep placeholder.svg in this folder (do not delete)
