@@ -1912,3 +1912,61 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
   .zari-weave.in .w-node { animation: none; }
   .w-node::after { display: none; }
 }
+
+/* ============================================================
+   WHATSAPP ENQUIRY FLOW
+   Category page -> product card -> WhatsApp with the item already
+   named in the message. Everything past that (catalogue, video
+   call, confirmation) happens in the chat, not on the site.
+   ============================================================ */
+
+/* --- floating button, bottom right --- */
+.wa-float {
+  position: fixed; right: 26px; bottom: 26px; z-index: 901;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #25D366; color: #fff; font-size: 1.6rem;
+  box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.6);
+  transition: transform 0.3s var(--ease);
+  animation: waPulse 2.8s ease-out infinite;
+}
+.wa-float:hover { transform: scale(1.08); }
+.wa-float .wa-tip {
+  position: absolute; right: calc(100% + 12px); white-space: nowrap;
+  background: var(--paper-3); color: var(--ink);
+  font-size: 0.76rem; font-weight: 600; letter-spacing: 0.5px;
+  padding: 9px 14px; border-radius: 30px;
+  border: 1px solid rgba(138, 106, 32, 0.28);
+  box-shadow: var(--shadow-soft);
+  opacity: 0; transform: translateX(8px); pointer-events: none;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.wa-float:hover .wa-tip { opacity: 1; transform: none; }
+@keyframes waPulse {
+  0%   { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70%  { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.6), 0 0 0 18px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.6), 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+/* Back-to-top shares this corner and is also fixed at bottom:26px — lift it
+   clear or the two sit on top of each other the moment it fades in. */
+.to-top { bottom: 96px; }
+@media (max-width: 640px) {
+  .wa-float { right: 16px; bottom: 16px; width: 52px; height: 52px; font-size: 1.45rem; }
+  .wa-float .wa-tip { display: none; }
+  .to-top { right: 16px; bottom: 80px; }
+}
+@media (prefers-reduced-motion: reduce) { .wa-float { animation: none; } }
+
+/* --- per-product enquiry link on the card --- */
+.wa-enquire {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
+  font-size: 0.74rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  color: #1f7a45;
+  border-bottom: 1px solid rgba(31, 122, 69, 0.35); padding-bottom: 2px;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.wa-enquire i { font-size: 1rem; }
+.wa-enquire:hover { color: #25D366; border-color: #25D366; }
+@media (max-width: 640px) {
+  .cat-section .wa-enquire { font-size: 0.64rem; letter-spacing: 0.5px; gap: 6px; margin-top: 9px; }
+}

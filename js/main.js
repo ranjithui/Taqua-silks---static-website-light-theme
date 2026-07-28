@@ -123,6 +123,20 @@
   const POOL = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   const poolAt = (i) => POOL[i % POOL.length];
 
+  /* -------- WhatsApp enquiry -------- */
+  // +91 88708 44411 — same number as the footer tel: link. Change in ONE place:
+  // here for the generated cards, and in the wa.me hrefs on the listing pages.
+  const WA_NUMBER = "918870844411";
+  function waLink(name, cat) {
+    const msg =
+      `Hello Taqua Silks, I am interested in "${name}"` +
+      (cat ? ` (${cat})` : "") +
+      " from your website. Please share the catalogue, available colours and price.";
+    // encodeURIComponent, not encodeURI: the message contains & and ? which
+    // would otherwise be read as query separators and truncate the text.
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+
   function productCard(p) {
     const el = document.createElement("article");
     el.className = "product-card reveal";
@@ -133,7 +147,7 @@
       <div class="product-body">
         <span class="cat">${p.cat}</span>
         <h4>${p.name}</h4>
-        <a href="#contact" class="link">View Design <i class="fa-solid fa-arrow-right"></i></a>
+        <a class="wa-enquire" href="${waLink(p.name, p.cat)}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Enquire on WhatsApp</a>
       </div>`;
     el.querySelectorAll("img").forEach(attachFallback);
     return el;
