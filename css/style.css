@@ -1767,6 +1767,21 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
 .hero-dots button[aria-selected="true"] { width: 52px; background: var(--gold-ink); }
 .hero-dots button:hover { background: rgba(138, 106, 32, 0.6); }
 @media (max-width: 900px) { .hero-dots { justify-content: center; } }
+
+/* ============================================================
+   HERO TAGS + STATS — WEIGHT
+   The small caps lines sat at the body default of 300, which at
+   0.68rem with wide letter-spacing reads as a watermark rather
+   than a label. Styled here, not per slide, so all five
+   transitions inherit it automatically.
+   700 for the Cormorant lines and 600 for the Poppins ones —
+   those are the heaviest weights actually loaded for each face,
+   so nothing gets synthesised into a smeared fake bold.
+   ============================================================ */
+.hero-badge b { font-weight: 700; }
+.hero-badge span { font-weight: 600; }
+.hero-stats .stat b { font-weight: 700; }
+.hero-stats .stat span { font-weight: 600; }
 /* A mouse wheel cannot scroll a horizontal rail, so the arrows are the
    desktop affordance, not decoration. Hide them only where touch makes
    swiping the obvious gesture. */

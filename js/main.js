@@ -369,7 +369,23 @@
       const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
       return count * (card.getBoundingClientRect().width + gap);
     }
+    // How many cards make one original set — filled in once the auto rail has
+    // cloned itself. setSpan() is the distance that rewinds to an identical frame.
+    let setCount = 0;
+    function setSpan() { return setCount ? setWidth(setCount) : 0; }
+    /* On an auto rail the drift writes scrollLeft every frame, which cancels
+       the browser's smooth scroll mid-flight — the arrows would twitch and
+       snap back. Yield the rail to the click for the length of that animation,
+       then let the drift pick up from wherever it landed. */
+    let yieldUntil = 0;
     function step(dir) {
+      const one = setSpan();
+      // At the head of the rail there is nothing to the left to scroll into.
+      // Hop forward one identical set first (instant — .is-auto sets
+      // scroll-behavior:auto) so "previous" has somewhere to go and the loop
+      // stays endless in both directions.
+      if (auto && dir < 0 && one && rail.scrollLeft < setWidth(1)) rail.scrollLeft += one;
+      if (auto) yieldUntil = performance.now() + 700;
       rail.scrollBy({ left: dir * setWidth(1), behavior: "smooth" });
     }
     if (prev) prev.addEventListener("click", function () { step(-1); });
@@ -392,7 +408,7 @@
        set lands on an identical frame — the loop has no seam and no snap
        back to the start. Clones are hidden from assistive tech and taken
        out of the tab order so each weave is still announced once. */
-    const count = rail.children.length;
+    setCount = rail.children.length;
     Array.prototype.slice.call(rail.children).forEach(function (card) {
       const clone = card.cloneNode(true);
       clone.setAttribute("aria-hidden", "true");
@@ -404,20 +420,31 @@
     // Hovering, focusing or touching holds it still — these cards are links,
     // and nobody should have to chase a moving target to click one.
     let held = 0;
-    ["pointerenter", "focusin", "touchstart"].forEach(function (ev) {
-      rail.addEventListener(ev, function () { held = 1; }, { passive: true });
-    });
-    ["pointerleave", "focusout", "touchend", "touchcancel"].forEach(function (ev) {
-      rail.addEventListener(ev, function () { held = 0; }, { passive: true });
+    // The arrows sit outside the rail, so listening on the rail alone left the
+    // drift running while they were being clicked.
+    const holdZones = [rail];
+    const navBox = scope.querySelector(".rail-nav");
+    if (navBox) holdZones.push(navBox);
+    holdZones.forEach(function (zone) {
+      ["pointerenter", "focusin", "touchstart"].forEach(function (ev) {
+        zone.addEventListener(ev, function () { held = 1; }, { passive: true });
+      });
+      ["pointerleave", "focusout", "touchend", "touchcancel"].forEach(function (ev) {
+        zone.addEventListener(ev, function () { held = 0; }, { passive: true });
+      });
     });
 
     const PX_PER_SEC = 32;
     let last = 0;
     function drift(now) {
-      if (last && !held) {
+      if (last && !held && now >= yieldUntil) {
         rail.scrollLeft += ((now - last) / 1000) * PX_PER_SEC;
-        const one = setWidth(count);
-        if (one && rail.scrollLeft >= one) rail.scrollLeft -= one;
+      }
+      // Wrap in both directions so a manual step never runs off either end.
+      const one = setSpan();
+      if (one) {
+        if (rail.scrollLeft >= one * 2) rail.scrollLeft -= one;
+        else if (rail.scrollLeft >= one && now >= yieldUntil && !held) rail.scrollLeft -= one;
       }
       last = now;
       requestAnimationFrame(drift);
