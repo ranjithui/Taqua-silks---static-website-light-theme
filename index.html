@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=20260728n" />
+  <link rel="stylesheet" href="css/style.css?v=20260728r" />
 </head>
 <body>
 
@@ -249,13 +249,36 @@
         <span class="eyebrow center">The Taqua Promise</span>
         <h2 class="section-title">Why Choose <span class="accent">Taqua Silks</span></h2>
       </div>
-      <div class="why-grid">
-        <div class="feature-card glass reveal"><div class="fi"><i class="fa-solid fa-leaf"></i></div><h4>100% Pure Silk</h4><p>Every drape is woven from certified mulberry silk with the authentic Silk Mark assurance.</p></div>
-        <div class="feature-card glass reveal d1"><div class="fi"><i class="fa-solid fa-hand-sparkles"></i></div><h4>Handcrafted</h4><p>Master weavers pour weeks of artistry into a single saree — no two are ever alike.</p></div>
-        <div class="feature-card glass reveal d2"><div class="fi"><i class="fa-solid fa-gem"></i></div><h4>Premium Quality</h4><p>Rigorous quality curation ensures flawless zari, texture, and finish in every weave.</p></div>
-        <div class="feature-card glass reveal"><div class="fi"><i class="fa-solid fa-crown"></i></div><h4>Exclusive Designs</h4><p>Limited, signature motifs designed in-house for the discerning modern woman.</p></div>
-        <div class="feature-card glass reveal d1"><div class="fi"><i class="fa-solid fa-shield-heart"></i></div><h4>Trusted Since Years</h4><p>Two and a half decades of trust, heritage, and thousands of cherished patrons.</p></div>
-        <div class="feature-card glass reveal d2"><div class="fi"><i class="fa-solid fa-earth-asia"></i></div><h4>Worldwide Delivery</h4><p>Elegantly packaged and delivered to your doorstep — anywhere in the world.</p></div>
+      <!-- Zari thread. The gold line and the medallions animate off the
+           .reveal observer already in main.js — no extra script, so there is
+           nothing here that can silently fail to initialise. -->
+      <div class="zari-weave reveal">
+        <ol class="weave-list">
+          <li class="weave-item" style="--c:1;--r:1;--i:0">
+            <div class="w-copy"><span class="w-num">01</span><h4>100% Pure Silk</h4><p>Every drape is woven from certified mulberry silk with the authentic Silk Mark assurance.</p></div>
+            <span class="w-node"><i class="fa-solid fa-leaf"></i></span>
+          </li>
+          <li class="weave-item below" style="--c:2;--r:2;--i:1">
+            <div class="w-copy"><span class="w-num">02</span><h4>Handcrafted</h4><p>Master weavers pour weeks of artistry into a single saree — no two are ever alike.</p></div>
+            <span class="w-node"><i class="fa-solid fa-hand-sparkles"></i></span>
+          </li>
+          <li class="weave-item" style="--c:3;--r:3;--i:2">
+            <div class="w-copy"><span class="w-num">03</span><h4>Premium Quality</h4><p>Rigorous quality curation ensures flawless zari, texture, and finish in every weave.</p></div>
+            <span class="w-node"><i class="fa-solid fa-gem"></i></span>
+          </li>
+          <li class="weave-item below" style="--c:4;--r:4;--i:3">
+            <div class="w-copy"><span class="w-num">04</span><h4>Exclusive Designs</h4><p>Limited, signature motifs designed in-house for the discerning modern woman.</p></div>
+            <span class="w-node"><i class="fa-solid fa-crown"></i></span>
+          </li>
+          <li class="weave-item" style="--c:5;--r:5;--i:4">
+            <div class="w-copy"><span class="w-num">05</span><h4>Trusted Since Years</h4><p>Two and a half decades of trust, heritage, and thousands of cherished patrons.</p></div>
+            <span class="w-node"><i class="fa-solid fa-shield-heart"></i></span>
+          </li>
+          <li class="weave-item below" style="--c:6;--r:6;--i:5">
+            <div class="w-copy"><span class="w-num">06</span><h4>Worldwide Delivery</h4><p>Elegantly packaged and delivered to your doorstep — anywhere in the world.</p></div>
+            <span class="w-node"><i class="fa-solid fa-earth-asia"></i></span>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
