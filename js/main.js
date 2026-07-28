@@ -219,9 +219,13 @@
      floating tags, so all three change together on the same beat. */
   const HERO_SLIDES = [
     {
-      eyebrow: "Luxury Silk Collection",
-      title: 'Timeless Elegance<br /><em>Woven</em> Into Every Saree',
-      sub: "Discover handcrafted silk sarees that celebrate tradition, beauty, and sophistication — draped in the quiet glow of ivory and zari gold.",
+      // Slide 1 must match the H1 in index.html verbatim. The rotator repaints
+      // the heading, so if they differ the page's crawled H1 and its visible
+      // H1 diverge five seconds after load — exactly what the SEO brief warns
+      // against with "one H1 per page".
+      eyebrow: "Silk Sarees · Ethnic Wear · Tiruppur",
+      title: "Tiruppur's Family Store for Silk Sarees, <em>Ethnic Wear</em> &amp; Festive Fashion",
+      sub: "From bridal Kanchipuram silk sarees to men's formal shirts, kids' pattu pavadai sets, and everyday cotton wear — Taqua Silks in Tiruppur has dressed families across Tamil Nadu and Kerala for 25 years.",
       cta: "Explore Collection", href: "#collections",
       img: "images/photos/hero.png",
       alt: "Model draped in an orange checked silk saree with zari border",

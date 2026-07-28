@@ -1801,7 +1801,8 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
 .zari-weave { position: relative; padding: 10px 0 4px; }
 .weave-list {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  /* Version 2 of the SEO copy has five promises, not six. */
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr auto 1fr;
   column-gap: clamp(10px, 1.6vw, 24px);
 }
