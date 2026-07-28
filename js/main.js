@@ -140,27 +140,139 @@
   }
 
   /* -------- Render products -------- */
+  /* The Signature Picks section was folded into Latest Collection, so both
+     sets render into the one grid. Data arrays stay separate for editing. */
   const arrivalsGrid = document.getElementById("arrivalsGrid");
-  arrivals.forEach((p) => arrivalsGrid.appendChild(productCard(p)));
-  const bestSlider = document.getElementById("bestSlider");
-  bestsellers.forEach((p) => bestSlider.appendChild(productCard(p)));
-
-  /* -------- Gallery masonry -------- */
-  const galleryGrid = document.getElementById("galleryGrid");
-  const gLabels = ["Draped in Gold", "Bridal Radiance", "Temple Weave", "Zari Detail", "Royal Violet", "Handloom Art", "The Muhurtham", "Silk Folds"];
-  for (let i = 0; i < 8; i++) {
-    const d = document.createElement("a");
-    d.href = "#gallery";
-    d.className = "g-item reveal";
-    const img = document.createElement("img");
-    img.src = drapePath(poolAt(i + 1));
-    img.alt = gLabels[i];
-    img.setAttribute("data-label", gLabels[i]);
-    img.loading = "lazy";
-    attachFallback(img);
-    d.appendChild(img);
-    galleryGrid.appendChild(d);
+  if (arrivalsGrid) {
+    /* Sticky-stack: the cards are dealt into layers that pin one after another
+       and pile up as you scroll. --i is the layer's depth, which CSS turns into
+       its resting offset so each pinned layer's top edge stays visible under
+       the ones that follow. Change PER_LAYER to re-deal the stack. */
+    const PER_LAYER = 4;
+    const all = arrivals.concat(bestsellers);
+    for (let i = 0; i < all.length; i += PER_LAYER) {
+      const layer = document.createElement("div");
+      layer.className = "stack-layer";
+      layer.style.setProperty("--i", i / PER_LAYER);
+      const inner = document.createElement("div");
+      inner.className = "stack-inner";
+      all.slice(i, i + PER_LAYER).forEach((p) => inner.appendChild(productCard(p)));
+      layer.appendChild(inner);
+      arrivalsGrid.appendChild(layer);
+    }
   }
+
+  /* -------- Gallery masonry (section removed from the page; kept guarded) -------- */
+  const galleryGrid = document.getElementById("galleryGrid");
+  if (galleryGrid) {
+    const gLabels = ["Draped in Gold", "Bridal Radiance", "Temple Weave", "Zari Detail", "Royal Violet", "Handloom Art", "The Muhurtham", "Silk Folds"];
+    for (let i = 0; i < 8; i++) {
+      const d = document.createElement("a");
+      d.href = "#gallery";
+      d.className = "g-item reveal";
+      const img = document.createElement("img");
+      img.src = drapePath(poolAt(i + 1));
+      img.alt = gLabels[i];
+      img.setAttribute("data-label", gLabels[i]);
+      img.loading = "lazy";
+      attachFallback(img);
+      d.appendChild(img);
+      galleryGrid.appendChild(d);
+    }
+  }
+
+  /* -------- Testimonials marquee --------
+     Duplicate the cards so translateX(-50%) lands on an identical frame and
+     the loop has no visible seam. Clones are aria-hidden so screen readers
+     and the tab order still see each testimonial exactly once. Only after
+     cloning do we switch the wrapper into looping mode — if this never runs,
+     the CSS leaves it as a plain swipeable row. */
+  const reviewsTrack = document.querySelector(".reviews-track");
+  const reviewsMarquee = reviewsTrack && reviewsTrack.closest(".reviews-marquee");
+  if (reviewsTrack && reviewsMarquee) {
+    reviewsTrack.querySelectorAll(".review-card").forEach(function (card) {
+      const clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("a, button").forEach(function (el) { el.tabIndex = -1; });
+      reviewsTrack.appendChild(clone);
+    });
+    reviewsMarquee.classList.add("is-looping");
+  }
+
+  /* -------- Horizontal rails --------
+     Scroll by one card plus its gap, measured from the live layout so it
+     stays correct across the clamp() card widths and breakpoints. */
+  const stillMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll("[data-rail]").forEach(function (rail) {
+    const scope = rail.parentElement || document;
+    const prev = scope.querySelector("[data-rail-prev]");
+    const next = scope.querySelector("[data-rail-next]");
+    const auto = rail.hasAttribute("data-rail-auto") && !stillMotion;
+
+    // width of one full set of cards, measured live so it survives the
+    // clamp() card sizing and the mobile breakpoint
+    function setWidth(count) {
+      const card = rail.firstElementChild;
+      if (!card) return 0;
+      const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
+      return count * (card.getBoundingClientRect().width + gap);
+    }
+    function step(dir) {
+      rail.scrollBy({ left: dir * setWidth(1), behavior: "smooth" });
+    }
+    if (prev) prev.addEventListener("click", function () { step(-1); });
+    if (next) next.addEventListener("click", function () { step(1); });
+
+    if (!auto) {
+      // finite rail: grey out the arrow that has nowhere left to go
+      function sync() {
+        const max = rail.scrollWidth - rail.clientWidth - 1;
+        if (prev) prev.disabled = rail.scrollLeft <= 0;
+        if (next) next.disabled = rail.scrollLeft >= max;
+      }
+      rail.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync);
+      sync();
+      return;
+    }
+
+    /* Auto-scroller. Duplicate the cards so that rewinding by exactly one
+       set lands on an identical frame — the loop has no seam and no snap
+       back to the start. Clones are hidden from assistive tech and taken
+       out of the tab order so each weave is still announced once. */
+    const count = rail.children.length;
+    Array.prototype.slice.call(rail.children).forEach(function (card) {
+      const clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("a, button").forEach(function (el) { el.tabIndex = -1; });
+      rail.appendChild(clone);
+    });
+    rail.classList.add("is-auto");
+
+    // Hovering, focusing or touching holds it still — these cards are links,
+    // and nobody should have to chase a moving target to click one.
+    let held = 0;
+    ["pointerenter", "focusin", "touchstart"].forEach(function (ev) {
+      rail.addEventListener(ev, function () { held = 1; }, { passive: true });
+    });
+    ["pointerleave", "focusout", "touchend", "touchcancel"].forEach(function (ev) {
+      rail.addEventListener(ev, function () { held = 0; }, { passive: true });
+    });
+
+    const PX_PER_SEC = 32;
+    let last = 0;
+    function drift(now) {
+      if (last && !held) {
+        rail.scrollLeft += ((now - last) / 1000) * PX_PER_SEC;
+        const one = setWidth(count);
+        if (one && rail.scrollLeft >= one) rail.scrollLeft -= one;
+      }
+      last = now;
+      requestAnimationFrame(drift);
+    }
+    requestAnimationFrame(drift);
+  });
 
   // attach fallback to all static page images too
   document.querySelectorAll("img").forEach(attachFallback);
@@ -241,11 +353,15 @@
     });
   });
 
-  /* -------- Best sellers slider nav -------- */
+  /* -------- Best sellers slider nav (section removed; kept guarded) -------- */
   const slider = document.getElementById("bestSlider");
-  const step = 324;
-  document.getElementById("nextBtn").addEventListener("click", () => slider.scrollBy({ left: step, behavior: "smooth" }));
-  document.getElementById("prevBtn").addEventListener("click", () => slider.scrollBy({ left: -step, behavior: "smooth" }));
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  if (slider && nextBtn && prevBtn) {
+    const step = 324;
+    nextBtn.addEventListener("click", () => slider.scrollBy({ left: step, behavior: "smooth" }));
+    prevBtn.addEventListener("click", () => slider.scrollBy({ left: -step, behavior: "smooth" }));
+  }
 
   /* -------- Tilt effect (subtle, pointer only) -------- */
   if (window.matchMedia("(hover:hover)").matches) {

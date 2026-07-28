@@ -1553,3 +1553,198 @@ body.has-announce .hero { padding-top: 180px; }
   .bridal { aspect-ratio: auto; }
   .bridal .bg img { object-position: 70% center; }
 }
+
+/* ============================================================
+   LITTLE ROYALS GROUND — APPLIED SITE-WIDE
+   What settles that section is not the motif, it is the cream
+   veil beneath it: a translucent scrim over the jaali/mandala
+   ground that mutes the pattern so content reads forward.
+   body::after is the topmost backdrop layer (z-index -2), above
+   html::before/::after and body::before, so putting the veil
+   here dims every pattern layer at once while leaving content
+   — which sits at z-index 0 and up — untouched and crisp.
+   Motif is drawn in --gold-ink, not #D4AF37: per the note above,
+   bright gold all but vanishes on ivory.
+   ============================================================ */
+body::after {
+  background-image:
+    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%238A6A20' stroke-opacity='0.20' stroke-width='1.5'%3E%3Cg transform='translate(40 40)'%3E%3Ccircle r='6'/%3E%3Cellipse rx='4' ry='9' transform='translate(0 -13)'/%3E%3Cellipse rx='4' ry='9' transform='translate(0 13)'/%3E%3Cellipse rx='9' ry='4' transform='translate(-13 0)'/%3E%3Cellipse rx='9' ry='4' transform='translate(13 0)'/%3E%3Cellipse rx='4' ry='9' transform='rotate(45) translate(0 -13)'/%3E%3Cellipse rx='4' ry='9' transform='rotate(45) translate(0 13)'/%3E%3Cellipse rx='9' ry='4' transform='rotate(45) translate(-13 0)'/%3E%3Cellipse rx='9' ry='4' transform='rotate(45) translate(13 0)'/%3E%3C/g%3E%3Cg transform='translate(120 120)'%3E%3Ccircle r='4'/%3E%3Cellipse rx='3' ry='7' transform='translate(0 -10)'/%3E%3Cellipse rx='3' ry='7' transform='translate(0 10)'/%3E%3Cellipse rx='7' ry='3' transform='translate(-10 0)'/%3E%3Cellipse rx='7' ry='3' transform='translate(10 0)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    repeating-linear-gradient(48deg, rgba(212, 175, 55, 0.038) 0 3px, transparent 3px 7px),
+    repeating-linear-gradient(-42deg, rgba(0, 0, 0, 0.05) 0 3px, transparent 3px 8px),
+    radial-gradient(60% 60% at 20% 10%, rgba(212, 175, 55, 0.16), transparent 60%),
+    radial-gradient(60% 60% at 85% 90%, rgba(178, 58, 71, 0.07), transparent 55%),
+    linear-gradient(180deg, rgba(245, 237, 223, 0.85), rgba(251, 246, 236, 0.62));
+  background-size: 180px 180px, auto, auto, auto, auto, auto;
+  background-repeat: repeat, repeat, repeat, no-repeat, no-repeat, no-repeat;
+  background-blend-mode: normal, overlay, overlay, normal, normal, normal;
+  opacity: 1;
+}
+/* The section carried its own copy of this ground. Now that the page has it,
+   drop the duplicate — veiling twice would leave Little Royals visibly paler
+   than everything around it, and two 180px motif tiles stacked out of phase
+   would moire into a denser patch exactly where the section sits. */
+.kids { background: none; }
+.kids::before { content: none; }
+
+/* ============================================================
+   NAVBAR WEIGHT
+   600, not 700 — the Poppins link only loads 300/400/500/600,
+   so 700 would be synthesised by the browser and render as a
+   smeared fake-bold next to the real weights.
+   ============================================================ */
+.nav-links a { font-weight: 600; }
+
+/* ============================================================
+   TIGHTER SECTION RHYTHM
+   Sections stack their own top and bottom padding, so the gap
+   between two of them was double the value below — up to 260px
+   on a wide screen. Roughly 40% off, applied to the shared
+   `section` rule so every page tightens by the same amount.
+   ============================================================ */
+section { padding: clamp(42px, 5.5vw, 78px) 0; }
+.section-head { margin-bottom: clamp(28px, 3.6vw, 46px); }
+/* Listing pages put an <hr> between sections, but keep this in step
+   for any two that sit directly against each other. */
+.cat-section + .cat-section { margin-top: clamp(34px, 5vw, 58px); }
+
+/* ============================================================
+   "25+ YEARS OF WEAVING TRUST" BADGE
+   The caption sat at the body default (300) in 0.66rem gold on
+   a near-white glass card — thin type, low contrast, small size
+   all at once. Weight on both lines, and the caption moved to
+   --ink so it reads as text rather than a watermark.
+   ============================================================ */
+.about-media .float-card b { font-weight: 700; }
+.about-media .float-card span { font-weight: 600; color: var(--ink); }
+
+/* ============================================================
+   BILINGUAL LOGO — MATCHED OPTICAL SIZE
+   Both halves already share one grid cell, so nothing shifts.
+   They looked mismatched because the same font-size renders at
+   very different scales in the two faces: Cormorant Garamond
+   has an unusually small x-height, Noto Serif Tamil a large
+   one, so the Tamil read markedly bigger at an identical 1.7rem.
+   em-based so it holds for the navbar, footer and preloader
+   marks alike. place-self pins both to the same left edge and
+   centre line, so the swap is a pure cross-fade in place.
+   ============================================================ */
+.langswap .lang { place-self: center start; }
+.langswap .lang.ta { font-size: 0.76em; }
+
+/* ============================================================
+   TESTIMONIALS — SCROLLING BAND
+   Six cards no longer fit a 3-up grid, so the row scrolls.
+   Two modes, and the no-JS one is the default: without the
+   .is-looping class this is an ordinary swipeable scroll-snap
+   row, so the section works even if main.js never runs. When JS
+   clones the cards it adds .is-looping and the row becomes a
+   seamless marquee, paused on hover or keyboard focus so nobody
+   has to read moving text.
+   ============================================================ */
+.reviews-marquee {
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.reviews-track {
+  display: flex; gap: 24px; width: max-content;
+  /* room for the card's -6px hover lift, which would otherwise clip */
+  padding: 10px 2px 14px;
+}
+.reviews-track .review-card {
+  flex: 0 0 clamp(275px, 27vw, 345px);
+  scroll-snap-align: start;
+}
+/* default / no-JS: manual swipe */
+.reviews-marquee:not(.is-looping) { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+.reviews-marquee:not(.is-looping)::-webkit-scrollbar { display: none; }
+/* JS present: seamless loop */
+.reviews-marquee.is-looping { overflow: hidden; }
+.reviews-marquee.is-looping .reviews-track { animation: reviewsMarquee 60s linear infinite; }
+.reviews-marquee.is-looping:hover .reviews-track,
+.reviews-marquee.is-looping:focus-within .reviews-track { animation-play-state: paused; }
+@keyframes reviewsMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 12px)); } /* half the track + half the gap */
+}
+@media (prefers-reduced-motion: reduce) {
+  .reviews-marquee.is-looping { overflow-x: auto; }
+  .reviews-marquee.is-looping .reviews-track { animation: none; }
+}
+
+/* ============================================================
+   RAIL — HORIZONTAL SCROLLING ROW
+   Six 3:4 cards over two rows is a tall block to scroll past.
+   One scroll-snapping row costs a single card's height instead.
+   .rail overrides the grid rules (including the responsive
+   ones, which only reset grid-template-columns and are inert
+   against display:flex).
+   ============================================================ */
+.rail {
+  display: flex; gap: 24px; overflow-x: auto;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* room for the card shadow and hover scale, which overflow would clip */
+  padding: 6px 2px 16px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail > * { flex: 0 0 clamp(240px, 25vw, 320px); scroll-snap-align: start; }
+.rail-nav { justify-content: center; margin-top: 6px; }
+/* pointer-events off as well as dimmed, so the hover fill can't fire on a
+   button that does nothing at the end of the rail */
+.rail-nav button:disabled { opacity: 0.3; pointer-events: none; }
+/* Auto-scrolling mode, switched on by JS once the cards are duplicated.
+   Both of these would sabotage a per-frame scrollLeft animation:
+   mandatory snapping drags the rail back to the nearest card every frame,
+   and scroll-behavior:smooth makes the browser ease each 0.5px step
+   instead of applying it. Arrow clicks still animate — they pass
+   behavior:"smooth" explicitly, which wins over this. */
+.rail.is-auto { scroll-snap-type: none; scroll-behavior: auto; }
+
+/* ============================================================
+   CARD STACK — STICKY SCROLL PILE
+   Each layer pins just under the navbar and the next one rides
+   up over it. --i (set per layer in main.js) steps the resting
+   offset down, so every pinned layer keeps a sliver of its top
+   edge visible and the pile reads as depth rather than one card.
+   Sticky is silently cancelled by an `overflow` other than
+   visible on ANY ancestor — so this must never be nested inside
+   a clipped wrapper, and the section itself must stay unclipped.
+   ============================================================ */
+.card-stack { display: block; }
+.card-stack .stack-layer {
+  position: sticky;
+  top: calc(clamp(88px, 11vh, 120px) + var(--i, 0) * 18px);
+  margin-bottom: clamp(20px, 3vw, 34px);
+}
+.card-stack .stack-layer:last-child { margin-bottom: 0; }
+.card-stack .stack-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 22px);
+  padding: clamp(14px, 1.6vw, 20px);
+  border-radius: var(--radius-lg);
+  background: var(--paper-2);
+  border: 1px solid rgba(138, 106, 32, 0.20);
+  box-shadow: 0 26px 60px -32px rgba(74, 55, 35, 0.55);
+}
+/* The card already carries its own surface; inside a layer it sits on the
+   layer's panel instead, so drop the doubled border. */
+.card-stack .product-card { border-color: transparent; }
+/* 4-up down to tablet, then 2×2 inside each layer — never 3, which would
+   leave an orphan card on its own row and break the block shape the stack
+   depends on to read as a slab. */
+@media (max-width: 900px) {
+  .card-stack .stack-inner { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .card-stack .stack-layer { top: calc(76px + var(--i, 0) * 12px); }
+  .card-stack .stack-inner { padding: 12px; gap: 12px; }
+}
+/* A mouse wheel cannot scroll a horizontal rail, so the arrows are the
+   desktop affordance, not decoration. Hide them only where touch makes
+   swiping the obvious gesture. */
+@media (max-width: 640px) {
+  .rail-nav { display: none; }
+  .rail > * { flex-basis: 78%; }
+}

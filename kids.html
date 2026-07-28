@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=20260724" />
+  <link rel="stylesheet" href="css/style.css?v=20260728l" />
 
   <style>
     .page-hero {
@@ -27,10 +27,15 @@
     .cat-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
     .cat-chips a {
       font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 9px 18px; border-radius: 40px; color: var(--ink-body);
-      border: 1px solid rgba(138,106,32,0.35); transition: all 0.3s var(--ease);
+      font-weight: 600; padding: 9px 18px; border-radius: 40px; color: var(--ink);
+      border: 1.5px solid rgba(138,106,32,0.55); transition: all 0.3s var(--ease);
     }
     .cat-chips a:hover { background: var(--gold-ink); color: #fff; border-color: var(--gold-ink); transform: translateY(-2px); }
+
+    /* The band is .kids, not .cat-section, so it misses the shared
+       scroll-margin — without this the fixed navbar covers its heading
+       when you jump to #little-royals from the dropdown. */
+    #little-royals { scroll-margin-top: 120px; }
 
     /* Boys / Girls divider band */
     .gender-band { text-align: center; padding: clamp(20px, 4vw, 40px) 0 clamp(8px, 2vw, 20px); }
@@ -53,52 +58,51 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html#collections">Collections</a>
         <div class="nav-item">
           <a href="men.html" class="nav-drop-toggle">Men <i class="fa-solid fa-chevron-down caret"></i></a>
           <div class="dropdown">
-            <a href="men.html#shirt"><i class="fa-solid fa-shirt"></i> Shirt</a>
-            <a href="men.html#tshirt"><i class="fa-solid fa-shirt"></i> T-Shirt</a>
-            <a href="men.html#trousers"><i class="fa-solid fa-tag"></i> Trousers</a>
-            <a href="men.html#jeans"><i class="fa-solid fa-tag"></i> Jeans</a>
-            <a href="men.html#formal-pants"><i class="fa-solid fa-user-tie"></i> Formal Pants</a>
-            <a href="men.html#track-pant"><i class="fa-solid fa-person-running"></i> Track Pant</a>
-            <a href="men.html#dhoti"><i class="fa-solid fa-place-of-worship"></i> Dhoti</a>
+            <a href="men.html#shirt">Shirt</a>
+            <a href="men.html#tshirt">T-Shirt</a>
+            <a href="men.html#trousers">Trousers</a>
+            <a href="men.html#jeans">Jeans</a>
+            <a href="men.html#formal-pants">Formal Pants</a>
+            <a href="men.html#track-pant">Track Pant</a>
+            <a href="men.html#dhoti">Dhoti</a>
           </div>
         </div>
         <div class="nav-item">
           <a href="women.html" class="nav-drop-toggle">Women <i class="fa-solid fa-chevron-down caret"></i></a>
           <div class="dropdown">
-            <a href="women.html#sarees"><i class="fa-solid fa-person-dress"></i> Sarees</a>
-            <a href="women.html#salwar"><i class="fa-solid fa-person-dress"></i> Salwar</a>
-            <a href="women.html#kurtis"><i class="fa-solid fa-person-dress"></i> Kurtis</a>
-            <a href="women.html#night-wear"><i class="fa-solid fa-moon"></i> Night Wear</a>
-            <a href="women.html#half-saree"><i class="fa-solid fa-person-dress"></i> Half Saree</a>
-            <a href="women.html#lehenga"><i class="fa-solid fa-gem"></i> Lehenga</a>
-            <a href="women.html#chudithar-materials"><i class="fa-solid fa-scissors"></i> Chudithar Materials</a>
-            <a href="women.html#blouse-materials"><i class="fa-solid fa-scissors"></i> Blouse Materials</a>
+            <a href="women.html#sarees">Sarees</a>
+            <a href="women.html#salwar">Salwar</a>
+            <a href="women.html#kurtis">Kurtis</a>
+            <a href="women.html#night-wear">Night Wear</a>
+            <a href="women.html#half-saree">Half Saree</a>
+            <a href="women.html#lehenga">Lehenga</a>
+            <a href="women.html#chudithar-materials">Chudithar Materials</a>
+            <a href="women.html#blouse-materials">Blouse Materials</a>
           </div>
         </div>
         <a href="index.html#bridal">Grand Wedding</a>
         <div class="nav-item">
           <a href="kids.html" class="nav-drop-toggle" aria-current="page">Kids <i class="fa-solid fa-chevron-down caret"></i></a>
           <div class="dropdown">
+            <a href="kids.html#little-royals">Little Royals</a>
             <span class="drop-group">Boys</span>
-            <a href="kids.html#boys-shirts-pants"><i class="fa-solid fa-shirt"></i> Shirts &amp; Pants</a>
-            <a href="kids.html#boys-suits"><i class="fa-solid fa-user-tie"></i> Suits</a>
-            <a href="kids.html#boys-shirt-dhoti"><i class="fa-solid fa-place-of-worship"></i> Shirt &amp; Dhoti</a>
-            <a href="kids.html#boys-tshirts-tracks"><i class="fa-solid fa-person-running"></i> T-Shirts &amp; Tracks</a>
-            <a href="kids.html#boys-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+            <a href="kids.html#boys-shirts-pants">Shirts &amp; Pants</a>
+            <a href="kids.html#boys-suits">Suits</a>
+            <a href="kids.html#boys-shirt-dhoti">Shirt &amp; Dhoti</a>
+            <a href="kids.html#boys-tshirts-tracks">T-Shirts &amp; Tracks</a>
+            <a href="kids.html#boys-nightwear">Nightwear</a>
             <span class="drop-group">Girls</span>
-            <a href="kids.html#girls-gowns-frocks"><i class="fa-solid fa-person-dress"></i> Gowns &amp; Frocks</a>
-            <a href="kids.html#girls-choli-chudidhar"><i class="fa-solid fa-person-dress"></i> Choli &amp; Chudidhars</a>
-            <a href="kids.html#girls-pavadai-sets"><i class="fa-solid fa-person-dress"></i> Pavadai Sets</a>
-            <a href="kids.html#girls-nightwear"><i class="fa-solid fa-moon"></i> Nightwear</a>
+            <a href="kids.html#girls-gowns-frocks">Gowns &amp; Frocks</a>
+            <a href="kids.html#girls-choli-chudidhar">Choli &amp; Chudidhars</a>
+            <a href="kids.html#girls-pavadai-sets">Pavadai Sets</a>
+            <a href="kids.html#girls-nightwear">Nightwear</a>
           </div>
         </div>
-        <a href="index.html#kids">Little Royals</a>
+        <a href="kids.html#little-royals">Little Royals</a>
         <a href="about.html">About</a>
-        <a href="index.html#gallery">Gallery</a>
       </nav>
 
       <div class="nav-actions">
@@ -110,7 +114,6 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="close" id="menuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
-    <a href="index.html#collections">Collections</a>
     <div class="mm-group">
       <a href="men.html" class="mm-title">Men</a>
       <div class="mm-sub">
@@ -139,6 +142,7 @@
     <div class="mm-group">
       <a href="kids.html" class="mm-title">Kids</a>
       <div class="mm-sub">
+        <a href="kids.html#little-royals">Little Royals</a>
         <a href="kids.html#boys-shirts-pants">Boys - Shirts &amp; Pants</a>
         <a href="kids.html#boys-suits">Boys - Suits</a>
         <a href="kids.html#boys-shirt-dhoti">Boys - Shirt &amp; Dhoti</a>
@@ -150,9 +154,8 @@
         <a href="kids.html#girls-nightwear">Girls - Nightwear</a>
       </div>
     </div>
-    <a href="index.html#kids">Little Royals</a>
+    <a href="kids.html#little-royals">Little Royals</a>
     <a href="about.html">About</a>
-    <a href="index.html#gallery">Gallery</a>
   </div>
 
   <!-- ===================== PAGE HERO ===================== -->
@@ -163,6 +166,7 @@
       <h1 class="reveal d1">Kids <em>Collection</em></h1>
       <p class="lede reveal d2">Little traditions, big celebrations — festive and everyday wear for boys and girls, crafted with comfort, elegance, and charm.</p>
       <div class="cat-chips reveal d3">
+        <a href="#little-royals">Little Royals</a>
         <a href="#boys-shirts-pants">Shirts &amp; Pants</a>
         <a href="#boys-suits">Suits</a>
         <a href="#boys-shirt-dhoti">Shirt &amp; Dhoti</a>
@@ -173,6 +177,119 @@
         <a href="#girls-pavadai-sets">Pavadai Sets</a>
         <a href="#girls-nightwear">Girls Nightwear</a>
       </div>
+    </div>
+  </section>
+
+  <hr class="silk-divider" />
+
+  <!-- ===================== LITTLE ROYALS ===================== -->
+  <section id="little-royals" class="kids">
+    <div class="petals" id="petals" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow center">Taqua Little Royals</span>
+        <h2 class="section-title">Little Traditions, <span class="accent">Big Celebrations</span></h2>
+        <p class="section-sub" style="margin-inline:auto">Beautiful ethnic wear for boys and girls, crafted with comfort, elegance, and festive charm.</p>
+      </div>
+
+      <div class="kids-grid">
+        <article class="kid-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-15.png" alt="Girls Pattu Pavadai draped on a child display mannequin" data-label="Girls Pattu Pavadai" loading="lazy"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Girls</span>
+            <h3>Pattu Pavadai</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Pattu Pavadai"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-16.png" alt="Girls lehenga draped on a child display mannequin" data-label="Girls Lehenga" loading="lazy" style="object-position:top"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Girls</span>
+            <h3>Girls Lehenga</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Girls Lehenga"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-17.png" alt="Girls silk dress draped on a child display mannequin" data-label="Girls Silk Dresses" loading="lazy"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Girls</span>
+            <h3>Silk Dresses</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Silk Dresses"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d3" data-tilt>
+          <div class="media"><img src="images/photos/drape-18.png" alt="Boys kurta set draped on a child display mannequin" data-label="Boys Kurta Sets" loading="lazy"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Boys</span>
+            <h3>Kurta Sets</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Kurta Sets"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal" data-tilt>
+          <div class="media"><img src="images/photos/drape-19.png" alt="Boys dhoti set draped on a child display mannequin" data-label="Boys Dhoti Sets" loading="lazy" style="object-position:top"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Boys</span>
+            <h3>Dhoti Sets</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Dhoti Sets"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d1" data-tilt>
+          <div class="media"><img src="images/photos/drape-20.png" alt="Boys sherwani draped on a child display mannequin" data-label="Boys Sherwani" loading="lazy" style="object-position:top"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">For Boys</span>
+            <h3>Sherwani</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Sherwani"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d2" data-tilt>
+          <div class="media"><img src="images/photos/drape-27.png" alt="Kids festive wear kurta set with marigold styling" data-label="Festive Wear" loading="lazy"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">Celebration</span>
+            <h3>Festive Wear</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Festive Wear"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="kid-card reveal d3" data-tilt>
+          <div class="media"><img src="images/photos/drape-28.png" alt="Kids wedding wear sherwani with turban and mojari" data-label="Wedding Wear" loading="lazy"  onerror="this.onerror=null;this.src='images/products/placeholder.svg'" /></div>
+          <span class="frame"></span>
+          <div class="kid-info">
+            <span class="kicker">Celebration</span>
+            <h3>Wedding Wear</h3>
+            <div class="kid-actions">
+              <button class="chip" data-toast="Quick view — Wedding Wear"><i class="fa-regular fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
     </div>
   </section>
 
@@ -445,7 +562,7 @@
           <div class="socials">
             <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
@@ -518,6 +635,29 @@
           });
         }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
         reveals.forEach(function (el) { io.observe(el); });
+      }
+
+      /* Floating petals for the Little Royals band. This lives in main.js on
+         the home page, which this page does not load — without it the .petals
+         box would just sit empty. Same counts and timings as the original. */
+      var petalBox = document.getElementById("petals");
+      var stillMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (petalBox && !stillMotion) {
+        for (var i = 0; i < 20; i++) {
+          var p = document.createElement("span");
+          var spark = i % 4 === 0;
+          p.className = "petal" + (spark ? " spark" : "");
+          p.style.left = Math.random() * 100 + "%";
+          var dur = (spark ? 5 : 8) + Math.random() * 6;
+          p.style.animationDuration = dur + "s";
+          p.style.animationDelay = -(Math.random() * dur) + "s";
+          if (!spark) {
+            var sz = 10 + Math.random() * 12;
+            p.style.width = sz + "px";
+            p.style.height = sz + "px";
+          }
+          petalBox.appendChild(p);
+        }
       }
     })();
   </script>
