@@ -1971,3 +1971,24 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
 @media (max-width: 640px) {
   .cat-section .wa-enquire { font-size: 0.64rem; letter-spacing: 0.5px; gap: 6px; margin-top: 9px; }
 }
+
+/* ============================================================
+   FOOTER CONTACT LINES — ICON COLUMN
+   The icons had width:18px but, as flex items, they still had the
+   default flex-shrink:1. On the long address line the row is under
+   shrink pressure, so that narrow pin collapsed toward its glyph
+   width and pulled its text left — while the wider envelope and
+   phone glyphs held, starting their text further right. Result:
+   three different left edges.
+
+   flex:0 0 18px pins the column so every line starts at the same x,
+   and text-align centres each glyph inside it whatever its natural
+   width. flex-start puts the pin on the FIRST line of the wrapped
+   address instead of floating between its two lines.
+   ============================================================ */
+.contact-line { align-items: flex-start; }
+.contact-line i {
+  flex: 0 0 18px;
+  text-align: center;
+  line-height: 1.55;
+}
