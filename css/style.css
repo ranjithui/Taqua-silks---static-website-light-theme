@@ -1741,6 +1741,32 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
   .card-stack .stack-layer { top: calc(76px + var(--i, 0) * 12px); }
   .card-stack .stack-inner { padding: 12px; gap: 12px; }
 }
+
+/* ============================================================
+   HERO ROTATOR
+   Copy, photo and both floating tags swap together on one clock.
+   Crossfade is opacity ONLY: the photo carries an endless
+   heroFloat and the badges a floaty, both of which animate
+   transform — adding a transform transition here would fight
+   those keyframes and make the swap jump. Opacity is untouched
+   by either, so the two compose cleanly.
+   ============================================================ */
+#home .hero-copy,
+#home .hero-frame img,
+#home .hero-badge { transition: opacity 0.45s var(--ease); }
+#home.is-swapping .hero-copy,
+#home.is-swapping .hero-frame img,
+#home.is-swapping .hero-badge { opacity: 0; }
+
+.hero-dots { display: flex; gap: 10px; margin-top: 30px; }
+.hero-dots button {
+  width: 30px; height: 4px; border-radius: 4px; padding: 0;
+  background: rgba(138, 106, 32, 0.28);
+  transition: background 0.35s var(--ease), width 0.35s var(--ease);
+}
+.hero-dots button[aria-selected="true"] { width: 52px; background: var(--gold-ink); }
+.hero-dots button:hover { background: rgba(138, 106, 32, 0.6); }
+@media (max-width: 900px) { .hero-dots { justify-content: center; } }
 /* A mouse wheel cannot scroll a horizontal rail, so the arrows are the
    desktop affordance, not decoration. Hide them only where touch makes
    swiping the obvious gesture. */

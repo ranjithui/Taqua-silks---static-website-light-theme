@@ -199,6 +199,157 @@
     reviewsMarquee.classList.add("is-looping");
   }
 
+  /* -------- Hero rotator --------
+     PLACEHOLDER COPY AND IMAGES — swap the strings and paths below for the
+     real ones. Every slide drives the headline block, the photo and BOTH
+     floating tags, so all three change together on the same beat. */
+  const HERO_SLIDES = [
+    {
+      eyebrow: "Luxury Silk Collection",
+      title: 'Timeless Elegance<br /><em>Woven</em> Into Every Saree',
+      sub: "Discover handcrafted silk sarees that celebrate tradition, beauty, and sophistication — draped in the quiet glow of ivory and zari gold.",
+      cta: "Explore Collection", href: "#collections",
+      img: "images/photos/hero.png",
+      alt: "Model draped in an orange checked silk saree with zari border",
+      top: { icon: "fa-gem", title: "Zari Woven", sub: "24k Gold Thread" },
+      bottom: { icon: "fa-award", title: "Pure Silk Mark", sub: "Certified Handloom" },
+    },
+    {
+      eyebrow: "The Gentlemen's Edit",
+      title: 'Tailored Comfort<br /><em>Refined</em> For Every Day',
+      sub: "Crisp formal shirts, easy trousers and traditional dhotis — cut clean, finished well, and made to be worn again and again.",
+      cta: "Explore Men's Collection", href: "men.html",
+      img: "images/products/men-01.png",
+      alt: "Men's classic oxford shirt from the Taqua menswear range",
+      top: { icon: "fa-scissors", title: "Tailored Fit", sub: "Clean Finish" },
+      bottom: { icon: "fa-shirt", title: "Pure Cotton", sub: "Breathable Weave" },
+    },
+    {
+      eyebrow: "The Grace Edit",
+      title: 'Everyday Grace<br /><em>Draped</em> In Fine Silk',
+      sub: "Sarees, salwars, kurtis and lehengas — colour, fall and finish chosen with the same care we give a bridal drape.",
+      cta: "Explore Women's Collection", href: "women.html",
+      img: "images/products/women-01.png",
+      alt: "Cotton printed salwar set from the Taqua women's range",
+      top: { icon: "fa-gem", title: "Handpicked", sub: "Synthetic To Silk" },
+      bottom: { icon: "fa-person-dress", title: "Festive Ready", sub: "Rich Zari Borders" },
+    },
+    {
+      eyebrow: "Taqua Little Royals",
+      title: 'Little Traditions<br /><em>Big</em> Celebrations',
+      sub: "Festive and everyday wear for boys and girls — soft on young skin, easy to move in, and made for photographs.",
+      cta: "Explore Kids Collection", href: "kids.html",
+      img: "images/products/kids-04.png",
+      alt: "Boys silk shirt and dhoti set from the Taqua kids range",
+      top: { icon: "fa-star", title: "Skin-Friendly", sub: "Soft Cotton Blends" },
+      bottom: { icon: "fa-award", title: "Festive Fits", sub: "Sized For Little Ones" },
+    },
+    {
+      eyebrow: "Aadi Offer Season",
+      title: 'Aadi <em>Thallupadi</em><br />Is Here',
+      sub: "Season-special pricing across silk, cotton and daily-wear drapes — for the month of Aadi only, while stocks last.",
+      cta: "See Aadi Offers", href: "#collections",
+      img: "images/products/women-17.png",
+      alt: "Stonework saree featured in the Aadi season offer",
+      top: { icon: "fa-tag", title: "Aadi Special", sub: "Season Pricing" },
+      bottom: { icon: "fa-gift", title: "This Month Only", sub: "While Stocks Last" },
+    },
+  ];
+
+  const hero = document.getElementById("home");
+  if (hero && HERO_SLIDES.length > 1) {
+    // Local copy: the shared prefersReduced is declared further down the file,
+    // and schedule() runs immediately — reading it here would hit the temporal
+    // dead zone of its const and throw before the page finished wiring up.
+    const heroStill = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const q = (sel) => hero.querySelector(sel);
+    const el = {
+      eyebrow: q("[data-hero-eyebrow]"), title: q("[data-hero-title]"), sub: q("[data-hero-sub]"),
+      cta: q("[data-hero-cta]"), img: q("[data-hero-img]"), dots: q("[data-hero-dots]"),
+      tIcon: q("[data-hero-badge-t] [data-hero-icon]"), tTitle: q("[data-hero-t-title]"), tSub: q("[data-hero-t-sub]"),
+      bIcon: q("[data-hero-badge-b] [data-hero-icon]"), bTitle: q("[data-hero-b-title]"), bSub: q("[data-hero-b-sub]"),
+    };
+
+    // Warm the cache so a slide never fades in to a half-loaded photo.
+    HERO_SLIDES.forEach((s) => { const i = new Image(); i.src = s.img; });
+
+    let at = 0, timer = null, held = false;
+
+    function paint(i) {
+      const s = HERO_SLIDES[i];
+      el.eyebrow.textContent = s.eyebrow;
+      el.title.innerHTML = s.title;
+      el.sub.textContent = s.sub;
+      el.cta.innerHTML = s.cta + ' <i class="fa-solid fa-arrow-right"></i>';
+      el.cta.setAttribute("href", s.href);
+      el.img.setAttribute("src", s.img);
+      el.img.setAttribute("alt", s.alt);
+      el.tIcon.className = "fa-solid " + s.top.icon;
+      el.tIcon.setAttribute("data-hero-icon", "");
+      el.tTitle.textContent = s.top.title;
+      el.tSub.textContent = s.top.sub;
+      el.bIcon.className = "fa-solid " + s.bottom.icon;
+      el.bIcon.setAttribute("data-hero-icon", "");
+      el.bTitle.textContent = s.bottom.title;
+      el.bSub.textContent = s.bottom.sub;
+      Array.prototype.forEach.call(el.dots.children, function (d, n) {
+        d.setAttribute("aria-selected", n === i ? "true" : "false");
+      });
+      at = i;
+    }
+
+    const DWELL = 5000; // every slide is held this long, once it has landed
+    const FADE = 450;   // must match the opacity transition in style.css
+
+    /* Chained timeout rather than setInterval. On a fixed interval the clock
+       runs during the crossfade, so slide one is seen for the full 5s while
+       every later slide loses the fade to it. Starting the count only after
+       the new slide has landed gives all five an identical 5s on screen. */
+    function schedule() {
+      clearTimeout(timer);
+      if (heroStill) return; // no unattended motion
+      timer = setTimeout(function () {
+        if (held) { schedule(); return; }
+        go((at + 1) % HERO_SLIDES.length);
+      }, DWELL);
+    }
+
+    function go(i, instant) {
+      clearTimeout(timer);
+      if (i === at) { schedule(); return; }
+      if (instant || heroStill) { paint(i); schedule(); return; }
+      hero.classList.add("is-swapping");
+      setTimeout(function () {
+        paint(i);
+        hero.classList.remove("is-swapping");
+        schedule();
+      }, FADE);
+    }
+
+    HERO_SLIDES.forEach(function (s, i) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", s.eyebrow);
+      dot.setAttribute("aria-selected", i === 0 ? "true" : "false");
+      dot.addEventListener("click", function () { go(i); });
+      el.dots.appendChild(dot);
+    });
+    // Hold while it is being read or the dots are being used.
+    ["pointerenter", "focusin"].forEach(function (ev) {
+      hero.addEventListener(ev, function () { held = true; }, { passive: true });
+    });
+    ["pointerleave", "focusout"].forEach(function (ev) {
+      hero.addEventListener(ev, function () { held = false; }, { passive: true });
+    });
+    // A background tab still fires timers; without this you return to a hero
+    // that has silently cycled several times.
+    document.addEventListener("visibilitychange", function () {
+      held = document.hidden;
+    });
+    schedule();
+  }
+
   /* -------- Horizontal rails --------
      Scroll by one card plus its gap, measured from the live layout so it
      stays correct across the clamp() card widths and breakpoints. */

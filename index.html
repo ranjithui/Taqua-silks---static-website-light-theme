@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=20260728l" />
+  <link rel="stylesheet" href="css/style.css?v=20260728m" />
 </head>
 <body>
 
@@ -159,13 +159,14 @@
   <section class="hero silk-weave" id="home">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow reveal">Luxury Silk Collection</span>
-        <h1 class="hero-title reveal d1">Timeless Elegance<br /><em>Woven</em> Into Every Saree</h1>
-        <p class="hero-sub reveal d2">Discover handcrafted silk sarees that celebrate tradition, beauty, and sophistication — draped in the quiet glow of ivory and zari gold.</p>
+        <span class="eyebrow reveal" data-hero-eyebrow>Luxury Silk Collection</span>
+        <h1 class="hero-title reveal d1" data-hero-title>Timeless Elegance<br /><em>Woven</em> Into Every Saree</h1>
+        <p class="hero-sub reveal d2" data-hero-sub>Discover handcrafted silk sarees that celebrate tradition, beauty, and sophistication — draped in the quiet glow of ivory and zari gold.</p>
         <div class="hero-cta reveal d3">
-          <a href="#collections" class="btn btn-primary">Explore Collection <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#collections" class="btn btn-primary" data-hero-cta>Explore Collection <i class="fa-solid fa-arrow-right"></i></a>
           <a href="#contact" class="btn btn-ghost">Book Store Visit</a>
         </div>
+        <div class="hero-dots reveal d3" data-hero-dots role="tablist" aria-label="Featured collections"></div>
         <div class="hero-stats reveal d4">
           <div class="stat"><b>25+</b><span>Years of Heritage</span></div>
           <div class="stat"><b>500+</b><span>Handloom Weaves</span></div>
@@ -175,15 +176,15 @@
 
       <div class="hero-visual reveal d2">
         <div class="hero-frame" data-tilt>
-          <img src="images/photos/hero.webp" alt="Model draped in an orange checked silk saree with zari border" data-label="Signature Drape" loading="eager" />
+          <img src="images/photos/hero.png" alt="Model draped in an orange checked silk saree with zari border" data-label="Signature Drape" loading="eager" data-hero-img />
         </div>
-        <div class="hero-badge glass">
-          <span class="medal"><i class="fa-solid fa-award"></i></span>
-          <div><b>Pure Silk Mark</b><span>Certified Handloom</span></div>
+        <div class="hero-badge glass" data-hero-badge-b>
+          <span class="medal"><i class="fa-solid fa-award" data-hero-icon></i></span>
+          <div><b data-hero-b-title>Pure Silk Mark</b><span data-hero-b-sub>Certified Handloom</span></div>
         </div>
-        <div class="hero-badge top glass">
-          <span class="medal"><i class="fa-solid fa-gem"></i></span>
-          <div><b>Zari Woven</b><span>24k Gold Thread</span></div>
+        <div class="hero-badge top glass" data-hero-badge-t>
+          <span class="medal"><i class="fa-solid fa-gem" data-hero-icon></i></span>
+          <div><b data-hero-t-title>Zari Woven</b><span data-hero-t-sub>24k Gold Thread</span></div>
         </div>
       </div>
     </div>
