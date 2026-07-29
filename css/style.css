@@ -1992,3 +1992,25 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
   text-align: center;
   line-height: 1.55;
 }
+
+/* ============================================================
+   FOOTER — GOOGLE MAPS CHIP
+   Sits under the address in Visit Our Atelier. Indented to the
+   same left edge as the contact text (18px icon column + 12px
+   gap) so it lines up with the address above rather than the
+   icons beside it.
+   ============================================================ */
+.map-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 2px 0 16px 30px;
+  padding: 7px 14px; border-radius: 30px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.6px;
+  color: var(--gold-ink);
+  border: 1px solid rgba(138, 106, 32, 0.45);
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.map-chip i { font-size: 0.85rem; }
+.map-chip:hover {
+  background: var(--gold-ink); color: #fff; border-color: var(--gold-ink);
+}

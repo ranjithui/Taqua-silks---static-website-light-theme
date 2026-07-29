@@ -316,7 +316,7 @@
       at = i;
     }
 
-    const DWELL = 5000; // every slide is held this long, once it has landed
+    const DWELL = 6000; // every slide is held this long, once it has landed
     const FADE = 450;   // must match the opacity transition in style.css
 
     /* Chained timeout rather than setInterval. On a fixed interval the clock
