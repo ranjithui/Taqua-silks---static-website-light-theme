@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+Tamil:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=20260728w" />
+  <link rel="stylesheet" href="css/style.css?v=20260728x" />
 
   <style>
     .page-hero {
@@ -146,15 +146,17 @@
       <a href="kids.html" class="mm-title">Kids</a>
       <div class="mm-sub">
         <a href="kids.html#little-royals">Little Royals</a>
-        <a href="kids.html#boys-shirts-pants">Boys - Shirts &amp; Pants</a>
-        <a href="kids.html#boys-suits">Boys - Suits</a>
-        <a href="kids.html#boys-shirt-dhoti">Boys - Shirt &amp; Dhoti</a>
-        <a href="kids.html#boys-tshirts-tracks">Boys - T-Shirts &amp; Tracks</a>
-        <a href="kids.html#boys-nightwear">Boys - Nightwear</a>
-        <a href="kids.html#girls-gowns-frocks">Girls - Gowns &amp; Frocks</a>
-        <a href="kids.html#girls-choli-chudidhar">Girls - Choli &amp; Chudidhars</a>
-        <a href="kids.html#girls-pavadai-sets">Girls - Pavadai Sets</a>
-        <a href="kids.html#girls-nightwear">Girls - Nightwear</a>
+        <span class="mm-label">Boys</span>
+        <a href="kids.html#boys-shirts-pants">Shirts &amp; Pants</a>
+        <a href="kids.html#boys-suits">Suits</a>
+        <a href="kids.html#boys-shirt-dhoti">Shirt &amp; Dhoti</a>
+        <a href="kids.html#boys-tshirts-tracks">T-Shirts &amp; Tracks</a>
+        <a href="kids.html#boys-nightwear">Nightwear</a>
+        <span class="mm-label">Girls</span>
+        <a href="kids.html#girls-gowns-frocks">Gowns &amp; Frocks</a>
+        <a href="kids.html#girls-choli-chudidhar">Choli &amp; Chudidhars</a>
+        <a href="kids.html#girls-pavadai-sets">Pavadai Sets</a>
+        <a href="kids.html#girls-nightwear">Nightwear</a>
       </div>
     </div>
     <a href="about.html">About</a>
@@ -477,7 +479,20 @@
       var menuClose = document.getElementById("menuClose");
       if (hamburger && mobileMenu) hamburger.addEventListener("click", function () { mobileMenu.classList.add("open"); });
       if (menuClose && mobileMenu) menuClose.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
-      if (mobileMenu) mobileMenu.querySelectorAll("a").forEach(function (a) {
+      // Group titles (Women/Men/Kids) act as accordion toggles. Without this
+      // the .mm-sub stays display:none forever and tapping the title just
+      // navigates away — the sub-menus were unreachable on mobile.
+      if (mobileMenu) mobileMenu.querySelectorAll(".mm-title").forEach(function (t) {
+        t.addEventListener("click", function (e) {
+          e.preventDefault();
+          var group = t.closest(".mm-group");
+          var wasOpen = group.classList.contains("open");
+          mobileMenu.querySelectorAll(".mm-group.open").forEach(function (g) { g.classList.remove("open"); });
+          group.classList.toggle("open", !wasOpen);
+        });
+      });
+      // Every other link still closes the menu on navigation.
+      if (mobileMenu) mobileMenu.querySelectorAll("a:not(.mm-title)").forEach(function (a) {
         a.addEventListener("click", function () { mobileMenu.classList.remove("open"); });
       });
 

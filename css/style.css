@@ -2014,3 +2014,27 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
 .map-chip:hover {
   background: var(--gold-ink); color: #fff; border-color: var(--gold-ink);
 }
+
+/* ============================================================
+   MOBILE MENU — KIDS GROUP LABELS
+   The Kids items used to read "Boys - Shirts & Pants" etc. Those
+   prefixes made the labels far longer than the Men/Women ones, so
+   the wrapped rows came out ragged — one item per line instead of
+   the neat two-and-three-up flow. Now the prefix is a heading and
+   the links are short, matching the desktop dropdown.
+
+   flex-basis:100% forces the label onto its own row and pushes the
+   links after it onto the next, which is what actually creates the
+   two groups inside a single wrapping flex container.
+   ============================================================ */
+.mm-sub .mm-label {
+  flex: 0 0 100%;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+.mm-sub .mm-label:first-child { margin-top: 0; }
