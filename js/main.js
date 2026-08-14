@@ -94,19 +94,25 @@
     if (img.complete && img.naturalWidth === 0) handle();
   }
 
+  /* -------- Language -------- */
+  // i18n.js loads first and defines T(); this fallback keeps main.js working
+  // on its own (English) if that file is ever removed or fails to load.
+  const T = window.T || function (key, fallback) { return fallback; };
+
   /* -------- Product data (Lehenga · Grand Wedding · Draping Sarees) -------- */
   // `img` is the drape-XX slot each card pulls from — see images/photos/_ADD-YOUR-MANNEQUIN-IMAGES.md
+  // `nameKey` / `catKey` point at js/lang/*.js; the English here stays the fallback.
   const arrivals = [
-    { name: "Wedding Collection", cat: "Wedding Silk", price: "₹64,000", was: "₹78,000", rating: 5, badge: "New", tag: "new", label: "Wedding Collection", img: 7 },
-    { name: "Festive Collection", cat: "Festive Silk", price: "₹38,500", was: "", rating: 5, badge: "New", tag: "new", label: "Festive Collection", img: 8 },
-    { name: "Everyday Collection", cat: "Everyday Silk", price: "₹12,900", was: "₹16,000", rating: 5, badge: "-19%", tag: "off", label: "Everyday Collection", img: 9 },
-    { name: "Traditional Collection", cat: "South Indian", price: "₹42,500", was: "₹52,000", rating: 5, badge: "-18%", tag: "off", label: "Traditional Collection", img: 10 },
+    { name: "Wedding Collection", nameKey: "js.wedding_collection", cat: "Wedding Silk", catKey: "js.wedding_silk", price: "₹64,000", was: "₹78,000", rating: 5, badge: "New", tag: "new", label: "Wedding Collection", img: 7 },
+    { name: "Festive Collection", nameKey: "js.festive_collection", cat: "Festive Silk", catKey: "js.festive_silk", price: "₹38,500", was: "", rating: 5, badge: "New", tag: "new", label: "Festive Collection", img: 8 },
+    { name: "Everyday Collection", nameKey: "js.everyday_collection", cat: "Everyday Silk", catKey: "js.everyday_silk", price: "₹12,900", was: "₹16,000", rating: 5, badge: "-19%", tag: "off", label: "Everyday Collection", img: 9 },
+    { name: "Traditional Collection", nameKey: "js.traditional_collection", cat: "South Indian", catKey: "js.south_indian", price: "₹42,500", was: "₹52,000", rating: 5, badge: "-18%", tag: "off", label: "Traditional Collection", img: 10 },
   ];
   const bestsellers = [
-    { name: "Pure Silk", cat: "Signature Pick", price: "₹48,000", was: "₹58,000", rating: 5, badge: "Iconic", tag: "off", label: "Pure Silk", img: 11 },
-    { name: "Handloom", cat: "Signature Pick", price: "₹36,900", was: "₹43,000", rating: 5, badge: "Iconic", tag: "off", label: "Handloom", img: 12 },
-    { name: "Premium Collection", cat: "Signature Pick", price: "₹79,000", was: "₹92,000", rating: 5, badge: "Iconic", tag: "off", label: "Premium Collection", img: 13 },
-    { name: "New Arrivals", cat: "Signature Pick", price: "₹41,500", was: "₹49,000", rating: 5, badge: "Iconic", tag: "off", label: "New Arrivals", img: 14 },
+    { name: "Pure Silk", nameKey: "js.pure_silk", cat: "Signature Pick", catKey: "js.signature_pick", price: "₹48,000", was: "₹58,000", rating: 5, badge: "Iconic", tag: "off", label: "Pure Silk", img: 11 },
+    { name: "Handloom", nameKey: "js.handloom", cat: "Signature Pick", catKey: "js.signature_pick", price: "₹36,900", was: "₹43,000", rating: 5, badge: "Iconic", tag: "off", label: "Handloom", img: 12 },
+    { name: "Premium Collection", nameKey: "js.premium_collection", cat: "Signature Pick", catKey: "js.signature_pick", price: "₹79,000", was: "₹92,000", rating: 5, badge: "Iconic", tag: "off", label: "Premium Collection", img: 13 },
+    { name: "New Arrivals", nameKey: "js.new_arrivals", cat: "Signature Pick", catKey: "js.signature_pick", price: "₹41,500", was: "₹49,000", rating: 5, badge: "Iconic", tag: "off", label: "New Arrivals", img: 14 },
   ];
 
   /* ============================================================
@@ -116,7 +122,7 @@
      exists, the matched premium stock photo (2nd column) shows instead —
      so nothing ever looks broken while you gather images.
      ============================================================ */
-  const drapePath = (n) => `images/photos/drape-${String(n).padStart(2, "0")}.png`;
+  const drapePath = (n) => `images/photos/drape-${String(n).padStart(2, "0")}.webp`;
 
   // Gallery pool — the adult saree slots (drape-01 … drape-14). Until a file
   // exists, the woven-silk placeholder shows automatically via attachFallback().
@@ -127,27 +133,33 @@
   // +91 88708 44411 — same number as the footer tel: link. Change in ONE place:
   // here for the generated cards, and in the wa.me hrefs on the listing pages.
   const WA_NUMBER = "918870844411";
+  // The enquiry is written in whichever language the visitor is reading, so the
+  // shop receives it in the language they will want to reply in.
+  const WA_TEMPLATE =
+    'Hello Taqua Silks, I am interested in "{name}"{cat} from your website.' +
+    " Please share the catalogue, available colours and price.";
   function waLink(name, cat) {
-    const msg =
-      `Hello Taqua Silks, I am interested in "${name}"` +
-      (cat ? ` (${cat})` : "") +
-      " from your website. Please share the catalogue, available colours and price.";
+    const msg = T("js.wa_message", WA_TEMPLATE)
+      .replace("{name}", name)
+      .replace("{cat}", cat ? ` (${cat})` : "");
     // encodeURIComponent, not encodeURI: the message contains & and ? which
     // would otherwise be read as query separators and truncate the text.
     return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
   }
 
   function productCard(p) {
+    const name = T(p.nameKey, p.name);
+    const cat = T(p.catKey, p.cat);
     const el = document.createElement("article");
     el.className = "product-card reveal";
     el.innerHTML = `
       <div class="product-media">
-        <img src="${drapePath(p.img)}" alt="${p.name}" data-label="${p.label}" loading="lazy" />
+        <img src="${drapePath(p.img)}" alt="${name}" data-label="${name}" loading="lazy" />
       </div>
       <div class="product-body">
-        <span class="cat">${p.cat}</span>
-        <h4>${p.name}</h4>
-        <a class="wa-enquire" href="${waLink(p.name, p.cat)}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Enquire on WhatsApp</a>
+        <span class="cat">${cat}</span>
+        <h4>${name}</h4>
+        <a class="wa-enquire" href="${waLink(name, cat)}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> ${T("enquire_on_whatsapp_4050", "Enquire on WhatsApp")}</a>
       </div>`;
     el.querySelectorAll("img").forEach(attachFallback);
     return el;
@@ -157,13 +169,14 @@
   /* The Signature Picks section was folded into Latest Collection, so both
      sets render into the one grid. Data arrays stay separate for editing. */
   const arrivalsGrid = document.getElementById("arrivalsGrid");
-  if (arrivalsGrid) {
+  function renderArrivals(isRerender) {
     /* Sticky-stack: the cards are dealt into layers that pin one after another
        and pile up as you scroll. --i is the layer's depth, which CSS turns into
        its resting offset so each pinned layer's top edge stays visible under
        the ones that follow. Change PER_LAYER to re-deal the stack. */
     const PER_LAYER = 4;
     const all = arrivals.concat(bestsellers);
+    arrivalsGrid.innerHTML = "";
     for (let i = 0; i < all.length; i += PER_LAYER) {
       const layer = document.createElement("div");
       layer.className = "stack-layer";
@@ -174,6 +187,18 @@
       layer.appendChild(inner);
       arrivalsGrid.appendChild(layer);
     }
+    // On the first pass the IntersectionObserver set up further down picks
+    // these up. A re-render happens long after that sweep, so those cards
+    // would sit at opacity 0 forever — reveal them immediately instead.
+    if (isRerender) {
+      arrivalsGrid.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+    }
+  }
+  if (arrivalsGrid) {
+    renderArrivals(false);
+    // Card names, categories and the WhatsApp message body are all built from
+    // T(), so the whole grid is rebuilt rather than patched.
+    document.addEventListener("taqua:lang", function () { renderArrivals(true); });
   }
 
   /* -------- Gallery masonry (section removed from the page; kept guarded) -------- */
@@ -223,54 +248,56 @@
       // the heading, so if they differ the page's crawled H1 and its visible
       // H1 diverge five seconds after load — exactly what the SEO brief warns
       // against with "one H1 per page".
-      eyebrow: "Silk Sarees · Ethnic Wear · Tiruppur",
-      title: "Tiruppur's Family Store for Silk Sarees, <em>Ethnic Wear</em> &amp; Festive Fashion",
-      sub: "From bridal Kanchipuram silk sarees to men's formal shirts, kids' pattu pavadai sets, and everyday cotton wear — Taqua Silks in Tiruppur has dressed families across Tamil Nadu and Kerala for 25 years.",
-      cta: "Explore Collection", href: "#collections",
-      img: "images/photos/hero.png",
-      alt: "Model draped in an orange checked silk saree with zari border",
-      top: { icon: "fa-gem", title: "Zari Woven", sub: "24k Gold Thread" },
-      bottom: { icon: "fa-award", title: "Pure Silk Mark", sub: "Certified Handloom" },
+      // Slide 1's keys are the ones the markup already carries, so the crawled
+      // H1 and the repainted H1 stay the same string in every language.
+      eyebrow: "Silk Sarees · Ethnic Wear · Tiruppur", eyebrowKey: "silk_sarees_ethnic_wear_tiruppur_d31b",
+      title: "Tiruppur's Family Store for Silk Sarees, <em>Ethnic Wear</em> &amp; Festive Fashion", titleKey: "tiruppur_s_trustable_family_store_for_fed3",
+      sub: "From bridal Kanchipuram silk sarees to men's formal shirts, kids' pattu pavadai sets, and everyday cotton wear — Taqua Silks in Tiruppur has dressed families across Tamil Nadu and Kerala for 25 years.", subKey: "from_bridal_kanchipuram_silk_sarees_to_21e4",
+      cta: "Explore Collection", ctaKey: "explore_collection_19f2", href: "#collections",
+      img: "images/photos/hero.webp",
+      alt: "Model draped in an orange checked silk saree with zari border", altKey: "model_draped_in_an_orange_checked_2ef5",
+      top: { icon: "fa-gem", title: "Zari Woven", titleKey: "zari_woven_c739", sub: "24k Gold Thread", subKey: "24k_gold_thread_e228" },
+      bottom: { icon: "fa-award", title: "Pure Silk Mark", titleKey: "pure_silk_mark_8b92", sub: "Certified Handloom", subKey: "certified_handloom_7662" },
     },
     {
-      eyebrow: "The Gentlemen's Edit",
-      title: 'Tailored Comfort<br /><em>Refined</em> For Every Day',
-      sub: "Crisp formal shirts, easy trousers and traditional dhotis — cut clean, finished well, and made to be worn again and again.",
-      cta: "Explore Men's Collection", href: "men.html",
-      img: "images/products/men-01.png",
-      alt: "Men's classic oxford shirt from the Taqua menswear range",
-      top: { icon: "fa-scissors", title: "Tailored Fit", sub: "Clean Finish" },
-      bottom: { icon: "fa-shirt", title: "Pure Cotton", sub: "Breathable Weave" },
+      eyebrow: "The Gentlemen's Edit", eyebrowKey: "js.hero2_eyebrow",
+      title: 'Tailored Comfort<br /><em>Refined</em> For Every Day', titleKey: "js.hero2_title",
+      sub: "Crisp formal shirts, easy trousers and traditional dhotis — cut clean, finished well, and made to be worn again and again.", subKey: "js.hero2_sub",
+      cta: "Explore Men's Collection", ctaKey: "js.hero2_cta", href: "men.html",
+      img: "images/products/men-01.webp",
+      alt: "Men's classic oxford shirt from the Taqua menswear range", altKey: "js.hero2_alt",
+      top: { icon: "fa-scissors", title: "Tailored Fit", titleKey: "js.hero2_ttitle", sub: "Clean Finish", subKey: "js.hero2_tsub" },
+      bottom: { icon: "fa-shirt", title: "Pure Cotton", titleKey: "js.hero2_btitle", sub: "Breathable Weave", subKey: "js.hero2_bsub" },
     },
     {
-      eyebrow: "The Grace Edit",
-      title: 'Everyday Grace<br /><em>Draped</em> In Fine Silk',
-      sub: "Sarees, salwars, kurtis and lehengas — colour, fall and finish chosen with the same care we give a bridal drape.",
-      cta: "Explore Women's Collection", href: "women.html",
-      img: "images/products/women-01.png",
-      alt: "Cotton printed salwar set from the Taqua women's range",
-      top: { icon: "fa-gem", title: "Handpicked", sub: "Synthetic To Silk" },
-      bottom: { icon: "fa-person-dress", title: "Festive Ready", sub: "Rich Zari Borders" },
+      eyebrow: "The Grace Edit", eyebrowKey: "js.hero3_eyebrow",
+      title: 'Everyday Grace<br /><em>Draped</em> In Fine Silk', titleKey: "js.hero3_title",
+      sub: "Sarees, salwars, kurtis and lehengas — colour, fall and finish chosen with the same care we give a bridal drape.", subKey: "js.hero3_sub",
+      cta: "Explore Women's Collection", ctaKey: "js.hero3_cta", href: "women.html",
+      img: "images/products/women-01.webp",
+      alt: "Cotton printed salwar set from the Taqua women's range", altKey: "js.hero3_alt",
+      top: { icon: "fa-gem", title: "Handpicked", titleKey: "js.hero3_ttitle", sub: "Synthetic To Silk", subKey: "js.hero3_tsub" },
+      bottom: { icon: "fa-person-dress", title: "Festive Ready", titleKey: "js.hero3_btitle", sub: "Rich Zari Borders", subKey: "js.hero3_bsub" },
     },
     {
-      eyebrow: "Taqua Little Royals",
-      title: 'Little Traditions<br /><em>Big</em> Celebrations',
-      sub: "Festive and everyday wear for boys and girls — soft on young skin, easy to move in, and made for photographs.",
-      cta: "Explore Kids Collection", href: "kids.html",
-      img: "images/products/kids-04.png",
-      alt: "Boys silk shirt and dhoti set from the Taqua kids range",
-      top: { icon: "fa-star", title: "Skin-Friendly", sub: "Soft Cotton Blends" },
-      bottom: { icon: "fa-award", title: "Festive Fits", sub: "Sized For Little Ones" },
+      eyebrow: "Taqua Little Royals", eyebrowKey: "js.hero4_eyebrow",
+      title: 'Little Traditions<br /><em>Big</em> Celebrations', titleKey: "js.hero4_title",
+      sub: "Festive and everyday wear for boys and girls — soft on young skin, easy to move in, and made for photographs.", subKey: "js.hero4_sub",
+      cta: "Explore Kids Collection", ctaKey: "js.hero4_cta", href: "kids.html",
+      img: "images/products/kids-04.webp",
+      alt: "Boys silk shirt and dhoti set from the Taqua kids range", altKey: "js.hero4_alt",
+      top: { icon: "fa-star", title: "Skin-Friendly", titleKey: "js.hero4_ttitle", sub: "Soft Cotton Blends", subKey: "js.hero4_tsub" },
+      bottom: { icon: "fa-award", title: "Festive Fits", titleKey: "js.hero4_btitle", sub: "Sized For Little Ones", subKey: "js.hero4_bsub" },
     },
     {
-      eyebrow: "Aadi Offer Season",
-      title: 'Aadi <em>Thallupadi</em><br />Is Here',
-      sub: "Season-special pricing across silk, cotton and daily-wear drapes — for the month of Aadi only, while stocks last.",
-      cta: "See Aadi Offers", href: "#collections",
-      img: "images/products/women-17.png",
-      alt: "Stonework saree featured in the Aadi season offer",
-      top: { icon: "fa-tag", title: "Aadi Special", sub: "Season Pricing" },
-      bottom: { icon: "fa-gift", title: "This Month Only", sub: "While Stocks Last" },
+      eyebrow: "Aadi Offer Season", eyebrowKey: "js.hero5_eyebrow",
+      title: 'Aadi <em>Thallupadi</em><br />Is Here', titleKey: "js.hero5_title",
+      sub: "Season-special pricing across silk, cotton and daily-wear drapes — for the month of Aadi only, while stocks last.", subKey: "js.hero5_sub",
+      cta: "See Aadi Offers", ctaKey: "js.hero5_cta", href: "#collections",
+      img: "images/products/women-17.webp",
+      alt: "Stonework saree featured in the Aadi season offer", altKey: "js.hero5_alt",
+      top: { icon: "fa-tag", title: "Aadi Special", titleKey: "js.hero5_ttitle", sub: "Season Pricing", subKey: "js.hero5_tsub" },
+      bottom: { icon: "fa-gift", title: "This Month Only", titleKey: "js.hero5_btitle", sub: "While Stocks Last", subKey: "js.hero5_bsub" },
     },
   ];
 
@@ -295,26 +322,60 @@
 
     function paint(i) {
       const s = HERO_SLIDES[i];
-      el.eyebrow.textContent = s.eyebrow;
-      el.title.innerHTML = s.title;
-      el.sub.textContent = s.sub;
-      el.cta.innerHTML = s.cta + ' <i class="fa-solid fa-arrow-right"></i>';
+      el.eyebrow.textContent = T(s.eyebrowKey, s.eyebrow);
+      el.title.innerHTML = T(s.titleKey, s.title);
+      el.sub.textContent = T(s.subKey, s.sub);
+      el.cta.innerHTML = T(s.ctaKey, s.cta) + ' <i class="fa-solid fa-arrow-right"></i>';
       el.cta.setAttribute("href", s.href);
       el.img.setAttribute("src", s.img);
-      el.img.setAttribute("alt", s.alt);
+      el.img.setAttribute("alt", T(s.altKey, s.alt));
       el.tIcon.className = "fa-solid " + s.top.icon;
       el.tIcon.setAttribute("data-hero-icon", "");
-      el.tTitle.textContent = s.top.title;
-      el.tSub.textContent = s.top.sub;
+      el.tTitle.textContent = T(s.top.titleKey, s.top.title);
+      el.tSub.textContent = T(s.top.subKey, s.top.sub);
       el.bIcon.className = "fa-solid " + s.bottom.icon;
       el.bIcon.setAttribute("data-hero-icon", "");
-      el.bTitle.textContent = s.bottom.title;
-      el.bSub.textContent = s.bottom.sub;
+      el.bTitle.textContent = T(s.bottom.titleKey, s.bottom.title);
+      el.bSub.textContent = T(s.bottom.subKey, s.bottom.sub);
       Array.prototype.forEach.call(el.dots.children, function (d, n) {
         d.setAttribute("aria-selected", n === i ? "true" : "false");
       });
       at = i;
     }
+    /* -------- Reserve the tallest slide's copy height --------
+       The five headlines differ a lot in length — 405px against 162px at
+       1280px — so the copy column's height changes on every slide. That
+       resizes the whole hero and shunts every section below it up and down
+       mid-rotation. Measure all five once and hold the column at the tallest,
+       so the layout is identical whichever slide is showing.
+
+       The five paints happen inside a single task: the browser does not
+       render between them, so there is nothing to see. offsetHeight forces
+       layout each time, which is the point — we need the real measurement. */
+    const copyBox = hero.querySelector(".hero-copy");
+    function reserveCopyHeight() {
+      if (!copyBox) return;
+      const keep = at;
+      copyBox.style.minHeight = "";
+      let tallest = 0;
+      for (let i = 0; i < HERO_SLIDES.length; i++) {
+        paint(i);
+        tallest = Math.max(tallest, copyBox.offsetHeight);
+      }
+      paint(keep);
+      copyBox.style.minHeight = tallest + "px";
+    }
+
+    // Repaint in place when the visitor switches language, so the hero does not
+    // sit in the old language until the next 6s tick.
+    document.addEventListener("taqua:lang", function () {
+      // Tamil and Hindi wrap to different line counts, so the reservation has
+      // to be recomputed rather than carried over from English.
+      reserveCopyHeight();
+      Array.prototype.forEach.call(el.dots.children, function (d, n) {
+        d.setAttribute("aria-label", T(HERO_SLIDES[n].eyebrowKey, HERO_SLIDES[n].eyebrow));
+      });
+    });
 
     const DWELL = 6000; // every slide is held this long, once it has landed
     const FADE = 450;   // must match the opacity transition in style.css
@@ -348,7 +409,7 @@
       const dot = document.createElement("button");
       dot.type = "button";
       dot.setAttribute("role", "tab");
-      dot.setAttribute("aria-label", s.eyebrow);
+      dot.setAttribute("aria-label", T(s.eyebrowKey, s.eyebrow));
       dot.setAttribute("aria-selected", i === 0 ? "true" : "false");
       dot.addEventListener("click", function () { go(i); });
       el.dots.appendChild(dot);
@@ -365,6 +426,21 @@
     document.addEventListener("visibilitychange", function () {
       held = document.hidden;
     });
+
+    // Measure once the webfonts have settled — Noto Serif Tamil and Cormorant
+    // wrap differently to the fallbacks, so measuring before they land reserves
+    // the wrong height.
+    reserveCopyHeight();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(reserveCopyHeight);
+    }
+    // The headline is clamp()-sized, so the line count changes with the viewport.
+    let reserveTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(reserveTimer);
+      reserveTimer = setTimeout(reserveCopyHeight, 200);
+    });
+
     schedule();
   }
 

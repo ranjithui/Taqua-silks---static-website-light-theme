@@ -394,7 +394,15 @@ section { position: relative; padding: clamp(70px, 9vw, 130px) 0; }
    ============================================================ */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; overflow: hidden; }
 .hero-grid {
-  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center;
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px;
+  /* Anchor both columns to the top rather than centring them.
+     The rotator swaps five headlines of very different lengths, so the copy
+     column's height changes with every slide. Under align-items:center that
+     re-centres the whole row and slides the portrait up and down — 106px
+     between the longest and shortest headline — which reads as the image
+     toggling on each transition. Anchoring to the top keeps the photograph,
+     the eyebrow and the headline origin fixed for all five slides. */
+  align-items: start;
 }
 .hero-copy .eyebrow { margin-bottom: 22px; }
 .hero-title {
@@ -1802,7 +1810,11 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
 .weave-list {
   display: grid;
   /* Version 2 of the SEO copy has five promises, not six. */
-  grid-template-columns: repeat(5, 1fr);
+  /* minmax(0, 1fr), not 1fr: a bare fr track floors at its content's
+     min-content width, so a long unbroken heading — which Tamil and Hindi
+     produce readily — widens the whole five-column grid past the page and
+     the document picks up a horizontal scrollbar. */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-template-rows: 1fr auto 1fr;
   column-gap: clamp(10px, 1.6vw, 24px);
 }
@@ -2038,3 +2050,404 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
   color: var(--gold-ink);
 }
 .mm-sub .mm-label:first-child { margin-top: 0; }
+
+/* ============================================================
+   LANGUAGE SWITCHER (English · தமிழ் · हिन्दी)
+   ------------------------------------------------------------
+   Injected by js/i18n.js into .nav-actions and into the mobile
+   menu, so the control is identical on all five pages.
+   ============================================================ */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(43, 33, 26, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+.lang-opt {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  padding: 7px 11px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.35s var(--ease), color 0.35s var(--ease);
+}
+.lang-opt:hover { color: var(--gold-ink); }
+.lang-opt.is-on {
+  color: #fff;
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+  box-shadow: 0 4px 14px -6px rgba(160, 124, 34, 0.9);
+}
+.lang-opt:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
+/* The Indic labels need a face that actually has the glyphs, whatever
+   language the page is currently showing. */
+.lang-opt[lang="ta"] { font-family: "Noto Serif Tamil", var(--font-body); }
+.lang-opt[lang="hi"] { font-family: "Noto Serif Devanagari", var(--font-body); }
+
+/* In the slide-out menu it sits as its own centred row. */
+.lang-switch.in-menu {
+  margin-top: 22px;
+  align-self: center;
+  background: rgba(255, 255, 255, 0.65);
+}
+.lang-switch.in-menu .lang-opt { font-size: 0.8rem; padding: 9px 15px; }
+
+/* Hand the switcher over to the slide-out menu at exactly the width where the
+   hamburger appears (900px). Hiding it any earlier leaves a band where the
+   navbar copy is gone but the hamburger has not arrived yet — and in that gap
+   there is no way to change language at all. */
+@media (max-width: 900px) {
+  .nav-actions .lang-switch { display: none; }
+}
+
+/* ============================================================
+   PER-LANGUAGE TYPOGRAPHY
+   ------------------------------------------------------------
+   Cormorant Garamond has no Tamil or Devanagari coverage, so a page
+   in those languages would fall through to a default system serif
+   and lose the display face entirely. Put the matching Noto Serif
+   first and keep the Latin faces behind it for numerals, prices and
+   the brand names that stay in Latin script.
+   ============================================================ */
+html.lang-ta body,
+html.lang-ta .btn,
+html.lang-ta input {
+  font-family: "Noto Serif Tamil", var(--font-body);
+}
+html.lang-ta h1, html.lang-ta h2, html.lang-ta h3,
+html.lang-ta h4, html.lang-ta h5,
+html.lang-ta .section-title, html.lang-ta .hero-title {
+  font-family: "Noto Serif Tamil", var(--font-head);
+}
+html.lang-hi body,
+html.lang-hi .btn,
+html.lang-hi input {
+  font-family: "Noto Serif Devanagari", var(--font-body);
+}
+html.lang-hi h1, html.lang-hi h2, html.lang-hi h3,
+html.lang-hi h4, html.lang-hi h5,
+html.lang-hi .section-title, html.lang-hi .hero-title {
+  font-family: "Noto Serif Devanagari", var(--font-head);
+}
+/* Tamil and Devanagari carry taller ascenders and deeper descenders than
+   the Latin faces these sizes were tuned for; without a little extra
+   leading the headline rows collide. */
+html.lang-ta h1, html.lang-hi h1,
+html.lang-ta h2, html.lang-hi h2,
+html.lang-ta .hero-title, html.lang-hi .hero-title { line-height: 1.28; }
+/* Both scripts run appreciably wider than English at the same size. */
+html.lang-ta .btn, html.lang-hi .btn { font-size: 0.78rem; }
+
+/* The nav-link sizing has to stay inside width bands. A flat
+   `html.lang-ta .nav-links a` rule outranks the responsive steps further up
+   this file, so Tamil would hold its wide size right down to the breakpoint
+   and burst the navbar instead of shrinking with everything else. */
+@media (min-width: 1201px) {
+  html.lang-ta .nav-links a, html.lang-hi .nav-links a { font-size: 0.8rem; }
+}
+/* 901–1200px: full nav still shown, and the Indic labels need ~30% more room
+   than the Latin ones. Tighten the row rather than let it overflow. */
+@media (min-width: 901px) and (max-width: 1200px) {
+  html.lang-ta .nav-links, html.lang-hi .nav-links { gap: 11px; }
+  html.lang-ta .nav-links a, html.lang-hi .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0;
+  }
+  html.lang-ta .nav-inner, html.lang-hi .nav-inner { gap: 12px; }
+  html.lang-ta .nav-actions .lang-switch,
+  html.lang-hi .nav-actions .lang-switch { padding: 2px; }
+  html.lang-ta .nav-actions .lang-opt,
+  html.lang-hi .nav-actions .lang-opt { padding: 6px 8px; font-size: 0.64rem; }
+}
+/* Last step before the hamburger takes over at 900px. */
+@media (min-width: 901px) and (max-width: 1000px) {
+  html.lang-ta .nav-links, html.lang-hi .nav-links { gap: 8px; }
+  html.lang-ta .nav-links a, html.lang-hi .nav-links a { font-size: 0.66rem; }
+}
+
+/* Wide tracking and uppercasing are Latin typographic devices. Tamil and
+   Devanagari have no capital forms, so text-transform does nothing, while
+   letter-spacing actively pulls apart the conjunct clusters that make the
+   scripts legible. Neutralise both wherever the design leans on them. */
+html.lang-ta .eyebrow,      html.lang-hi .eyebrow,
+html.lang-ta .kicker,       html.lang-hi .kicker,
+html.lang-ta .cat,          html.lang-hi .cat,
+html.lang-ta .drop-group,   html.lang-hi .drop-group,
+html.lang-ta .mm-sub .mm-label, html.lang-hi .mm-sub .mm-label,
+html.lang-ta .hero-badge span,  html.lang-hi .hero-badge span,
+html.lang-ta .hero-stats .stat span, html.lang-hi .hero-stats .stat span,
+html.lang-ta .footer-col h5, html.lang-hi .footer-col h5,
+html.lang-ta .float-card span, html.lang-hi .float-card span,
+html.lang-ta .legacy-card span, html.lang-hi .legacy-card span,
+html.lang-ta .reviewer span, html.lang-hi .reviewer span {
+  text-transform: none;
+  letter-spacing: 0.4px;
+}
+
+/* ============================================================
+   HERO — Tamil / Hindi
+   ------------------------------------------------------------
+   The hero title is sized for English at clamp(...5.4rem). Both Indic
+   faces set appreciably wider at a given size, so the same headline ran
+   to nine lines and the copy column towered over the portrait beside it.
+   Everything below re-fits the TEXT column only — the grid ratio,
+   .hero-frame, its aspect-ratio and the image are deliberately untouched,
+   so the photograph renders identically in all three languages.
+   ============================================================ */
+html.lang-ta .hero-title,
+html.lang-hi .hero-title {
+  line-height: 1.3;
+  margin-bottom: 20px;
+  /* Even out the ragged edge instead of leaving one orphan word. */
+  text-wrap: balance;
+}
+/* Two separate ramps, because the scripts do not set at the same width.
+   Tamil runs broad — its headline needs roughly 55% of the English size to
+   wrap to the same five lines. Devanagari is far more compact (many matras
+   carry no advance), so the same value left the Hindi headline visibly
+   undersized next to the portrait; it takes a larger step. */
+html.lang-ta .hero-title { font-size: clamp(1.85rem, 3.3vw, 3rem); }
+html.lang-hi .hero-title { font-size: clamp(2.1rem, 4.4vw, 4rem); }
+/* Neither Noto Serif Tamil nor Noto Serif Devanagari ships an italic, so
+   <em> was being synthesised as a slant — which smears the vowel signs.
+   Carry the emphasis on weight instead; the gold colour still separates it. */
+html.lang-ta .hero-title em, html.lang-hi .hero-title em,
+html.lang-ta h1 em, html.lang-hi h1 em,
+html.lang-ta h2 em, html.lang-hi h2 em {
+  font-style: normal;
+  font-weight: 700;
+}
+html.lang-ta .hero-sub, html.lang-hi .hero-sub {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 520px;
+}
+html.lang-ta .hero-copy .eyebrow, html.lang-hi .hero-copy .eyebrow {
+  margin-bottom: 18px;
+}
+/* Long labels ("நாளொன்றுக்கு தயாராகும் ஆடைகள்") wrap to two lines, so the
+   three stats need a common baseline or they sit at different heights. */
+html.lang-ta .hero-stats, html.lang-hi .hero-stats {
+  gap: 32px;
+  align-items: start;
+  margin-top: 40px;
+}
+/* The cap has to clear the longest single token, not an average: Tamil
+   "வாடிக்கையாளர்" is ~110px on its own and a tighter box just breaks it
+   mid-word. flex-wrap lets the three stats drop to a second row on a narrow
+   column rather than squeezing. */
+html.lang-ta .hero-stats, html.lang-hi .hero-stats { flex-wrap: wrap; }
+html.lang-ta .hero-stats .stat span, html.lang-hi .hero-stats .stat span {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  display: block;
+  max-width: 124px;
+}
+/* The floating badges are sized by their content, and an Indic label such as
+   "கையால் தேர்ந்தெடுக்கப்பட்டது" sets to one unbroken 389px line — against a
+   215px English one. At that width the tag sprawls across the portrait and
+   hides the model. Cap the width so the label wraps to a second line instead
+   of growing sideways, and trim the chrome to match. */
+html.lang-ta .hero-badge, html.lang-hi .hero-badge {
+  max-width: 232px;
+  padding: 12px 15px;
+  gap: 10px;
+}
+html.lang-ta .hero-badge .medal, html.lang-hi .hero-badge .medal {
+  /* flex-basis as well as width: in a flex row a bare width still lets the
+     circle squash into an oval once the text beside it wraps. */
+  flex: 0 0 38px;
+  width: 38px; height: 38px;
+  font-size: 1rem;
+}
+html.lang-ta .hero-badge > div, html.lang-hi .hero-badge > div { min-width: 0; }
+html.lang-ta .hero-badge b, html.lang-hi .hero-badge b {
+  font-size: 0.86rem;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+html.lang-ta .hero-badge span, html.lang-hi .hero-badge span {
+  font-size: 0.6rem;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  overflow-wrap: break-word;
+}
+/* Below ~1100px the portrait shrinks but the badge does not, so the same tag
+   eats a much larger share of the photo. Step it down with the frame. */
+@media (max-width: 1100px) {
+  html.lang-ta .hero-badge, html.lang-hi .hero-badge {
+    max-width: 196px;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  html.lang-ta .hero-badge .medal, html.lang-hi .hero-badge .medal {
+    flex: 0 0 32px; width: 32px; height: 32px; font-size: 0.86rem;
+  }
+  html.lang-ta .hero-badge b, html.lang-hi .hero-badge b { font-size: 0.78rem; }
+  html.lang-ta .hero-badge span, html.lang-hi .hero-badge span { font-size: 0.56rem; }
+}
+/* A grid track sized in fr still refuses to shrink below its content's
+   min-content width. Without this a long unbroken Tamil compound could
+   widen the copy column and steal width from the image beside it. */
+html.lang-ta .hero-copy, html.lang-hi .hero-copy {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Tamil and Hindi build long agglutinated words — "வாடிக்கையாளர்களால்" is one
+   unbreakable token 485px wide at a display size. On a phone that single word
+   is wider than the viewport, and since the default overflow-wrap is `normal`
+   the browser lets it stick out and the page gains a horizontal scrollbar.
+   Allow a mid-word break on every heading and card label. */
+html.lang-ta h1, html.lang-hi h1,
+html.lang-ta h2, html.lang-hi h2,
+html.lang-ta h3, html.lang-hi h3,
+html.lang-ta h4, html.lang-hi h4,
+html.lang-ta h5, html.lang-hi h5,
+html.lang-ta .section-title, html.lang-hi .section-title,
+html.lang-ta .accent, html.lang-hi .accent,
+html.lang-ta .eyebrow, html.lang-hi .eyebrow,
+html.lang-ta .kicker, html.lang-hi .kicker,
+html.lang-ta .cat, html.lang-hi .cat,
+html.lang-ta .w-copy h4, html.lang-hi .w-copy h4,
+html.lang-ta .stat span, html.lang-hi .stat span,
+html.lang-ta .legacy-card span, html.lang-hi .legacy-card span,
+html.lang-ta .float-card span, html.lang-hi .float-card span {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+/* The eyebrow is an inline-flex row with rule-lines either side; without this
+   a long label refuses to wrap and drags the rules off-screen with it. */
+html.lang-ta .eyebrow, html.lang-hi .eyebrow { max-width: 100%; }
+
+/* Section titles run to clamp(...4rem) — sized for short English phrases like
+   "Featured Collections". At that size a single Tamil word such as
+   "வாடிக்கையாளர்" is wider than the column and breaks mid-word. */
+html.lang-ta .section-title, html.lang-hi .section-title {
+  font-size: clamp(1.6rem, 3.4vw, 2.75rem);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   BRIDAL / KIDS BANNERS — Tamil / Hindi
+   ------------------------------------------------------------
+   .bridal is locked to the photograph's 1616:973 ratio and clips, so copy
+   taller than that box is silently cut off — Tamil overran it by up to 439px
+   and the button disappeared entirely. The kids banner is content-driven, so
+   it did not clip but grew to nearly twice the English height. Smaller type
+   and tighter padding bring both back inside the frame.
+   ============================================================ */
+/* Sized against the room actually left inside the locked frame rather than
+   shrunk defensively — these are still banner headlines. */
+html.lang-ta .bridal-inner h2, html.lang-hi .bridal-inner h2 {
+  font-size: clamp(1.5rem, 3.2vw, 2.75rem);
+  line-height: 1.32;
+  margin: 12px 0 14px;
+}
+html.lang-ta .kids-banner-inner h2, html.lang-hi .kids-banner-inner h2 {
+  font-size: clamp(1.4rem, 3vw, 2.55rem);
+  line-height: 1.32;
+  margin: 10px 0 14px;
+}
+html.lang-ta .bridal-inner p, html.lang-hi .bridal-inner p,
+html.lang-ta .kids-banner-inner p, html.lang-hi .kids-banner-inner p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+/* The generous English padding is what pushes the copy past the locked ratio
+   once the text itself is taller. */
+html.lang-ta .bridal-inner, html.lang-hi .bridal-inner {
+  padding-block: clamp(32px, 5vw, 64px);
+}
+html.lang-ta .kids-banner-inner, html.lang-hi .kids-banner-inner {
+  padding-block: clamp(30px, 4.6vw, 58px);
+}
+
+/* ============================================================
+   HERITAGE STRIP (#about / .about-grid) — Tamil / Hindi
+   ------------------------------------------------------------
+   The heading is sized for a two-line English phrase. The Tamil rendering
+   ran to five lines at the same 57.6px, and the floating stat card — sized
+   by its own label — grew to 75% of the photo's width and buried the
+   portrait behind it. Smaller type here, and a cap on the card.
+   ============================================================ */
+html.lang-ta .about-copy h2, html.lang-hi .about-copy h2 {
+  font-size: clamp(1.6rem, 2.9vw, 2.45rem);
+  line-height: 1.34;
+  margin: 10px 0 18px;
+}
+html.lang-ta .about-copy p, html.lang-hi .about-copy p {
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+/* Two columns of ticks: the Indic labels wrap to 2–3 lines each, so the list
+   was taller than the photo beside it. */
+html.lang-ta .about-points li, html.lang-hi .about-points li {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  align-items: start;
+  gap: 9px;
+}
+html.lang-ta .about-points i, html.lang-hi .about-points i {
+  margin-top: 3px;   /* tick aligns to the first line, not the block centre */
+  flex: 0 0 auto;
+}
+html.lang-ta .about-points, html.lang-hi .about-points { gap: 13px 18px; }
+/* The card is absolutely positioned and content-sized, so without a cap the
+   label sets on one line and the card spreads across the photograph. */
+/* 248px leaves 212px of content — enough for "3 தலைமுறை" to sit on one line
+   exactly as "3 Generations" does, and still narrower than the 266px the
+   English card occupies. Capping tighter than the longest token just forces
+   an ugly mid-word break in Tamil. */
+html.lang-ta .about-media .float-card,
+html.lang-hi .about-media .float-card {
+  max-width: 248px;
+  padding: 16px 18px;
+}
+/* Capping the card's width is only safe if the label can actually wrap:
+   "தலைமுறைகள்" is one token wider than the 172px content box, and with the
+   default overflow-wrap it paints straight through the card's edge and out
+   of the viewport — the box stays 208px while the glyphs do not. */
+html.lang-ta .about-media .float-card b,
+html.lang-hi .about-media .float-card b {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  /* Safety net only. Breaking a Tamil word mid-cluster looks wrong, so the
+     label itself is kept short enough that this never has to fire. */
+  overflow-wrap: break-word;
+}
+html.lang-ta .about-media .float-card span,
+html.lang-hi .about-media .float-card span { font-size: 0.68rem; line-height: 1.4; }
+html.lang-ta .sign, html.lang-hi .sign { font-size: 1.2rem; font-style: normal; }
+
+/* Pre-existing, and not language-related: the stat card is positioned at
+   right:-20px so it overhangs the photo. On a 360px phone that overhang
+   clears the container's padding and the document picks up a few pixels of
+   horizontal scroll in every language. Tuck it flush below 640px; the
+   overhang is unchanged at every width where there is room for it. */
+@media (max-width: 640px) {
+  .about-media .float-card { right: 0; }
+}
+html.lang-ta .w-copy h4, html.lang-hi .w-copy h4 {
+  font-size: clamp(0.95rem, 1.25vw, 1.12rem);
+  line-height: 1.4;
+}
+
+/* The brand mark cross-fades between "TaquaSilks" and "தக்வா சில்க்ஸ்" on a
+   7s loop. That predates the language switcher and reads as a mistake once a
+   visitor has deliberately chosen Hindi — the logo would keep flickering into
+   a third script. Hold the Latin form still for Hindi readers. */
+html.lang-hi .langswap .lang.ta { display: none; }
+html.lang-hi .langswap .lang.en { animation: none; opacity: 1; }

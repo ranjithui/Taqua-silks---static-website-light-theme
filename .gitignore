@@ -1,0 +1,16 @@
+# Local archives / backups.
+# images.zip is a 301 MB backup of the original photography — GitHub rejects
+# any file over 100 MB, and the same images are already tracked under images/.
+# These stay on disk; they just don't belong in the repository.
+*.zip
+
+# OS / editor noise
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+
+# Dependencies, if any are ever added here
+node_modules/
