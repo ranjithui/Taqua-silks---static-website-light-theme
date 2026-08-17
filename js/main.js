@@ -427,9 +427,9 @@
       held = document.hidden;
     });
 
-    // Measure once the webfonts have settled — Noto Serif Tamil and Cormorant
-    // wrap differently to the fallbacks, so measuring before they land reserves
-    // the wrong height.
+    // Measure once the webfonts have settled — Tiro Tamil, Noto Serif Devanagari
+    // and Cormorant all wrap differently to the fallbacks, so measuring before
+    // they land reserves the wrong height.
     reserveCopyHeight();
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(reserveCopyHeight);

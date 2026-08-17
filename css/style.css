@@ -26,6 +26,25 @@
   --font-head: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --font-body: "Poppins", "Segoe UI", system-ui, sans-serif;
 
+  /* The Tamil faces themselves — a display/text pair, so a Tamil page looks
+     designed rather than patched with whatever had the glyphs.
+
+     Tiro Tamil is one of the very few Tamil faces with genuine stroke
+     modulation AND a true italic. The modulation is what lets it sit beside
+     Cormorant Garamond without reading as a fallback, and the real italic
+     means the gold <em> accents the design leans on keep their slant instead
+     of being synthesised into a smear across the vowel signs.
+
+     Hind Madurai takes the running copy: it is a text face, so it holds at the
+     0.8rem of a spec line or a nav label, where a display face turns to mud.
+
+     Noto Serif Tamil stays behind each as the coverage net — it has the widest
+     glyph repertoire of the three, so anything rarer still renders.
+     Do NOT reference var(--font-head)/var(--font-body) here: .lang-ta below
+     redefines those FROM these, and a custom-property cycle voids both. */
+  --font-ta-head: "Tiro Tamil", "Noto Serif Tamil", Georgia, serif;
+  --font-ta-body: "Hind Madurai", "Noto Serif Tamil", "Segoe UI", system-ui, sans-serif;
+
   --radius:      18px;
   --radius-lg:   28px;
   --shadow-soft: 0 20px 60px -20px rgba(0,0,0,0.55);
@@ -331,7 +350,9 @@ section { position: relative; padding: clamp(70px, 9vw, 130px) 0; }
 /* Bilingual logo that fades between English & Tamil on a loop */
 .langswap { display: inline-grid; }
 .langswap .lang { grid-area: 1 / 1; white-space: nowrap; }
-.langswap .lang.ta { font-family: "Noto Serif Tamil", var(--font-head); letter-spacing: 0.5px; }
+/* Tamil-first here, unlike the root stacks: this span holds nothing but Tamil,
+   so there is no Latin left for Cormorant to claim. */
+.langswap .lang.ta { font-family: var(--font-ta-head); letter-spacing: 0.5px; }
 .langswap .lang.en { opacity: 1; animation: brandFadeEn 7s ease-in-out infinite; }
 .langswap .lang.ta { opacity: 0; animation: brandFadeTa 7s ease-in-out infinite; }
 @keyframes brandFadeEn { 0%, 38% { opacity: 1; } 50%, 88% { opacity: 0; } 100% { opacity: 1; } }
@@ -1637,7 +1658,10 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
    centre line, so the swap is a pure cross-fade in place.
    ============================================================ */
 .langswap .lang { place-self: center start; }
-.langswap .lang.ta { font-size: 0.76em; }
+/* Re-tuned from 0.76em when the Tamil face became Tiro Tamil: it sets 0.948 of
+   Noto Serif Tamil's advance and 0.93 of its glyph height at a given size, so
+   0.76 / ~0.94 ≈ 0.81 restores exactly the optical match described above. */
+.langswap .lang.ta { font-size: 0.81em; }
 
 /* ============================================================
    TESTIMONIALS — SCROLLING BAND
@@ -1902,8 +1926,17 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
    vertical and the promises run down beside it. */
 @media (max-width: 860px) {
   .weave-list {
-    grid-template-columns: 54px 1fr;
-    grid-template-rows: none;
+    /* minmax(0, 1fr) for the same reason the desktop rule gives: a bare `1fr`
+       floors at the copy's min-content width, so one long unbroken Tamil or
+       Hindi compound widens the grid past the container and body's
+       overflow-x: hidden silently crops the text on a narrow phone. */
+    grid-template-columns: 54px minmax(0, 1fr);
+    /* One explicit row per promise — NOT `none`. The thread below spans
+       `grid-row: 1 / -1`, and -1 counts back from the EXPLICIT grid, so with no
+       explicit rows it resolved to `1 / 2`: the gold line stopped just past the
+       first medallion and 02–05 sat unconnected. Keep this count in step with
+       the `repeat(5, ...)` columns in the desktop rule above. */
+    grid-template-rows: repeat(5, auto);
     column-gap: 20px; row-gap: 26px;
   }
   .weave-list::before {
@@ -2092,7 +2125,11 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
 .lang-opt:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
 /* The Indic labels need a face that actually has the glyphs, whatever
    language the page is currently showing. */
-.lang-opt[lang="ta"] { font-family: "Noto Serif Tamil", var(--font-body); }
+/* Indic-first, since each label is pure Tamil / Devanagari — and the switcher
+   has to render all three correctly whatever language the page is showing, so
+   these cannot lean on the root stacks. Hind Madurai reads better than the
+   display face at this size, and 600 keeps the chip legible against the gold. */
+.lang-opt[lang="ta"] { font-family: var(--font-ta-body); font-weight: 600; }
 .lang-opt[lang="hi"] { font-family: "Noto Serif Devanagari", var(--font-body); }
 
 /* In the slide-out menu it sits as its own centred row. */
@@ -2114,31 +2151,52 @@ section { padding: clamp(42px, 5.5vw, 78px) 0; }
 /* ============================================================
    PER-LANGUAGE TYPOGRAPHY
    ------------------------------------------------------------
-   Cormorant Garamond has no Tamil or Devanagari coverage, so a page
-   in those languages would fall through to a default system serif
-   and lose the display face entirely. Put the matching Noto Serif
-   first and keep the Latin faces behind it for numerals, prices and
-   the brand names that stay in Latin script.
+   Cormorant Garamond and Poppins have no Tamil or Devanagari coverage, so a
+   page in those languages would fall through to whatever system serif the
+   device happens to ship and lose the typographic design entirely.
+
+   Rather than restate a font-family on every heading selector, retarget the
+   two variables at the root: every var(--font-head)/var(--font-body) in this
+   file AND in the per-page <style> blocks then follows automatically. The old
+   `html.lang-ta h4` approach could not do that — a component rule like
+   `.product-body h4 { font-family: var(--font-head) }` scores two classes to
+   its one, so product titles, footer headings and the mobile menu kept winning
+   with a Latin-only stack and silently dropped to a system Tamil font.
+
+   Latin stays FIRST in each stack, which looks backwards but is the whole
+   trick: font fallback is per-character, so Cormorant/Poppins keep the
+   Latin brand names, prices and numerals while only the Tamil and Devanagari
+   codepoints — which they have no glyph for — drop through to the Indic face.
+   Leading with the Indic face instead would drag every "₹24,999" and "TAQUA
+   SILKS" into its Latin, which is not the design's Latin.
+
+   :root.lang-ta scores two classes against :root's one, so it wins regardless
+   of where this block ends up if the file is ever reordered.
    ============================================================ */
-html.lang-ta body,
-html.lang-ta .btn,
-html.lang-ta input {
-  font-family: "Noto Serif Tamil", var(--font-body);
+:root.lang-ta {
+  --font-head: "Cormorant Garamond", var(--font-ta-head);
+  --font-body: "Poppins", var(--font-ta-body);
 }
+:root.lang-hi {
+  --font-head: "Cormorant Garamond", "Noto Serif Devanagari", Georgia, serif;
+  --font-body: "Poppins", "Noto Serif Devanagari", "Segoe UI", system-ui, sans-serif;
+}
+
+/* Tiro Tamil ships one weight (400), so the 600 the headings ask for would be
+   synthesised. Take the real 400 instead: the face carries enough stem weight
+   at display sizes, and its stroke modulation — the reason it was chosen — is
+   exactly what a smeared synthetic bold destroys. */
 html.lang-ta h1, html.lang-ta h2, html.lang-ta h3,
 html.lang-ta h4, html.lang-ta h5,
 html.lang-ta .section-title, html.lang-ta .hero-title {
-  font-family: "Noto Serif Tamil", var(--font-head);
+  font-weight: 400;
 }
-html.lang-hi body,
-html.lang-hi .btn,
-html.lang-hi input {
-  font-family: "Noto Serif Devanagari", var(--font-body);
-}
-html.lang-hi h1, html.lang-hi h2, html.lang-hi h3,
-html.lang-hi h4, html.lang-hi h5,
-html.lang-hi .section-title, html.lang-hi .hero-title {
-  font-family: "Noto Serif Devanagari", var(--font-head);
+/* Body copy is set at 300 for Poppins, but a Tamil cluster packs far more
+   strokes into the same space and goes spindly that light; 400 holds up. The
+   loops and tall ascenders also want a little more leading than Latin needed. */
+html.lang-ta body {
+  font-weight: 400;
+  line-height: 1.8;
 }
 /* Tamil and Devanagari carry taller ascenders and deeper descenders than
    the Latin faces these sizes were tuned for; without a little extra
@@ -2217,16 +2275,29 @@ html.lang-hi .hero-title {
    wrap to the same five lines. Devanagari is far more compact (many matras
    carry no advance), so the same value left the Hindi headline visibly
    undersized next to the portrait; it takes a larger step. */
-html.lang-ta .hero-title { font-size: clamp(1.85rem, 3.3vw, 3rem); }
+/* Nudged up ~5% from the Noto Serif Tamil ramp: Tiro Tamil sets that much
+   narrower at the same size (measured 0.948 of Noto's advance on the brand
+   string), so the old value left the headline looking a step undersized. */
+html.lang-ta .hero-title { font-size: clamp(1.95rem, 3.5vw, 3.15rem); }
 html.lang-hi .hero-title { font-size: clamp(2.1rem, 4.4vw, 4rem); }
-/* Neither Noto Serif Tamil nor Noto Serif Devanagari ships an italic, so
-   <em> was being synthesised as a slant — which smears the vowel signs.
-   Carry the emphasis on weight instead; the gold colour still separates it. */
-html.lang-ta .hero-title em, html.lang-hi .hero-title em,
-html.lang-ta h1 em, html.lang-hi h1 em,
-html.lang-ta h2 em, html.lang-hi h2 em {
+/* Noto Serif Devanagari ships no italic, so <em> was being synthesised as a
+   slant — which smears the vowel signs. Carry the emphasis on weight instead;
+   the gold colour still separates it. */
+html.lang-hi .hero-title em,
+html.lang-hi h1 em,
+html.lang-hi h2 em {
   font-style: normal;
   font-weight: 700;
+}
+/* Tamil keeps the real slant: Tiro Tamil has a true drawn italic, so the gold
+   <em> accents read exactly as they do in the English Cormorant setting. It has
+   no bold to pair with it, though, so leave the weight at 400 — asking for 700
+   here would synthesise one and undo the point of using a real italic. */
+html.lang-ta .hero-title em,
+html.lang-ta h1 em,
+html.lang-ta h2 em {
+  font-style: italic;
+  font-weight: 400;
 }
 html.lang-ta .hero-sub, html.lang-hi .hero-sub {
   font-size: 1rem;
