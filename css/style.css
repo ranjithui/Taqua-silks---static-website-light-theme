@@ -2331,6 +2331,25 @@ html.lang-ta .float-card span, html.lang-hi .float-card span {
    a long label refuses to wrap and drags the rules off-screen with it. */
 html.lang-ta .eyebrow, html.lang-hi .eyebrow { max-width: 100%; }
 
+/* ============================================================
+   COLLECTION CARD TITLES — Tamil / Hindi
+   ------------------------------------------------------------
+   The white h3 is 1.8rem, judged against short English labels ("Soft Silk").
+   Tamil equivalents are appreciably longer, so at the same size they crowd
+   the card and wrap to two lines, which reads as heavy rather than elegant.
+   A smaller, slightly airier setting sits better under the gold kicker.
+   ============================================================ */
+html.lang-ta .collection-card .info h3,
+html.lang-hi .collection-card .info h3 {
+  font-size: 1.32rem;
+  line-height: 1.34;
+  margin: 5px 0 2px;
+}
+html.lang-ta .kid-info h3, html.lang-hi .kid-info h3 {
+  font-size: 1.1rem;
+  line-height: 1.34;
+}
+
 /* Section titles run to clamp(...4rem) — sized for short English phrases like
    "Featured Collections". At that size a single Tamil word such as
    "வாடிக்கையாளர்" is wider than the column and breaks mid-word. */
