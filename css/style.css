@@ -2243,6 +2243,8 @@ html.lang-ta .kicker,       html.lang-hi .kicker,
 html.lang-ta .cat,          html.lang-hi .cat,
 html.lang-ta .drop-group,   html.lang-hi .drop-group,
 html.lang-ta .mm-sub .mm-label, html.lang-hi .mm-sub .mm-label,
+html.lang-ta .mobile-menu a, html.lang-hi .mobile-menu a,
+html.lang-ta .mm-group > .mm-title, html.lang-hi .mm-group > .mm-title,
 html.lang-ta .hero-badge span,  html.lang-hi .hero-badge span,
 html.lang-ta .hero-stats .stat span, html.lang-hi .hero-stats .stat span,
 html.lang-ta .footer-col h5, html.lang-hi .footer-col h5,
@@ -2252,6 +2254,36 @@ html.lang-ta .reviewer span, html.lang-hi .reviewer span {
   text-transform: none;
   letter-spacing: 0.4px;
 }
+
+/* ============================================================
+   SLIDE-OUT MENU — Tamil
+   ------------------------------------------------------------
+   The panel's 1.9rem rows and 1.6rem group titles are sized for Cormorant,
+   whose small x-height lets that read as calm rather than shouted. Tiro Tamil
+   sets both taller and wider at the same nominal size, so measured at a 412px
+   viewport the longest row — "சிறப்பு திருமணம்" — needed 312px of the 372px of
+   usable panel. At 84% of the width it wraps outright on a 360px phone and
+   looks cramped even where it technically fits.
+
+   Two lighter steps, together with the tracking reset above (worth ~30px on
+   that row on its own), bring the longest row to about 200px. Every row then
+   holds one line with room to spare, which is what makes the column read as
+   composed instead of crowded — the elegance here is all in the fit.
+   ============================================================ */
+/* Keep the two steps in roughly the design's original 1.9 : 1.6 proportion.
+   Scaling both down by an equal ratio would shrink the absolute gap to under
+   2px, which reads as one flat list; holding the ratio keeps the top-level
+   rows visibly senior to the expandable group titles, as in English. */
+html.lang-ta .mobile-menu a { font-size: 1.35rem; }
+html.lang-ta .mm-group > .mm-title { font-size: 1.18rem; }
+/* Tamil ascenders and the descenders on ழ ஷ ஜ reach further than the Latin
+   rows these values were set for, so give each row its own breathing space
+   rather than relying on the panel's flex gap alone. */
+html.lang-ta .mobile-menu a,
+html.lang-ta .mm-group > .mm-title { line-height: 1.45; }
+/* The rows are shorter now, so the 26px flex gap tuned for the larger Latin
+   type leaves the column looking loose and unanchored. */
+html.lang-ta .mobile-menu { gap: 20px; }
 
 /* ============================================================
    HERO — Tamil / Hindi
